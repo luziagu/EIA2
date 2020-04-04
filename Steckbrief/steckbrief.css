@@ -9,14 +9,17 @@ body{
 
 h2{
     position: relative;
-    top: -80px; 
-    left: -80px;
+    top: -60px; 
+    left: -25px;
     color: white;
     font-family: 'Times New Roman', Times, serif; 
-    font-weight: 150;
+    font-weight: 400;
     
 }
-
+.aufgaben{
+    position: relative;
+    top: -35px;
+}
 
 
 .mainDiv{
