@@ -5,7 +5,13 @@ namespace L02_BlackmailerCompanion {
     let chosenCharacter: string = "A";
     window.addEventListener("load", handleLoad);
 
-    let lettersSmartphone: string [] = ["A", "B", "C"]; 
+    function smartphoneLetters(_event: PointerEvent):void {
+
+        let lettersSmartphone: string [] = ["A", "B", "C"];
+        
+    }
+
+    
 
     function handleLoad(_event: Event): void {
         let mail: HTMLElement = document.querySelector("div#mail");

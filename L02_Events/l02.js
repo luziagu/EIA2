@@ -3,7 +3,9 @@ var L02_BlackmailerCompanion;
     console.log("start");
     var chosenCharacter = "A";
     window.addEventListener("load", handleLoad);
-    var lettersSmartphone = ["A", "B", "C"];
+    function smartphoneLetters(_event) {
+        var lettersSmartphone = ["A", "B", "C"];
+    }
     function handleLoad(_event) {
         var mail = document.querySelector("div#mail");
         mail.addEventListener("click", placeLetter);
