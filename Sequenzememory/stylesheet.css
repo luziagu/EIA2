@@ -37,7 +37,10 @@ h5 {
 #randomWord:hover{
     color: rgb(203, 223, 184); 
 }
+#startGame:hover{
+    color: rgb(203, 223, 184);
 
+}
 
 #mainGame{
 
@@ -59,4 +62,15 @@ h5 {
     position: relative;
     background-color: rgb(185, 66, 66); 
     
+}
+
+#timeWatch{
+    width: 115px;
+    height: 25px;
+}
+
+#timeGame{
+
+    width: 115px;
+    height: 25px;
 }
