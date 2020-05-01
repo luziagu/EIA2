@@ -5,11 +5,14 @@ namespace L02_BlackmailerCompanion {
     let chosenCharacter: string = "A";
     window.addEventListener("load", handleLoad);
 
-    function smartphoneLetters(_event: PointerEvent):void {
+    /*function smartphoneLetters(_event: PointerEvent): void {
 
-        let lettersSmartphone: string [] = ["A", "B", "C"];
+        let lettersSmartphone: string [] = ["A", "B", "C", "d"];
+        lettersSmartphone.push =  document.getElementById("letters"); 
+
         
-    }
+        
+    }*/
 
     
 
@@ -51,9 +54,4 @@ namespace L02_BlackmailerCompanion {
 
     }
 
-
-
-}
-
-
-   
+}  

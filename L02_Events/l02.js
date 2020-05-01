@@ -3,9 +3,14 @@ var L02_BlackmailerCompanion;
     console.log("start");
     var chosenCharacter = "A";
     window.addEventListener("load", handleLoad);
-    function smartphoneLetters(_event) {
-        var lettersSmartphone = ["A", "B", "C"];
-    }
+    /*function smartphoneLetters(_event: PointerEvent): void {
+
+        let lettersSmartphone: string [] = ["A", "B", "C", "d"];
+        lettersSmartphone.push =  document.getElementById("letters");
+
+        
+        
+    }*/
     function handleLoad(_event) {
         var mail = document.querySelector("div#mail");
         mail.addEventListener("click", placeLetter);

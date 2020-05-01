@@ -1,0 +1,39 @@
+body {
+    font-family: arial;
+    font-size: 20px;
+    font-weight: lighter; 
+    color: rgb(56, 56, 56); 
+    background-color:white;
+    text-align: center;
+  
+}
+
+
+h1 {
+    text-align: center;
+}
+
+h5 {
+    font-weight: lighter; 
+}
+
+#enterWord{
+    font-size: 15px;
+    border: small;
+    text-align: center;
+    width: 210px;
+    height: 30px;
+}
+
+#randomWord{
+    width: 210px;
+    height: 35px;
+    top: -3px;
+    position: relative;
+    background-color: rgb(185, 66, 66); 
+    
+}
+
+#randomWord:hover{
+    color: rgb(203, 223, 184); 
+}
