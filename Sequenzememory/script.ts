@@ -6,14 +6,15 @@ let startGame: HTMLElement;
 let inputWord: HTMLInputElement;
 let inputTimeWatch: HTMLInputElement; 
 let inputTimeGame: HTMLInputElement;
-let characters: HTMLElement; 
+let currentSequence: HTMLElement; 
 let hiddenCharacters: HTMLElement; 
 
 
 
 
+
 let sequences: string [] = ["Betthupferl", "Hokuspokus", "mucksmäuschenstill", "Purzelbaum", "Wolkenkuckucksheim"];
-let sequence: string [] = []; 
+let sequence: string = ""; 
 let enterWord: string; 
 let timeWatch: string; 
 let timeGame: string; 
@@ -25,7 +26,7 @@ window.addEventListener("load", function(): void {
     randomWord = document.querySelector("#randomWord");
     startGame = document.querySelector("#startGame"); 
     inputWord = document.querySelector("#enterWord"); 
-    characters = document.querySelector("mainWord"); 
+    currentSequence = document.querySelector("#mainWord"); 
 
 
 
@@ -40,15 +41,17 @@ function chooseRandomWord(): void {
      console.log("Ich wurde geklickt"); 
     
      shufflecharacters();
+     sequence = sequences[1];
+     currentSequence.innerHTML = sequence;
 
      
-     let firstWordSequences: string = sequences.pop();
+    /* let firstWordSequences: string = sequences.pop();
      sequence.push(sequences[1]);
-     console.log(sequence); 
-     characters.innerHTML = "";
+     console.log(sequence);  */
+    
      
-
 }
+
 
 function inputOwnWord(e: any): void {
 
@@ -77,14 +80,27 @@ function shufflecharacters(): void {
     console.log("Array wurde gemischelt");
 }
 
-function setTimer(): void {
+/*function setTimer(): void {
     timeWatch = inputTimeWatch.value; 
     timeGame = inputTimeGame.value; 
     let timerWatch: number = setInterval(hideCharacters, 3000); 
-}
+}*/
 
 function beginWithGame(): void {
     console.log("Let the games begin");
+    //setTimer(); 
+
+    var singleCharacters: string[] = sequence.split("");
+
+    var tmp: string, rand: number;
+    for (var i: number = 0; i < singleCharacters.length; i++) {
+        rand = Math.floor(Math.random() * singleCharacters.length);
+        tmp = singleCharacters[i]; 
+        singleCharacters[i] = singleCharacters[rand]; 
+        singleCharacters[rand] = tmp;
+        }
+    console.log(singleCharacters);
+    
 
 
 }

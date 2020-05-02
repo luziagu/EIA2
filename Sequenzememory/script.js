@@ -4,10 +4,10 @@ var startGame;
 var inputWord;
 var inputTimeWatch;
 var inputTimeGame;
-var characters;
+var currentSequence;
 var hiddenCharacters;
 var sequences = ["Betthupferl", "Hokuspokus", "mucksmäuschenstill", "Purzelbaum", "Wolkenkuckucksheim"];
-var sequence = [];
+var sequence = "";
 var enterWord;
 var timeWatch;
 var timeGame;
@@ -16,7 +16,7 @@ window.addEventListener("load", function () {
     randomWord = document.querySelector("#randomWord");
     startGame = document.querySelector("#startGame");
     inputWord = document.querySelector("#enterWord");
-    characters = document.querySelector("mainWord");
+    currentSequence = document.querySelector("#mainWord");
     startGame.addEventListener("click", beginWithGame);
     randomWord.addEventListener("click", chooseRandomWord);
     inputWord.addEventListener("keydown", inputOwnWord);
@@ -24,10 +24,11 @@ window.addEventListener("load", function () {
 function chooseRandomWord() {
     console.log("Ich wurde geklickt");
     shufflecharacters();
-    var firstWordSequences = sequences.pop();
-    sequence.push(sequences[1]);
-    console.log(sequence);
-    characters.innerHTML = "";
+    sequence = sequences[1];
+    currentSequence.innerHTML = sequence;
+    /* let firstWordSequences: string = sequences.pop();
+     sequence.push(sequences[1]);
+     console.log(sequence);  */
 }
 function inputOwnWord(e) {
     if (e.keyCode === 13) {
@@ -47,13 +48,23 @@ function shufflecharacters() {
     console.log(sequences);
     console.log("Array wurde gemischelt");
 }
-function setTimer() {
+/*function setTimer(): void {
     timeWatch = inputTimeWatch.value;
     timeGame = inputTimeGame.value;
-    var timerWatch = setInterval(hideCharacters, 3000);
-}
+    let timerWatch: number = setInterval(hideCharacters, 3000);
+}*/
 function beginWithGame() {
     console.log("Let the games begin");
+    //setTimer(); 
+    var singleCharacters = sequence.split("");
+    var tmp, rand;
+    for (var i = 0; i < singleCharacters.length; i++) {
+        rand = Math.floor(Math.random() * singleCharacters.length);
+        tmp = singleCharacters[i];
+        singleCharacters[i] = singleCharacters[rand];
+        singleCharacters[rand] = tmp;
+    }
+    console.log(singleCharacters);
 }
 function hideCharacters() {
     var element = document.createElement("span");
