@@ -6,12 +6,18 @@ let startGame: HTMLElement;
 let inputWord: HTMLInputElement;
 let inputTimeWatch: HTMLInputElement; 
 let inputTimeGame: HTMLInputElement;
+let characters: HTMLElement; 
+let hiddenCharacters: HTMLElement; 
+
+
 
 
 let sequences: string [] = ["Betthupferl", "Hokuspokus", "mucksmäuschenstill", "Purzelbaum", "Wolkenkuckucksheim"];
+let sequence: string [] = []; 
 let enterWord: string; 
-let timeWatch: number; 
-let timeGame: number; 
+let timeWatch: string; 
+let timeGame: string; 
+let timer: boolean = false; 
 
 
 window.addEventListener("load", function(): void {
@@ -19,6 +25,7 @@ window.addEventListener("load", function(): void {
     randomWord = document.querySelector("#randomWord");
     startGame = document.querySelector("#startGame"); 
     inputWord = document.querySelector("#enterWord"); 
+    characters = document.querySelector("mainWord"); 
 
 
 
@@ -33,8 +40,13 @@ function chooseRandomWord(): void {
      console.log("Ich wurde geklickt"); 
     
      shufflecharacters();
-    
-  
+
+     
+     let firstWordSequences: string = sequences.pop();
+     sequence.push(sequences[1]);
+     console.log(sequence); 
+     characters.innerHTML = "";
+     
 
 }
 
@@ -65,11 +77,22 @@ function shufflecharacters(): void {
     console.log("Array wurde gemischelt");
 }
 
+function setTimer(): void {
+    timeWatch = inputTimeWatch.value; 
+    timeGame = inputTimeGame.value; 
+    let timerWatch: number = setInterval(hideCharacters, 3000); 
+}
 
 function beginWithGame(): void {
     console.log("Let the games begin");
 
-    
 
+}
+
+function hideCharacters(): void {
+
+    let element: HTMLElement = document.createElement("span"); 
+    element.classList.add("#hiddenCharacters");
+    element.setAttribute("style", "float: left");
 
 }
