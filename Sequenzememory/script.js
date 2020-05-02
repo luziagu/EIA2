@@ -1,18 +1,32 @@
 console.log("verknüpft");
 var randomWord;
 var startGame;
-var sequences = ["Furtwangen", "Corona", "Entwicklung Interaktiver Anwedungen"];
-var enterWord = [];
-document.addEventListener("load", function () {
+var inputWord;
+var inputTimeWatch;
+var inputTimeGame;
+var sequences = ["Betthupferl", "Hokuspokus", "mucksmäuschenstill", "Purzelbaum", "Wolkenkuckucksheim"];
+var enterWord;
+var timeWatch;
+var timeGame;
+window.addEventListener("load", function () {
     randomWord = document.querySelector("#randomWord");
     startGame = document.querySelector("#startGame");
-    startGame.addEventListener("click", function () {
-        shufflecharacters();
-    });
-    randomWord.addEventListener("click", function () {
-        console.log("ich wurde geklickt");
-    });
+    inputWord = document.querySelector("#enterWord");
+    startGame.addEventListener("click", beginWithGame);
+    randomWord.addEventListener("click", chooseRandomWord);
+    inputWord.addEventListener("keydown", inputOwnWord);
 });
+function chooseRandomWord() {
+    console.log("Ich wurde geklickt");
+    shufflecharacters();
+}
+function inputOwnWord(e) {
+    if (e.keyCode === 13) {
+        enterWord = inputWord.value;
+        inputWord.value = "";
+    }
+    console.log(enterWord);
+}
 function shufflecharacters() {
     var tmp, rand;
     for (var i = 0; i < sequences.length; i++) {
@@ -21,6 +35,10 @@ function shufflecharacters() {
         sequences[i] = sequences[rand];
         sequences[rand] = tmp;
     }
-    console.log("gemischt");
+    console.log(sequences);
+    console.log("Array wurde gemischelt");
+}
+function beginWithGame() {
+    console.log("Let the games begin");
 }
 //# sourceMappingURL=script.js.map
