@@ -8,6 +8,7 @@ let inputTimeWatch: HTMLInputElement;
 let inputTimeGame: HTMLInputElement;
 let currentSequence: HTMLElement; 
 let hiddenCharacters: HTMLElement; 
+let mainGame: HTMLElement; 
 
 
 
@@ -15,7 +16,7 @@ let hiddenCharacters: HTMLElement;
 
 let sequences: string [] = ["Betthupferl", "Hokuspokus", "mucksmäuschenstill", "Purzelbaum", "Wolkenkuckucksheim"];
 let sequence: string = ""; 
-let enterWord: string; 
+let enterWord: string = "";  
 let timeWatch: string; 
 let timeGame: string; 
 let timer: boolean = false; 
@@ -26,7 +27,8 @@ window.addEventListener("load", function(): void {
     randomWord = document.querySelector("#randomWord");
     startGame = document.querySelector("#startGame"); 
     inputWord = document.querySelector("#enterWord"); 
-    currentSequence = document.querySelector("#mainWord"); 
+    currentSequence = document.querySelector("#mainWord");
+    mainGame = document.querySelector("#mainGame"); 
 
 
 
@@ -57,11 +59,14 @@ function inputOwnWord(e: any): void {
 
     
     if (e.keyCode === 13) {
-        enterWord = inputWord.value; 
+        sequence = inputWord.value; 
         inputWord.value = "";
     }
 
-    console.log(enterWord);
+    console.log(sequence);
+    
+    currentSequence.innerHTML = sequence;
+   
 }
 
 
@@ -91,6 +96,7 @@ function beginWithGame(): void {
     //setTimer(); 
 
     var singleCharacters: string[] = sequence.split("");
+    
 
     var tmp: string, rand: number;
     for (var i: number = 0; i < singleCharacters.length; i++) {
@@ -100,6 +106,11 @@ function beginWithGame(): void {
         singleCharacters[rand] = tmp;
         }
     console.log(singleCharacters);
+
+    
+    document.getElementById("mainGame").innerHTML += "<span ID='mainGame'>" + singleCharacters + "</span>";
+    
+    
     
 
 

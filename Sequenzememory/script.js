@@ -6,9 +6,10 @@ var inputTimeWatch;
 var inputTimeGame;
 var currentSequence;
 var hiddenCharacters;
+var mainGame;
 var sequences = ["Betthupferl", "Hokuspokus", "mucksmäuschenstill", "Purzelbaum", "Wolkenkuckucksheim"];
 var sequence = "";
-var enterWord;
+var enterWord = "";
 var timeWatch;
 var timeGame;
 var timer = false;
@@ -17,6 +18,7 @@ window.addEventListener("load", function () {
     startGame = document.querySelector("#startGame");
     inputWord = document.querySelector("#enterWord");
     currentSequence = document.querySelector("#mainWord");
+    mainGame = document.querySelector("#mainGame");
     startGame.addEventListener("click", beginWithGame);
     randomWord.addEventListener("click", chooseRandomWord);
     inputWord.addEventListener("keydown", inputOwnWord);
@@ -32,10 +34,11 @@ function chooseRandomWord() {
 }
 function inputOwnWord(e) {
     if (e.keyCode === 13) {
-        enterWord = inputWord.value;
+        sequence = inputWord.value;
         inputWord.value = "";
     }
-    console.log(enterWord);
+    console.log(sequence);
+    currentSequence.innerHTML = sequence;
 }
 function shufflecharacters() {
     var tmp, rand;
@@ -65,6 +68,7 @@ function beginWithGame() {
         singleCharacters[rand] = tmp;
     }
     console.log(singleCharacters);
+    document.getElementById("mainGame").innerHTML += "<span ID='mainGame'>" + singleCharacters + "</span>";
 }
 function hideCharacters() {
     var element = document.createElement("span");
