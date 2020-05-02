@@ -14,7 +14,7 @@ let mainGame: HTMLElement;
 
 
 
-let sequences: string [] = ["Betthupferl", "Hokuspokus", "mucksmäuschenstill", "Purzelbaum", "Wolkenkuckucksheim"];
+let sequences: string [] = ["Betthupferl", "Hokuspokus", "Mucksmäuschenstill", "Purzelbaum", "Wolkenkuckucksheim"];
 let sequence: string = ""; 
 let enterWord: string = "";  
 let timeWatch: string; 
@@ -35,6 +35,7 @@ window.addEventListener("load", function(): void {
     startGame.addEventListener("click", beginWithGame);
     randomWord.addEventListener("click", chooseRandomWord);
     inputWord.addEventListener ("keydown", inputOwnWord); 
+    mainGame.addEventListener("click", hideCharacters); 
     
 
 });
@@ -107,19 +108,22 @@ function beginWithGame(): void {
         }
     console.log(singleCharacters);
 
+    for (let i: number = 0; i < singleCharacters.length; i++) {
     
-    document.getElementById("mainGame").innerHTML += "<span ID='mainGame'>" + singleCharacters + "</span>";
+    mainGame.innerHTML += "<span ID='openCharacters'>" + singleCharacters[i] + "</span>";
     
-    
+    }
     
 
 
 }
 
-function hideCharacters(): void {
+function hideCharacters(_event: MouseEvent): void {
+    
 
-    let element: HTMLElement = document.createElement("span"); 
-    element.classList.add("#hiddenCharacters");
-    element.setAttribute("style", "float: left");
-
+    let clickCharacter: HTMLElement = <HTMLElement>_event.target; 
+    clickCharacter.classList.add(".hiddenCharacters");
+    
+    alert("Ups, irgendwas stimmt hier noch nicht. Naja immerhin kannst du ein Wort mischen - macht ja eigentlich auch spaß, oder?"); 
+   
 }
