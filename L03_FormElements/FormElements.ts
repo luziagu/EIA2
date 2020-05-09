@@ -3,7 +3,7 @@ console.log("verknüpft");
 namespace L03_FormElements {
     window.addEventListener("load", init);
 
-    function init(_event: Event): void {
+    function init(_event: Event): void { 
         console.log("Init");
         let fieldsets: NodeListOf<HTMLFieldSetElement> = document.querySelectorAll("fieldset");
 
