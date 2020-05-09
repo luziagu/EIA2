@@ -32,5 +32,9 @@ function addNewRowTask() {
 function outputChange() {
     var formData = new FormData(document.forms[0]);
     console.log(formData);
+    for (var _i = 0, formData_1 = formData; _i < formData_1.length; _i++) {
+        var entry = formData_1[_i];
+        console.log(entry);
+    }
 }
 //# sourceMappingURL=script.js.map

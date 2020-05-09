@@ -49,4 +49,8 @@ function outputChange (): void {
 
     let formData: FormData = new FormData(document.forms[0]); 
     console.log(formData); 
+
+    for (let entry of formData) {
+        console.log(entry); 
+    }
 }
