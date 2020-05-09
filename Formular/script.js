@@ -14,6 +14,8 @@ window.addEventListener("load", function () {
     cloneDivTask = document.querySelector("#cloneDivTask");
     addButtonItem.addEventListener("click", addNewRowShopping);
     addButtonTask.addEventListener("click", addNewRowTask);
+    chooseItem.addEventListener("change", outputChange);
+    householdTask.addEventListener("change", outputChange);
 });
 function addNewRowShopping() {
     console.log("Ich wurde geklickt");
@@ -26,5 +28,9 @@ function addNewRowTask() {
     var p = document.getElementById("householdTask");
     var p_prime = p.cloneNode(true);
     document.getElementById("cloneDivTask").appendChild(p_prime);
+}
+function outputChange() {
+    var formData = new FormData(document.forms[0]);
+    console.log(formData);
 }
 //# sourceMappingURL=script.js.map

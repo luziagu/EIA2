@@ -21,7 +21,9 @@ window.addEventListener("load", function(): void {
 
     addButtonItem.addEventListener("click", addNewRowShopping);
     addButtonTask.addEventListener("click", addNewRowTask );
- 
+    chooseItem.addEventListener("change", outputChange); 
+    householdTask.addEventListener("change", outputChange); 
+    
 
 });
 
@@ -41,4 +43,10 @@ function addNewRowTask (): void {
     let p_prime: Node = p.cloneNode(true); 
     document.getElementById("cloneDivTask").appendChild(p_prime);
    
+}
+
+function outputChange (): void {
+
+    let formData: FormData = new FormData(document.forms[0]); 
+    console.log(formData); 
 }
