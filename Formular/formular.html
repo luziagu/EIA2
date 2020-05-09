@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formular</title>
+    <link rel="stylesheet" href="stylesheet.css" type="text/css" media="screen" />
+	<script src="script.js" type="text/javascript" charset="utf-8"></script> 
+</head>
+<body>
+    
+
+    <h1>Deine Online-Haushaltshilfe</h1>
+
+    <div>
+        <h4>EINKAUFEN</h4>
+
+        <input type="radio" name="Radiogroup" value="radio1" id="radio1" />
+		<label for="radio1">Wöchentlich</label>
+		<input type="radio" name="Radiogroup" value="radio2" id="radio2" />
+		<label for="radio2">Täglich</label>
+		<input type="radio" name="Radiogroup" value="radio3" id="radio3" />
+        <label for="radio3">Monatlich</label>
+        <hr>
+        <div>
+            <input type="checkbox" name="Done">
+
+    
+            <select id="optionen">
+                <option value="Butter"> Butter </option>
+                <option value="Milch"> Milch</option>
+                <option value="Mehl"> Mehl</option>
+                <option value="Zucker">Zucker </option>
+                <option value="Eier"> Eier</option>
+                <option value="Salz">Salz </option>
+                <option value="Brot">Brot </option>
+            </select>
+
+    
+            <input class="Menge" type="text" name="Menge bestimmen" placeholder="Menge">
+
+            <select id="shop">
+                    <option value="Aldi"> Aldi </option>
+                    <option value="Lidl"> Lidl</option>
+                    <option value="Edeka"> Edeka</option>
+                    <option value="Bio-Laden">Bio-Laden </option>
+                    <option value="Rewe"> Rewe</option>
+    
+            </select>
+
+        </div>
+        
+    </div>
+
+    <div id="liste" ></div>
+
+</body>
+</html>
