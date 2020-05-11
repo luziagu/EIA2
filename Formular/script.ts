@@ -6,6 +6,7 @@ let chooseItem: HTMLElement;
 let cloneDiv: HTMLElement; 
 let householdTask: HTMLElement; 
 let cloneDivTask: HTMLElement; 
+let slider: HTMLElement;
 
 
 window.addEventListener("load", function(): void {
@@ -16,16 +17,26 @@ window.addEventListener("load", function(): void {
     cloneDiv = document.querySelector("#cloneDiv"); 
     householdTask = document.querySelector("#householdTask");
     cloneDivTask = document.querySelector("#cloneDivTask");
+    slider = document.querySelector("#mass");
 
 
-
+    slider.addEventListener("input", displayMass);
     addButtonItem.addEventListener("click", addNewRowShopping);
     addButtonTask.addEventListener("click", addNewRowTask );
     chooseItem.addEventListener("change", outputChange); 
     householdTask.addEventListener("change", outputChange); 
     
+    
 
+    
 });
+
+function displayMass(_event: Event): void {
+    console.log("Input verändert"); 
+    let progress: HTMLProgressElement = <HTMLProgressElement>document.querySelector("progress");
+    let amount: string = (<HTMLInputElement>_event.target).value;
+    progress.value = parseFloat(amount);
+}
 
 function addNewRowShopping (): void {
     console.log("Ich wurde geklickt"); 

@@ -5,6 +5,7 @@ var chooseItem;
 var cloneDiv;
 var householdTask;
 var cloneDivTask;
+var slider;
 window.addEventListener("load", function () {
     addButtonItem = document.querySelector("#addItem");
     addButtonTask = document.querySelector("#addTask");
@@ -12,11 +13,19 @@ window.addEventListener("load", function () {
     cloneDiv = document.querySelector("#cloneDiv");
     householdTask = document.querySelector("#householdTask");
     cloneDivTask = document.querySelector("#cloneDivTask");
+    slider = document.querySelector("#mass");
+    slider.addEventListener("input", displayMass);
     addButtonItem.addEventListener("click", addNewRowShopping);
     addButtonTask.addEventListener("click", addNewRowTask);
     chooseItem.addEventListener("change", outputChange);
     householdTask.addEventListener("change", outputChange);
 });
+function displayMass(_event) {
+    console.log("Input verändert");
+    var progress = document.querySelector("progress");
+    var amount = _event.target.value;
+    progress.value = parseFloat(amount);
+}
 function addNewRowShopping() {
     console.log("Ich wurde geklickt");
     var p = document.getElementById("chooseItem");

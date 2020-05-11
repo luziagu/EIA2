@@ -5,3 +5,12 @@ body {
     background-color:white;
     text-align: center;
 }
+
+#bestellung {
+
+    border: solid  black 0.4px; 
+    margin-left: auto; 
+    margin-right: auto; 
+    height: 308px;
+    width: 850px;
+}
