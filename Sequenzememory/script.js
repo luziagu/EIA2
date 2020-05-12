@@ -1,18 +1,19 @@
+"use strict";
 console.log("verknüpft");
-var randomWord;
-var startGame;
-var inputWord;
-var inputTimeWatch;
-var inputTimeGame;
-var currentSequence;
-var hiddenCharacters;
-var mainGame;
-var sequences = ["Betthupferl", "Hokuspokus", "Mucksmäuschenstill", "Purzelbaum", "Wolkenkuckucksheim"];
-var sequence = "";
-var enterWord = "";
-var timeWatch;
-var timeGame;
-var timer = false;
+let randomWord;
+let startGame;
+let inputWord;
+let inputTimeWatch;
+let inputTimeGame;
+let currentSequence;
+let hiddenCharacters;
+let mainGame;
+let sequences = ["Betthupferl", "Hokuspokus", "Mucksmäuschenstill", "Purzelbaum", "Wolkenkuckucksheim"];
+let sequence = "";
+let enterWord = "";
+let timeWatch;
+let timeGame;
+let timer = false;
 window.addEventListener("load", function () {
     randomWord = document.querySelector("#randomWord");
     startGame = document.querySelector("#startGame");
@@ -42,7 +43,7 @@ function inputOwnWord(e) {
     currentSequence.innerHTML = sequence;
 }
 function shufflecharacters() {
-    var tmp, rand;
+    let tmp, rand;
     for (var i = 0; i < sequences.length; i++) {
         rand = Math.floor(Math.random() * sequences.length);
         tmp = sequences[i];
@@ -69,12 +70,12 @@ function beginWithGame() {
         singleCharacters[rand] = tmp;
     }
     console.log(singleCharacters);
-    for (var i_1 = 0; i_1 < singleCharacters.length; i_1++) {
-        mainGame.innerHTML += "<span ID='openCharacters'>" + singleCharacters[i_1] + "</span>";
+    for (let i = 0; i < singleCharacters.length; i++) {
+        mainGame.innerHTML += "<span ID='openCharacters'>" + singleCharacters[i] + "</span>";
     }
 }
 function hideCharacters(_event) {
-    var clickCharacter = _event.target;
+    let clickCharacter = _event.target;
     clickCharacter.classList.add(".hiddenCharacters");
     alert("Ups, irgendwas stimmt hier noch nicht. Naja immerhin kannst du ein Wort mischen - macht ja eigentlich auch spaß, oder?");
 }

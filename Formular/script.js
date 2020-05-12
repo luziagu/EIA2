@@ -1,11 +1,12 @@
+"use strict";
 console.log("Verknüpft");
-var addButtonItem;
-var addButtonTask;
-var chooseItem;
-var cloneDiv;
-var householdTask;
-var cloneDivTask;
-var slider;
+let addButtonItem;
+let addButtonTask;
+let chooseItem;
+let cloneDiv;
+let householdTask;
+let cloneDivTask;
+let slider;
 window.addEventListener("load", function () {
     addButtonItem = document.querySelector("#addItem");
     addButtonTask = document.querySelector("#addTask");
@@ -22,27 +23,26 @@ window.addEventListener("load", function () {
 });
 function displayMass(_event) {
     console.log("Input verändert");
-    var progress = document.querySelector("progress");
-    var amount = _event.target.value;
+    let progress = document.querySelector("progress");
+    let amount = _event.target.value;
     progress.value = parseFloat(amount);
 }
 function addNewRowShopping() {
     console.log("Ich wurde geklickt");
-    var p = document.getElementById("chooseItem");
-    var p_prime = p.cloneNode(true);
+    let p = document.getElementById("chooseItem");
+    let p_prime = p.cloneNode(true);
     document.getElementById("cloneDiv").appendChild(p_prime);
 }
 function addNewRowTask() {
     console.log("Ich wurde geklickt");
-    var p = document.getElementById("householdTask");
-    var p_prime = p.cloneNode(true);
+    let p = document.getElementById("householdTask");
+    let p_prime = p.cloneNode(true);
     document.getElementById("cloneDivTask").appendChild(p_prime);
 }
 function outputChange() {
-    var formData = new FormData(document.forms[0]);
+    let formData = new FormData(document.forms[0]);
     console.log(formData);
-    for (var _i = 0, formData_1 = formData; _i < formData_1.length; _i++) {
-        var entry = formData_1[_i];
+    for (let entry of formData) {
         console.log(entry);
     }
 }
