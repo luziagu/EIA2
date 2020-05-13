@@ -1,7 +1,7 @@
 console.log("Verknüpft"); 
 
-let addButtonItem: HTMLElement; 
-let addButtonTask: HTMLElement; 
+let addButtonItem:  HTMLElement | null;
+let addButtonTask:  HTMLElement | null; 
 let chooseItem: HTMLElement; 
 let cloneDiv: HTMLElement; 
 let householdTask: HTMLElement; 
@@ -11,13 +11,15 @@ let slider: HTMLElement;
 
 window.addEventListener("load", function(): void {
 
-    addButtonItem = document.querySelector("#addItem");
-    addButtonTask = document.querySelector("#addTask"); 
-    chooseItem = this.document.querySelector("#chooseItem"); 
-    cloneDiv = document.querySelector("#cloneDiv"); 
-    householdTask = document.querySelector("#householdTask");
-    cloneDivTask = document.querySelector("#cloneDivTask");
-    slider = document.querySelector("#mass");
+    generateContent(data);
+
+    addButtonItem = <HTMLElement>document.querySelector("#addItem");
+    addButtonTask = <HTMLElement> document.querySelector("#addTask"); 
+    chooseItem = <HTMLElement>this.document.querySelector("#chooseItem"); 
+    cloneDiv = <HTMLElement>document.querySelector("#cloneDiv"); 
+    householdTask = <HTMLElement> document.querySelector("#householdTask");
+    cloneDivTask = <HTMLElement>document.querySelector("#cloneDivTask");
+    slider = <HTMLElement>document.querySelector("#mass");
 
 
     slider.addEventListener("input", displayMass);
@@ -41,19 +43,33 @@ function displayMass(_event: Event): void {
 function addNewRowShopping (): void {
     console.log("Ich wurde geklickt"); 
 
-    let p: HTMLElement = document.getElementById("chooseItem");
-    let p_prime: Node = p.cloneNode(true); 
-    document.getElementById("cloneDiv").appendChild(p_prime);
-   
+
+    let p:  HTMLElement | null; 
+    p = document.getElementById("chooseItem");
+    if (p) {
+    let p_prime: Node | null = p.cloneNode(true); 
+    let cloneDiv = <HTMLElement> document.getElementById("cloneDiv"); 
+    cloneDiv.appendChild(p_prime);
+    }
+    
+    
 }
 
 function addNewRowTask (): void {
     console.log("Ich wurde geklickt"); 
 
-    let p: HTMLElement = document.getElementById("householdTask");
-    let p_prime: Node = p.cloneNode(true); 
-    document.getElementById("cloneDivTask").appendChild(p_prime);
-   
+    let p:  HTMLElement | null; 
+    p = document.getElementById("householdTask");
+    if (p) {
+    let p_prime: Node | null = p.cloneNode(true); 
+    let cloneDiv = <HTMLElement> document.getElementById("cloneDivTask"); 
+    cloneDiv.appendChild(p_prime);
+    }
+
+    if (p.cloneNode(true)) {
+        var inputChange = document.getElementsByName("Radiogroup2"); 
+        inputChange.setAttribute("id", "Radiogroup3"); 
+    }
 }
 
 function outputChange (): void {

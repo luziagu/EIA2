@@ -14,3 +14,9 @@ body {
     height: 308px;
     width: 850px;
 }
+
+#Extras, #DoneExtras{
+
+    margin-left: auto; 
+    margin-right: auto; 
+}

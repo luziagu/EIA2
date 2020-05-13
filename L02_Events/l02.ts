@@ -1,6 +1,6 @@
 
 
-namespace L02_BlackmailerCompanion {
+/* namespace L02_BlackmailerCompanion {
     console.log("start");
     let chosenCharacter: string = "A";
     window.addEventListener("load", handleLoad);
@@ -16,7 +16,7 @@ namespace L02_BlackmailerCompanion {
 
     
 
-    function handleLoad(_event: Event): void {
+    /*function handleLoad(_event: Event): void {
         let mail: HTMLElement = document.querySelector("div#mail");
         mail.addEventListener("click", placeLetter);
         document.addEventListener("keydown", chooseCharacter);
@@ -54,4 +54,4 @@ namespace L02_BlackmailerCompanion {
 
     }
 
-}  
+}  */

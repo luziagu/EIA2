@@ -8,6 +8,7 @@ let householdTask;
 let cloneDivTask;
 let slider;
 window.addEventListener("load", function () {
+    generateContent(data);
     addButtonItem = document.querySelector("#addItem");
     addButtonTask = document.querySelector("#addTask");
     chooseItem = this.document.querySelector("#chooseItem");
@@ -29,15 +30,27 @@ function displayMass(_event) {
 }
 function addNewRowShopping() {
     console.log("Ich wurde geklickt");
-    let p = document.getElementById("chooseItem");
-    let p_prime = p.cloneNode(true);
-    document.getElementById("cloneDiv").appendChild(p_prime);
+    let p;
+    p = document.getElementById("chooseItem");
+    if (p) {
+        let p_prime = p.cloneNode(true);
+        let cloneDiv = document.getElementById("cloneDiv");
+        cloneDiv.appendChild(p_prime);
+    }
 }
 function addNewRowTask() {
     console.log("Ich wurde geklickt");
-    let p = document.getElementById("householdTask");
-    let p_prime = p.cloneNode(true);
-    document.getElementById("cloneDivTask").appendChild(p_prime);
+    let p;
+    p = document.getElementById("householdTask");
+    if (p) {
+        let p_prime = p.cloneNode(true);
+        let cloneDiv = document.getElementById("cloneDivTask");
+        cloneDiv.appendChild(p_prime);
+    }
+    if (p.cloneNode(true)) {
+        var inputChange = document.getElementsByName("Radiogroup2");
+        inputChange.setAttribute("id", "Radiogroup3");
+    }
 }
 function outputChange() {
     let formData = new FormData(document.forms[0]);

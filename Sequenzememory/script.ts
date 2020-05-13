@@ -1,5 +1,5 @@
 
-console.log("verknüpft"); 
+/*console.log("verknüpft"); 
 
 let randomWord: HTMLElement;
 let startGame: HTMLElement; 
@@ -50,12 +50,12 @@ function chooseRandomWord(): void {
      
     /* let firstWordSequences: string = sequences.pop();
      sequence.push(sequences[1]);
-     console.log(sequence);  */
+     console.log(sequence);  
     
      
 }
 
-
+/*
 function inputOwnWord(e: any): void {
 
     
@@ -91,7 +91,7 @@ function shufflecharacters(): void {
     timeGame = inputTimeGame.value; 
     let timerWatch: number = setInterval(hideCharacters, 3000); 
 }*/
-
+/*
 function beginWithGame(): void {
     console.log("Let the games begin");
     //setTimer(); 
@@ -126,4 +126,4 @@ function hideCharacters(_event: MouseEvent): void {
     
     alert("Ups, irgendwas stimmt hier noch nicht. Naja immerhin kannst du ein Wort mischen - macht ja eigentlich auch spaß, oder?"); 
    
-}
+}*/
