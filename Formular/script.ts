@@ -1,4 +1,4 @@
-console.log("Verknüpft"); 
+/*console.log("Verknüpft"); 
 
 let addButtonItem:  HTMLElement | null;
 let addButtonTask:  HTMLElement | null; 
@@ -74,10 +74,16 @@ function addNewRowTask (): void {
 
 function outputChange (): void {
 
+
+    let diveinkauf: HTMLDivElement = <HTMLDivElement>document.querySelector("#diveinkauf");
+    let divhaushalt: HTMLDivElement = <HTMLDivElement>document.querySelector("#divhaushalt");
+    let gesamt: HTMLSpanElement = <HTMLSpanElement>document.querySelector("#bestellung");
+
     let formData: FormData = new FormData(document.forms[0]); 
     console.log(formData); 
 
     for (let entry of formData) {
         console.log(entry); 
+        let item: HTMLInputElement = <HTMLInputElement>document.querySelector("[value='" + entry[1] + "']");
     }
-}
+}*/

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="haushaltshilfe.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <script src="Data.js"></script>
+    <script src="generateContent.js"></script>
+    <script src="script.js"></script>
+    <title>Haushaltshilfe</title>
+</head>
+<body>
+    
+    <header>
+        <h1>Haushaltshilfe</h1>
+        <p>Deine Haushaltshilfe, schnell und einfach direkt von Zuhause.</p>
+    </header>
+   
+        <div id="main">
+
+            <fieldset>
+                <legend>AUFGABEN</legend>
+                <label for="einkauf">Einkaufen</label>
+                <input type="radio" name="Tasks" id="einkauf" value="Einkauf"><br>
+                <label for="haushalt">Householdtasks</label>
+                <input type="radio" name="Tasks" id="haushalt" value="Haushalt"><br>
+            </fieldset>
+        <form>
+            <fieldset id="fieldeinkauf" disabled>
+                <legend>EINKAUF</legend>
+                <select name="Groceries" id="groceries">
+                    <option value="Butter" price="2.3"> Butter </option>
+                    <option value="Milch" price="2.1"> Milch</option>
+                    <option value="Mehl" price="1"> Mehl</option>
+                    <option value="Zucker" price="2">Zucker </option>
+                    <option value="Eier" price="3.5"> Eier</option>
+                    <option value="Salz" price="5">Salz </option>
+                    <option value="Brot" price="5">Brot </option>
+                </select>
+
+                Anzahl
+                <input type="number" id="amountarticle" name="Amount" step="0.5" min="0" max="10" value="">
+
+               
+                <select name="Store" id="store">
+                    <option value="Edeka">Edeka</option>
+                    <option value="Rewe">Rewe</option>
+                    <option value="Lidl">Lidl</option>
+                    <option value="Aldi">Aldi</option>
+                </select>
+               
+            
+    
+
+                <button id="buttoneinkauf" type="button">OK</button>
+                <br> 
+                <br>
+                
+                <button id="addItem"> Neuen Ware hinzufügen </button>
+
+                
+            </fieldset>
+            <div id="cloneDiv"></div>
+            
+
+            <fieldset id="fieldhaus" disabled>
+                <legend>HOUSEHOLDTASKS</legend>
+                <label for="staubsaugen">Staubsaugen</label> 
+                <input type="checkbox" name="Householdhelp" value="Staubsaugen" id="staubsaugen" price="10" />
+        
+
+                <label for="wischen">Wischen</label>
+                <input type="checkbox" name="Householdhelp" value="Wischen" id="wischen" price="10"/>
+                
+                
+
+                <button id="buttonhausarbeiten" type="button">OK</button><br> 
+
+                <label for="wäsche">Wäsche waschen</label>
+                <input type="checkbox" name="Householdhelp" value="Wäsche" id="wäsche" price="10"/>
+
+              
+                
+                <input type="text" name="Amount" id="amount" placeholder="Anzahl">
+                
+            </fieldset>
+
+
+
+    </form>
+        </div>
+   <br>
+<div id="bestellung">
+        
+    <h2>Deine Bestellung</h2>
+    <div id="diveinkauf"></div>
+    <div id="divhaushalt"></div>
+
+
+    <p>Gesamtkosten:<span id="gesamt"></span> €</p>
+
+    <button id="buttonFertig">Fertig</button>
+
+
+
+</div>
+    <h6>Script in Teilen von Valentina Schwan aus Aufgabe 03 übernommen</h6>
+
+</body>
+</html>
