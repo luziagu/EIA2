@@ -4,7 +4,7 @@ namespace haushaltshilfe {
 
     function handleLoad(_event: Event): void {
 
-        generateContent(data);
+        //generateContent(data);
 
         console.log("verknüpft"); 
 
@@ -17,7 +17,7 @@ namespace haushaltshilfe {
         let geteinkauf: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#buttoneinkauf");
         let gethaushalt: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#buttonhausarbeiten");
        
-        //let addButtonItem: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#addItem");
+        let addButtonItem: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#addItem");
 
         einkauf.addEventListener("click", showfieldset);
         haushalt.addEventListener("click", showfieldset);
@@ -26,7 +26,7 @@ namespace haushaltshilfe {
         gethaushalt.addEventListener("click", handleChange);
        
 
-        //addButtonItem.addEventListener("click", addNewRowShopping);
+        addButtonItem.addEventListener("click", addNewRowShopping);
 
 
         function showfieldset(): void {
@@ -48,26 +48,26 @@ namespace haushaltshilfe {
 
         }
 
-        /*function addNewRowShopping (): void {
-            console.log("Ich wurde geklickt"); 
         
-        
-            let p:  HTMLElement | null = document.getElementById("fieldeinkauf");
-            if (document.getElementById("addItem").clicked == true) {
-            let p_prime: Node | null = p.cloneNode(true); 
-            let cloneDiv = <HTMLElement> document.getElementById("cloneDiv"); 
-            cloneDiv.appendChild(p_prime);
-            }
-            
-            
-        }*/
 
         
 
 
     }
 
+    function addNewRowShopping (): void {
+        console.log("Ich wurde geklickt"); 
     
+        let p:  HTMLElement | null; 
+        p = document.getElementById("fieldeinkauf");
+        if (p) {
+        let p_prime: Node | null = p.cloneNode(true); 
+        let cloneDiv = <HTMLElement> document.getElementById("cloneDiv"); 
+        cloneDiv.appendChild(p_prime);
+        }
+        
+        
+    }
     
 
     function handleChange(): void {

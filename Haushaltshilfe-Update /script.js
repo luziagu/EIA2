@@ -4,7 +4,7 @@ var haushaltshilfe;
     window.addEventListener("load", handleLoad);
     let totalcost = 0;
     function handleLoad(_event) {
-        haushaltshilfe.generateContent(haushaltshilfe.data);
+        //generateContent(data);
         console.log("verknüpft");
         let einkauf = document.querySelector("#einkauf");
         let haushalt = document.querySelector("#haushalt");
@@ -12,12 +12,12 @@ var haushaltshilfe;
         let fieldhaus = document.querySelector("#fieldhaus");
         let geteinkauf = document.querySelector("#buttoneinkauf");
         let gethaushalt = document.querySelector("#buttonhausarbeiten");
-        //let addButtonItem: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#addItem");
+        let addButtonItem = document.querySelector("#addItem");
         einkauf.addEventListener("click", showfieldset);
         haushalt.addEventListener("click", showfieldset);
         geteinkauf.addEventListener("click", handleChange);
         gethaushalt.addEventListener("click", handleChange);
-        //addButtonItem.addEventListener("click", addNewRowShopping);
+        addButtonItem.addEventListener("click", addNewRowShopping);
         function showfieldset() {
             if (einkauf.checked == true) {
                 fieldeinkauf.disabled = false;
@@ -30,19 +30,16 @@ var haushaltshilfe;
                 console.log("enable fieldset Haushalt");
             }
         }
-        /*function addNewRowShopping (): void {
-            console.log("Ich wurde geklickt");
-        
-        
-            let p:  HTMLElement | null = document.getElementById("fieldeinkauf");
-            if (document.getElementById("addItem").clicked == true) {
-            let p_prime: Node | null = p.cloneNode(true);
-            let cloneDiv = <HTMLElement> document.getElementById("cloneDiv");
+    }
+    function addNewRowShopping() {
+        console.log("Ich wurde geklickt");
+        let p;
+        p = document.getElementById("fieldeinkauf");
+        if (p) {
+            let p_prime = p.cloneNode(true);
+            let cloneDiv = document.getElementById("cloneDiv");
             cloneDiv.appendChild(p_prime);
-            }
-            
-            
-        }*/
+        }
     }
     function handleChange() {
         let diveinkauf = document.querySelector("#diveinkauf");

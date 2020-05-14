@@ -2,6 +2,10 @@
 var haushaltshilfe;
 (function (haushaltshilfe) {
     haushaltshilfe.data = {
+        Input: [
+            { name: "Einkaufen", price: 0 },
+            { name: "Householdtasks", price: 0 }
+        ],
         Groceries: [
             { name: "Butter", price: 2.3 },
             { name: "Milch", price: 2.1 },
@@ -11,10 +15,16 @@ var haushaltshilfe;
             { name: "Salz", price: 0.5 },
             { name: "Brot", price: 5.0 }
         ],
-        Extras: [
-            { name: "Zeitung", price: 2.3 },
-            { name: "Brötchen", price: 2.1 },
-            { name: "Gutschein", price: 10 }
+        Store: [
+            { name: "Edeka", price: 0 },
+            { name: "Rewe", price: 0 },
+            { name: "Lidl", price: 0 },
+            { name: "Aldi", price: 0 }
+        ],
+        Householdtasks: [
+            { name: "Staubsaugen", price: 10 },
+            { name: "Wäsche waschen", price: 10 },
+            { name: "Wischen", price: 10 }
         ]
     };
 })(haushaltshilfe || (haushaltshilfe = {}));
