@@ -17,6 +17,9 @@ namespace haushaltshilfe {
         let geteinkauf: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#buttoneinkauf");
         let gethaushalt: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#buttonhausarbeiten");
        
+        let fertigeBestellung: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#buttonFertig");
+        
+
         let addButtonItem: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#addItem");
 
         einkauf.addEventListener("click", showfieldset);
@@ -24,6 +27,7 @@ namespace haushaltshilfe {
 
         geteinkauf.addEventListener("click", handleChange);
         gethaushalt.addEventListener("click", handleChange);
+        fertigeBestellung.addEventListener("click", sendInOrder); 
        
 
         addButtonItem.addEventListener("click", addNewRowShopping);
@@ -54,6 +58,11 @@ namespace haushaltshilfe {
 
 
     }
+    
+    function sendInOrder(): void {
+            
+            alert("Deine Bestellung wurde versendet und befindet sich bald auf dem Weg zu dir nach Hause"); 
+    }
 
     function addNewRowShopping (): void {
         console.log("Ich wurde geklickt"); 
@@ -74,7 +83,7 @@ namespace haushaltshilfe {
 
         let diveinkauf: HTMLDivElement = <HTMLDivElement>document.querySelector("#diveinkauf");
         let divhaushalt: HTMLDivElement = <HTMLDivElement>document.querySelector("#divhaushalt");
-        let gesamt: HTMLSpanElement = <HTMLSpanElement>document.querySelector("#bestellung");
+        let gesamt: HTMLSpanElement = <HTMLSpanElement>document.querySelector("#gesamt");
 
         let formData: FormData = new FormData(document.forms[0]);
 
@@ -162,13 +171,7 @@ namespace haushaltshilfe {
 
         }
 
-        let fertigeBestellung: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#buttonFertig");
-        fertigeBestellung.addEventListener("click", sendInOrder); 
-
-        function sendInOrder(): void {
-            
-            alert("Deine Bestellung wurde versendet und befindet sich bald auf dem Weg zu dir nach Hause"); 
-        }
+        
         
 
         function deleteanorder(_prices: number, _event: any, _gesamt: any): void {

@@ -12,11 +12,13 @@ var haushaltshilfe;
         let fieldhaus = document.querySelector("#fieldhaus");
         let geteinkauf = document.querySelector("#buttoneinkauf");
         let gethaushalt = document.querySelector("#buttonhausarbeiten");
+        let fertigeBestellung = document.querySelector("#buttonFertig");
         let addButtonItem = document.querySelector("#addItem");
         einkauf.addEventListener("click", showfieldset);
         haushalt.addEventListener("click", showfieldset);
         geteinkauf.addEventListener("click", handleChange);
         gethaushalt.addEventListener("click", handleChange);
+        fertigeBestellung.addEventListener("click", sendInOrder);
         addButtonItem.addEventListener("click", addNewRowShopping);
         function showfieldset() {
             if (einkauf.checked == true) {
@@ -31,6 +33,9 @@ var haushaltshilfe;
             }
         }
     }
+    function sendInOrder() {
+        alert("Deine Bestellung wurde versendet und befindet sich bald auf dem Weg zu dir nach Hause");
+    }
     function addNewRowShopping() {
         console.log("Ich wurde geklickt");
         let p;
@@ -44,7 +49,7 @@ var haushaltshilfe;
     function handleChange() {
         let diveinkauf = document.querySelector("#diveinkauf");
         let divhaushalt = document.querySelector("#divhaushalt");
-        let gesamt = document.querySelector("#bestellung");
+        let gesamt = document.querySelector("#gesamt");
         let formData = new FormData(document.forms[0]);
         for (let entry of formData) {
             let item = document.querySelector("[value='" + entry[1] + "']");
@@ -100,11 +105,6 @@ var haushaltshilfe;
             console.log(gesamt);
             console.log(totalcost);
             gesamt.innerHTML = totalcost.toFixed(2);
-        }
-        let fertigeBestellung = document.querySelector("#buttonFertig");
-        fertigeBestellung.addEventListener("click", sendInOrder);
-        function sendInOrder() {
-            alert("Deine Bestellung wurde versendet und befindet sich bald auf dem Weg zu dir nach Hause");
         }
         function deleteanorder(_prices, _event, _gesamt) {
             totalcost -= _prices;

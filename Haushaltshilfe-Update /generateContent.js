@@ -8,7 +8,7 @@ var haushaltshilfe;
         for (let category in _data) {
             //console.log(category); //Prüfung: Läuft die Schleife? 
             let items = _data[category];
-            let group;
+            let group = null;
             switch (category) {
                 case "Groceries":
                     group = createSelect(items);
@@ -22,10 +22,18 @@ var haushaltshilfe;
                 default:
                     break;
             }
-            //Block wird definiert durch die gescheifte KLammer - Groups kann nicht imn selben Gültigkeitsbereich sein 
             let fieldset = document.querySelector("fieldset#" + category);
+            if (fieldset && group)
+                fieldset.appendChild(group);
+            //Block wird definiert durch die gescheifte KLammer - Groups kann nicht imn selben Gültigkeitsbereich sein 
         }
     }
     haushaltshilfe.generateContent = generateContent;
+    function createSelect(_items) {
+        return null;
+    }
+    function createMultiple(_items) {
+        return null;
+    }
 })(haushaltshilfe || (haushaltshilfe = {}));
 //# sourceMappingURL=generateContent.js.map
