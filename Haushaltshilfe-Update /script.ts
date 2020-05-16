@@ -4,7 +4,7 @@ namespace haushaltshilfe {
 
     function handleLoad(_event: Event): void {
 
-        //generateContent(data);
+        generateContent(data);
 
         console.log("verknüpft"); 
 
@@ -142,7 +142,7 @@ namespace haushaltshilfe {
 
 
              
-            } else if (entry[1] == "Staubsaugen" || entry[1] == "Wäsche" || entry[1] == "Wischen") {
+            } else if (entry[1] == "GassiGehen" || entry[1] == "Wäsche" || entry[1] == "Wischen") {
 
                 prices = price * amount;
                 span1.innerHTML = " " + entry[1] + ":";

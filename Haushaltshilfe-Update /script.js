@@ -4,7 +4,7 @@ var haushaltshilfe;
     window.addEventListener("load", handleLoad);
     let totalcost = 0;
     function handleLoad(_event) {
-        //generateContent(data);
+        haushaltshilfe.generateContent(haushaltshilfe.data);
         console.log("verknüpft");
         let einkauf = document.querySelector("#einkauf");
         let haushalt = document.querySelector("#haushalt");
@@ -86,7 +86,7 @@ var haushaltshilfe;
                 orderorder.appendChild(span4);
                 totalcost += prices;
             }
-            else if (entry[1] == "Staubsaugen" || entry[1] == "Wäsche" || entry[1] == "Wischen") {
+            else if (entry[1] == "GassiGehen" || entry[1] == "Wäsche" || entry[1] == "Wischen") {
                 prices = price * amount;
                 span1.innerHTML = " " + entry[1] + ":";
                 span2.innerHTML = " in " + amount + " Zimmer/n";
