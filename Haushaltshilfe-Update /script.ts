@@ -62,6 +62,7 @@ namespace haushaltshilfe {
     function sendInOrder(): void {
             
             alert("Deine Bestellung wurde versendet und befindet sich bald auf dem Weg zu dir nach Hause"); 
+            location.reload(); 
     }
 
     /*function addNewRowShopping (): void {
@@ -124,7 +125,7 @@ namespace haushaltshilfe {
                     deleteanorder(prices, event, gesamt);
                     });
                     span1.innerHTML = " " + amount;
-                    span2.innerHTML = "" + entry[1];
+                    span2.innerHTML = " " + entry[1];
                 
                     span3.innerHTML = " Laden: " + store;
                     span4.innerHTML = " Preis: " + prices + "€";
@@ -145,11 +146,55 @@ namespace haushaltshilfe {
 
 
              
-                case "household": 
+                case "Gassi gehen": 
 
                     prices = price * amount;
-                    span1.innerHTML = " " + entry[1] + ":";
-                    span2.innerHTML = " in " + amount + " Zimmer/n";
+                    span1.innerHTML = " " + entry[0] + ":";
+                    span2.innerHTML =  " " + amount + " mal am Tag" + " | ";
+                    span3.innerHTML = " Preis: " + prices + "€";
+
+                    console.log(item);
+
+                    deletebutton.addEventListener("click", function (): void {
+                    deleteanorder(prices, event, gesamt);
+
+                    });
+                    divhaushalt.appendChild(orderorder);
+                    orderorder.appendChild(deletebutton);
+                    orderorder.appendChild(span1);
+                    orderorder.appendChild(span2);
+                    orderorder.appendChild(span3);
+
+                    totalcost += prices;
+                    break; 
+
+                    case "Wäsche waschen": 
+
+                    prices = price * amount;
+                    span1.innerHTML = " " + entry[0] + ":";
+                    span2.innerHTML = " " + amount + " mal in der Woche " + " | ";
+                    span3.innerHTML = " Preis: " + prices + "€";
+
+                    console.log(item);
+
+                    deletebutton.addEventListener("click", function (): void {
+                    deleteanorder(prices, event, gesamt);
+
+                    });
+                    divhaushalt.appendChild(orderorder);
+                    orderorder.appendChild(deletebutton);
+                    orderorder.appendChild(span1);
+                    orderorder.appendChild(span2);
+                    orderorder.appendChild(span3);
+
+                    totalcost += prices;
+                    break; 
+
+                    case "Wischen": 
+
+                    prices = price * amount;
+                    span1.innerHTML = " " + entry[0] + ":";
+                    span2.innerHTML = " in " + amount + " Zimmer/n" + " | ";
                     span3.innerHTML = " Preis: " + prices + "€";
 
                     console.log(item);

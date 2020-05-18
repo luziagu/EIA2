@@ -23,7 +23,7 @@ var haushaltshilfe;
         fieldhaus: [
             { name: "household", items: ["Gassi gehen", "10"] },
             { name: "household", items: ["Wäsche waschen", "10"] },
-            { name: "household", items: ["Wische", "10"] },
+            { name: "household", items: ["Wischen", "10"] },
             { name: "Amount", items: ["amountarticle"] }
         ]
     };
