@@ -8,8 +8,8 @@ namespace haushaltshilfe {
 
         console.log("verknüpft"); 
 
-        let einkauf: HTMLInputElement = <HTMLInputElement>document.querySelector("#einkauf");
-        let haushalt: HTMLInputElement = <HTMLInputElement>document.querySelector("#haushalt");
+        let einkauf: HTMLInputElement = <HTMLInputElement>document.querySelector("#Einkaufen");
+        let haushalt: HTMLInputElement = <HTMLInputElement>document.querySelector("#Householdtasks");
 
         let fieldeinkauf: HTMLFieldSetElement = <HTMLFieldSetElement>document.querySelector("#fieldeinkauf");
         let fieldhaus: HTMLFieldSetElement = <HTMLFieldSetElement>document.querySelector("#fieldhaus");
@@ -20,7 +20,7 @@ namespace haushaltshilfe {
         let fertigeBestellung: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#buttonFertig");
         
 
-        let addButtonItem: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#addItem");
+        //let addButtonItem: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#addItem");
 
         einkauf.addEventListener("click", showfieldset);
         haushalt.addEventListener("click", showfieldset);
@@ -30,7 +30,7 @@ namespace haushaltshilfe {
         fertigeBestellung.addEventListener("click", sendInOrder); 
        
 
-        addButtonItem.addEventListener("click", addNewRowShopping);
+        //addButtonItem.addEventListener("click", addNewRowShopping);
 
 
         function showfieldset(): void {
@@ -64,7 +64,7 @@ namespace haushaltshilfe {
             alert("Deine Bestellung wurde versendet und befindet sich bald auf dem Weg zu dir nach Hause"); 
     }
 
-    function addNewRowShopping (): void {
+    /*function addNewRowShopping (): void {
         console.log("Ich wurde geklickt"); 
     
         let p:  HTMLElement | null; 
@@ -76,7 +76,7 @@ namespace haushaltshilfe {
         }
         
         
-    }
+    }*/
     
 
     function handleChange(): void {
@@ -91,6 +91,7 @@ namespace haushaltshilfe {
             let item: HTMLInputElement = <HTMLInputElement>document.querySelector("[value='" + entry[1] + "']");
             console.log(entry); 
 
+            console.log("entry[1]:", entry[1]); 
             
 
             let price: number = Number(item.getAttribute("price"));
@@ -114,54 +115,60 @@ namespace haushaltshilfe {
             let deletebutton: HTMLButtonElement = document.createElement("button");
             deletebutton.classList.add("far", "fa-trash-alt");
 
-            if  (entry[0] == "Groceries") {
+            switch  (entry[0]) {
+                case "groceries":
                 
-                let store: string = String(formData.get("Store"));
-                prices = amount * price;
-                deletebutton.addEventListener("click", function (): void {
+                    let store: string = String(formData.get("store"));
+                    prices = amount * price;
+                    deletebutton.addEventListener("click", function (): void {
                     deleteanorder(prices, event, gesamt);
-                });
-                span1.innerHTML = " " + amount;
-                span2.innerHTML = "" + entry[1];
+                    });
+                    span1.innerHTML = " " + amount;
+                    span2.innerHTML = "" + entry[1];
                 
-                span3.innerHTML = " Laden: " + store;
-                span4.innerHTML = " Preis: " + prices + "€";
+                    span3.innerHTML = " Laden: " + store;
+                    span4.innerHTML = " Preis: " + prices + "€";
          
                 
-                diveinkauf.appendChild(orderorder);
-                orderorder.appendChild(deletebutton);
-                orderorder.appendChild(span1);
-                orderorder.appendChild(span2);
+                    diveinkauf.appendChild(orderorder);
+                    orderorder.appendChild(deletebutton);
+                    orderorder.appendChild(span1);
+                    orderorder.appendChild(span2);
              
-                orderorder.appendChild(span3);
-                orderorder.appendChild(span4);
+                    orderorder.appendChild(span3);
+                    orderorder.appendChild(span4);
                
 
-                totalcost += prices;
+                    totalcost += prices;
+                    break; 
 
 
 
              
-            } else if (entry[1] == "GassiGehen" || entry[1] == "Wäsche" || entry[1] == "Wischen") {
+                case "household": 
 
-                prices = price * amount;
-                span1.innerHTML = " " + entry[1] + ":";
-                span2.innerHTML = " in " + amount + " Zimmer/n";
-                span3.innerHTML = " Preis: " + prices + "€";
+                    prices = price * amount;
+                    span1.innerHTML = " " + entry[1] + ":";
+                    span2.innerHTML = " in " + amount + " Zimmer/n";
+                    span3.innerHTML = " Preis: " + prices + "€";
 
-                console.log(item);
+                    console.log(item);
 
-                deletebutton.addEventListener("click", function (): void {
+                    deletebutton.addEventListener("click", function (): void {
                     deleteanorder(prices, event, gesamt);
 
-                });
-                divhaushalt.appendChild(orderorder);
-                orderorder.appendChild(deletebutton);
-                orderorder.appendChild(span1);
-                orderorder.appendChild(span2);
-                orderorder.appendChild(span3);
+                    });
+                    divhaushalt.appendChild(orderorder);
+                    orderorder.appendChild(deletebutton);
+                    orderorder.appendChild(span1);
+                    orderorder.appendChild(span2);
+                    orderorder.appendChild(span3);
 
-                totalcost += prices;
+                    totalcost += prices;
+                    break; 
+
+                default: 
+                    break; 
             }
 
             console.log(gesamt);

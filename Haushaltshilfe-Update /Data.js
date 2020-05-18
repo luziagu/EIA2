@@ -2,31 +2,29 @@
 var haushaltshilfe;
 (function (haushaltshilfe) {
     haushaltshilfe.data = {
-        einkauf: [
-            { name: "Einkaufen", price: 0 }
+        fieldsets: [
+            { name: "tasks", items: ["Einkaufen"] },
+            { name: "tasks", items: ["Householdtasks"] }
         ],
-        haushalt: [
-            { name: "Householdtasks", price: 0 }
-        ],
-        Groceries: [
-            { name: "Butter", price: 2.3 },
-            { name: "Milch", price: 2.1 },
-            { name: "Mehl", price: 1 },
-            { name: "Zucker", price: 2 },
-            { name: "Eier", price: 3.5 },
-            { name: "Salz", price: 0.5 },
-            { name: "Brot", price: 5.0 }
-        ],
-        store: [
-            { name: "Edeka", price: 0 },
-            { name: "Rewe", price: 0 },
-            { name: "Lidl", price: 0 },
-            { name: "Aldi", price: 0 }
+        fieldeinkauf: [
+            { name: "groceries", items: ["Butter", "2.3"] },
+            { name: "groceries", items: ["Milch", "1.5"] },
+            { name: "groceries", items: ["Mehl", "1.5"] },
+            { name: "groceries", items: ["Zucker", "2.0"] },
+            { name: "groceries", items: ["Wasser", "3.0"] },
+            { name: "groceries", items: ["Salz", "1.0"] },
+            { name: "groceries", items: ["Brot", "2.0"] },
+            { name: "Amount", items: ["amountarticle"] },
+            { name: "store", items: ["Aldi"] },
+            { name: "store", items: ["Lidl"] },
+            { name: "store", items: ["Rewe"] },
+            { name: "store", items: ["Edeka"] }
         ],
         fieldhaus: [
-            { name: "Gassi gehen", price: 10 },
-            { name: "Wäsche waschen", price: 10 },
-            { name: "Wischen", price: 10 }
+            { name: "household", items: ["Gassi gehen", "10"] },
+            { name: "household", items: ["Wäsche waschen", "10"] },
+            { name: "household", items: ["Wische", "10"] },
+            { name: "Amount", items: ["amountarticle"] }
         ]
     };
 })(haushaltshilfe || (haushaltshilfe = {}));

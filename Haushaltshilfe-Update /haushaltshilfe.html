@@ -19,99 +19,101 @@
    
         <div id="main">
 
-            <fieldset>
+            <!--<fieldset>
                 <legend>AUFGABEN</legend>
                 <label for="einkauf">Einkaufen</label>
                 <input type="radio" name="Tasks" id="einkauf" value="Einkauf"><br>
                 <label for="haushalt">Householdtasks</label>
                 <input type="radio" name="Tasks" id="haushalt" value="Haushalt"><br>
-            </fieldset>
-        <form>
-            <fieldset id="fieldeinkauf" disabled>
-                <legend>EINKAUF</legend>
+            </fieldset>-->
+            <form>
+                <!--<fieldset id="fieldeinkauf" disabled>
+                 <legend>EINKAUF</legend>
                 
-                <select name="Groceries" id="groceries">
-                    <option value="Butter" price="2.3"> Butter </option>
-                    <option value="Milch" price="2.1"> Milch</option>
-                    <option value="Mehl" price="1"> Mehl</option>
-                    <option value="Zucker" price="2">Zucker </option>
-                    <option value="Eier" price="3.5"> Eier</option>
-                    <option value="Salz" price="5">Salz </option>
-                    <option value="Brot" price="5">Brot </option>
-                </select>
+                    <select name="Groceries" id="groceries">
+                        <option value="Butter" price="2.3"> Butter </option>
+                        <option value="Milch" price="2.1"> Milch</option>
+                        <option value="Mehl" price="1"> Mehl</option>
+                        <option value="Zucker" price="2">Zucker </option>
+                        <option value="Eier" price="3.5"> Eier</option>
+                        <option value="Salz" price="5">Salz </option>
+                        <option value="Brot" price="5">Brot </option>
+                    </select>
 
-                Anzahl
-                <input type="number" id="amountarticle" name="Amount" step="0.5" min="0" max="10" value="">
+                    Anzahl
+                    <input type="number" id="amountarticle" name="Amount" step="0.5" min="0" max="10" value="">
 
                
-                <select name="Store" id="store">
-                    <option value="Edeka">Edeka</option>
-                    <option value="Rewe">Rewe</option>
-                    <option value="Lidl">Lidl</option>
-                    <option value="Aldi">Aldi</option>
-                </select>
+                    <select name="Store" id="store">
+                        <option value="Edeka">Edeka</option>
+                        <option value="Rewe">Rewe</option>
+                        <option value="Lidl">Lidl</option>
+                        <option value="Aldi">Aldi</option>
+                    </select>
                
             
     
 
-                <button id="buttoneinkauf" type="button">OK</button>
-                <br> 
-                <br>
+                    <button id="buttoneinkauf" type="button">OK</button>
+                    <br> 
+                    <br>
 
            
                 
-            </fieldset>
-            <div id="cloneDiv"></div>
-            <br>
+                </fieldset>
+                <div id="cloneDiv"></div>
+                <br>
            
-            <button type="button" id="addItem"> Neuen Ware hinzufügen </button>
-            <br> 
-            <br>
+                <button type="button" id="addItem"> Neuen Ware hinzufügen </button>
+                <br> 
+                <br>
             
 
-            <fieldset id="fieldhaus" disabled>
+                <fieldset id="fieldhaus" disabled>
 
-                <legend>HOUSEHOLDTASKS</legend>
-                <!--<label for="Gassi gehen">Gassi gehen</label> 
-                <input type="checkbox" name="Householdhelp" value="GassiGehen" id="GassiGehen" price="10" />
+                    <legend>HOUSEHOLDTASKS</legend>
+                    <label for="Gassi gehen">Gassi gehen</label> 
+                    <input type="checkbox" name="Householdhelp" value="GassiGehen" id="GassiGehen" price="10" />
         
 
-                <label for="wischen">Wischen</label>
-                <input type="checkbox" name="Householdhelp" value="Wischen" id="wischen" price="10"/>
+                    <label for="wischen">Wischen</label>
+                    <input type="checkbox" name="Householdhelp" value="Wischen" id="wischen" price="10"/>
                 
                 
 
                
 
-                <label for="wäsche">Wäsche waschen</label>
-                <input type="checkbox" name="Householdhelp" value="Wäsche" id="wäsche" price="10"/>-->
-                <button id="buttonhausarbeiten" type="button">OK</button><br> 
+                    <label for="wäsche">Wäsche waschen</label>
+                    <input type="checkbox" name="Householdhelp" value="Wäsche" id="wäsche" price="10"/>
+                    <button id="buttonhausarbeiten" type="button">OK</button><br> 
 
               
                 
-                <input type="text" name="Amount" id="amount" placeholder="Anzahl">
+                 <input type="text" name="Amount" id="amount" placeholder="Anzahl">
                 
-            </fieldset>
+                </fieldset>-->
 
 
 
-    </form>
+             </form>
         </div>
-   <br>
-<div id="bestellung">
+    <br>
+
+
+    <div id="bestellung">
         
-    <h2>Deine Bestellung</h2>
-    <div id="diveinkauf"></div>
-    <div id="divhaushalt"></div>
+        <h2>Deine Bestellung</h2>
+        <div id="diveinkauf"></div>
+        <div id="divhaushalt"></div>
 
 
-    <p>Gesamtkosten:<span id="gesamt"></span> €</p>
+        <p>Gesamtkosten:<span id="gesamt"></span> €</p>
 
-    <button typ=button id="buttonFertig">Fertig</button>
+        <button typ=button id="buttonFertig">Fertig</button>
 
 
 
-</div>
+    </div>
     <h6>Script in Teilen von Valentina Schwan aus Aufgabe 03 übernommen</h6>
 
 </body>
