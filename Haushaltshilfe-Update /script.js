@@ -12,13 +12,15 @@ var haushaltshilfe;
         let fieldhaus = document.querySelector("#fieldhaus");
         let geteinkauf = document.querySelector("#buttoneinkauf");
         let gethaushalt = document.querySelector("#buttonhausarbeiten");
-        let fertigeBestellung = document.querySelector("#buttonFertig");
+        //let fertigeBestellung: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#buttonFertig");
+        let submit = document.querySelector("button#buttonFertig");
+        console.log(submit);
         //let addButtonItem: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#addItem");
         einkauf.addEventListener("click", showfieldset);
         haushalt.addEventListener("click", showfieldset);
         geteinkauf.addEventListener("click", handleChange);
         gethaushalt.addEventListener("click", handleChange);
-        fertigeBestellung.addEventListener("click", sendInOrder);
+        submit.addEventListener("click", sendInOrder);
         //addButtonItem.addEventListener("click", addNewRowShopping);
         function showfieldset() {
             if (einkauf.checked == true) {
@@ -33,9 +35,13 @@ var haushaltshilfe;
             }
         }
     }
-    function sendInOrder() {
-        alert("Deine Bestellung wurde versendet und befindet sich bald auf dem Weg zu dir nach Hause");
-        location.reload();
+    async function sendInOrder(_event) {
+        console.log("Send order");
+        let formData = new FormData(document.forms[0]);
+        let query = new URLSearchParams(formData);
+        await fetch("haushaltshilfe.html?" + query.toString());
+        alert("Deine Bestellung wurde versendet und befindet sich bald auf dem Weg zu dir nach Hause.");
+        //location.reload(); 
     }
     /*function addNewRowShopping (): void {
         console.log("Ich wurde geklickt");
@@ -59,8 +65,8 @@ var haushaltshilfe;
             let item = document.querySelector("[value='" + entry[1] + "']");
             console.log(entry);
             console.log("entry[1]:", entry[1]);
-            let price = Number(item.getAttribute("price"));
             let amount = Number(formData.get("Amount"));
+            let price = Number(item.getAttribute("price"));
             console.log(item);
             console.log("Item: ", item.value);
             console.log("Price: ", price);

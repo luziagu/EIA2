@@ -17,9 +17,9 @@ namespace haushaltshilfe {
         let geteinkauf: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#buttoneinkauf");
         let gethaushalt: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#buttonhausarbeiten");
        
-        let fertigeBestellung: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#buttonFertig");
-        
-
+        //let fertigeBestellung: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#buttonFertig");
+        let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button#buttonFertig"); 
+        console.log(submit); 
         //let addButtonItem: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#addItem");
 
         einkauf.addEventListener("click", showfieldset);
@@ -27,7 +27,9 @@ namespace haushaltshilfe {
 
         geteinkauf.addEventListener("click", handleChange);
         gethaushalt.addEventListener("click", handleChange);
-        fertigeBestellung.addEventListener("click", sendInOrder); 
+
+        submit.addEventListener("click", sendInOrder); 
+
        
 
         //addButtonItem.addEventListener("click", addNewRowShopping);
@@ -59,10 +61,14 @@ namespace haushaltshilfe {
 
     }
     
-    function sendInOrder(): void {
-            
-            alert("Deine Bestellung wurde versendet und befindet sich bald auf dem Weg zu dir nach Hause"); 
-            location.reload(); 
+    async function sendInOrder(_event: Event): Promise<void> {
+            console.log("Send order"); 
+            let formData: FormData = new FormData(document.forms[0]);
+            let query: URLSearchParams = new URLSearchParams(<any>formData);
+            await fetch("haushaltshilfe.html?" + query.toString()); 
+            alert("Deine Bestellung wurde versendet und befindet sich bald auf dem Weg zu dir nach Hause."); 
+
+            //location.reload(); 
     }
 
     /*function addNewRowShopping (): void {
@@ -94,9 +100,9 @@ namespace haushaltshilfe {
 
             console.log("entry[1]:", entry[1]); 
             
-
-            let price: number = Number(item.getAttribute("price"));
             let amount: number = Number(formData.get("Amount"));
+            let price: number = Number(item.getAttribute("price"));
+            
 
             console.log(item);
             console.log("Item: ", item.value);

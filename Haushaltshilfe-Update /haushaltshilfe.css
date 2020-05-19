@@ -19,3 +19,8 @@ body {
 	border: solid  black 0.3px;
 	margin: 1em;
 }
+
+#amountarticle {
+
+    width: 50px;
+}

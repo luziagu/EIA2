@@ -26,7 +26,7 @@
                 <label for="haushalt">Householdtasks</label>
                 <input type="radio" name="Tasks" id="haushalt" value="Haushalt"><br>
             </fieldset>-->
-            <form>
+            <form id="orderForm">
                 <!--<fieldset id="fieldeinkauf" disabled>
                  <legend>EINKAUF</legend>
                 
@@ -109,7 +109,8 @@
 
         <p>Gesamtkosten:<span id="gesamt"></span> €</p>
 
-        <button typ=button id="buttonFertig">Fertig</button>
+        <button type="reset" id="restart" form="orderForm">Hinzufügen</button>
+        <button type="button" id="buttonFertig" form="orderForm">Fertig/Abschicken</button>
 
 
 

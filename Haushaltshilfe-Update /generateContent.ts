@@ -106,7 +106,7 @@ namespace haushaltshilfe {
         let okbutton: HTMLButtonElement = document.createElement("button");
         okbutton.id = "buttoneinkauf";
         okbutton.type = "button";
-        okbutton.textContent = "OK";
+        okbutton.textContent = "Hinzufügen";
         for (let item of _items) {
 
             switch (item.name) {
@@ -114,8 +114,8 @@ namespace haushaltshilfe {
                     selectarticle.name = item.name;
                     group.appendChild(selectarticle);
                     let optionarticle: HTMLOptionElement = document.createElement("option");
-                    optionarticle.setAttribute("price", item.items[2]);
-                    optionarticle.setAttribute("unit", item.items[1]);
+                    optionarticle.setAttribute("price", item.items[1]); 
+                    optionarticle.setAttribute("unit", item.items[0]);
                     optionarticle.value = item.items[0];
                     optionarticle.text = item.items[0];
                     selectarticle.appendChild(optionarticle);
@@ -161,7 +161,7 @@ namespace haushaltshilfe {
         let okbutton: HTMLButtonElement = document.createElement("button");
         okbutton.id = "buttonhausarbeiten";
         okbutton.type = "button";
-        okbutton.textContent = "OK";
+        okbutton.textContent = "Hinzufügen";
 
        
         //for in oder for of? for of - damit man direkt auf INtems zugreifen kann. 
@@ -187,7 +187,7 @@ namespace haushaltshilfe {
                     group.appendChild(label); 
                     
                     break;
-                    
+
                 case "Amount":
                     amount.type = "number";
                     amount.name = item.name;

@@ -78,15 +78,15 @@ var haushaltshilfe;
         let okbutton = document.createElement("button");
         okbutton.id = "buttoneinkauf";
         okbutton.type = "button";
-        okbutton.textContent = "OK";
+        okbutton.textContent = "Hinzufügen";
         for (let item of _items) {
             switch (item.name) {
                 case "groceries":
                     selectarticle.name = item.name;
                     group.appendChild(selectarticle);
                     let optionarticle = document.createElement("option");
-                    optionarticle.setAttribute("price", item.items[2]);
-                    optionarticle.setAttribute("unit", item.items[1]);
+                    optionarticle.setAttribute("price", item.items[1]);
+                    optionarticle.setAttribute("unit", item.items[0]);
                     optionarticle.value = item.items[0];
                     optionarticle.text = item.items[0];
                     selectarticle.appendChild(optionarticle);
@@ -123,7 +123,7 @@ var haushaltshilfe;
         let okbutton = document.createElement("button");
         okbutton.id = "buttonhausarbeiten";
         okbutton.type = "button";
-        okbutton.textContent = "OK";
+        okbutton.textContent = "Hinzufügen";
         //for in oder for of? for of - damit man direkt auf INtems zugreifen kann. 
         for (let item of _items) {
             switch (item.name) {
