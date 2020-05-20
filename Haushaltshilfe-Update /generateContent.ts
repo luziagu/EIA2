@@ -1,5 +1,14 @@
 namespace haushaltshilfe {
 
+    export interface Item {
+        name: string; 
+        items: string []; 
+    }
+
+    export interface Data {
+        [category: string]: Item[]; 
+    }
+    
     export function generateContent(_data: Data): void {
         console.log(_data);
 

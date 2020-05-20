@@ -2,7 +2,11 @@ namespace haushaltshilfe {
     window.addEventListener("load", handleLoad);
     let totalcost: number = 0;
 
-    function handleLoad(_event: Event): void {
+    async function handleLoad(_event: Event): Promise<void> {
+
+        let response: Response = await fetch("Data.json"); 
+        let offer: string = await response.text(); 
+        let data: Data = JSON.parse(offer); 
 
         generateContent(data);
 

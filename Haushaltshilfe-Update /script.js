@@ -3,8 +3,11 @@ var haushaltshilfe;
 (function (haushaltshilfe) {
     window.addEventListener("load", handleLoad);
     let totalcost = 0;
-    function handleLoad(_event) {
-        haushaltshilfe.generateContent(haushaltshilfe.data);
+    async function handleLoad(_event) {
+        let response = await fetch("Data.json");
+        let offer = await response.text();
+        let data = JSON.parse(offer);
+        haushaltshilfe.generateContent(data);
         console.log("verknüpft");
         let einkauf = document.querySelector("#Einkaufen");
         let haushalt = document.querySelector("#Householdtasks");
