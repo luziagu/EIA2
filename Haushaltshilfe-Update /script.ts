@@ -6,7 +6,7 @@ namespace haushaltshilfe {
 
         let response: Response = await fetch("Data.json"); 
         let offer: string = await response.text(); 
-        let data: Data = JSON.parse(offer); 
+        let data: Data = JSON.parse(offer);
 
         generateContent(data);
 

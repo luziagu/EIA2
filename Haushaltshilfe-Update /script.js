@@ -4,7 +4,7 @@ var haushaltshilfe;
     window.addEventListener("load", handleLoad);
     let totalcost = 0;
     async function handleLoad(_event) {
-        let response = await fetch("http://localhost:5000/Haushaltshilfe-Update/Data.json");
+        let response = await fetch("Data.json");
         let offer = await response.text();
         let data = JSON.parse(offer);
         haushaltshilfe.generateContent(data);
