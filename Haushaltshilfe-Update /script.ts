@@ -4,9 +4,10 @@ namespace haushaltshilfe {
 
     async function handleLoad(_event: Event): Promise<void> {
 
-        let response: Response = await fetch("Data.json"); 
+        let response: Response = await fetch("data.json"); 
         let offer: string = await response.text(); 
         let data: Data = JSON.parse(offer);
+
 
         generateContent(data);
 
