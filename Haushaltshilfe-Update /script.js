@@ -3,6 +3,8 @@ var haushaltshilfe;
 (function (haushaltshilfe) {
     window.addEventListener("load", handleLoad);
     let totalcost = 0;
+    //let url: string = "index.html"; 
+    let url = "http://localhost:5001";
     async function handleLoad(_event) {
         let response = await fetch("Data.json");
         let offer = await response.text();
@@ -42,8 +44,9 @@ var haushaltshilfe;
         console.log("Send order");
         let formData = new FormData(document.forms[0]);
         let query = new URLSearchParams(formData);
-        await fetch("haushaltshilfe.html?" + query.toString());
-        alert("Deine Bestellung wurde versendet und befindet sich bald auf dem Weg zu dir nach Hause.");
+        let response = await fetch(url + "?" + query.toString());
+        let responseText = await response.text();
+        alert(responseText);
         //location.reload(); 
     }
     /*function addNewRowShopping (): void {

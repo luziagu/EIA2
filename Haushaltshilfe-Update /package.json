@@ -1,0 +1,18 @@
+{
+  "name": "haushaltshilfe-app",
+  "version": "1.0.0",
+  "description": "Haushaltshilfe",
+  "main": "generateContent.js",
+  "scripts": {
+    "start": "node Server/Server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "EIA2"
+  },
+  "keywords": [
+    "haushaltshilfe"
+  ],
+  "author": "Luzia Gunzenhauser",
+  "license": "ISC"
+}

@@ -1,6 +1,8 @@
 namespace haushaltshilfe {
     window.addEventListener("load", handleLoad);
     let totalcost: number = 0;
+    //let url: string = "index.html"; 
+    let url: string = "http://localhost:5001"; 
 
     async function handleLoad(_event: Event): Promise<void> {
 
@@ -69,8 +71,9 @@ namespace haushaltshilfe {
             console.log("Send order"); 
             let formData: FormData = new FormData(document.forms[0]);
             let query: URLSearchParams = new URLSearchParams(<any>formData);
-            await fetch("haushaltshilfe.html?" + query.toString()); 
-            alert("Deine Bestellung wurde versendet und befindet sich bald auf dem Weg zu dir nach Hause."); 
+            let response: Response = await fetch(url + "?" + query.toString()) ; 
+            let responseText: string = await response.text(); 
+            alert(responseText); 
 
             //location.reload(); 
     }
