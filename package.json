@@ -4,7 +4,7 @@
   "description": "Haushaltshilfe",
   "main": "generateContent.js",
   "scripts": {
-    "start": "node Server/Server.js"
+    "start": "node Haushaltshilfe-Update/Server/Server.js"
   },
   "repository": {
     "type": "git",

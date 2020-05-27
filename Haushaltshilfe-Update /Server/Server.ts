@@ -24,7 +24,7 @@ export namespace haushaltshilfe {
         _response.setHeader("Access-Content-Allow-Origin", "*"); 
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true); 
-            for (let key in url.query){
+            for (let key in url.query) {
                 _response.write(key + ":" + url.query[key] + "<br>"); 
             }
 
