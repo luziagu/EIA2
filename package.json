@@ -2,7 +2,7 @@
   "name": "haushaltshilfe-app",
   "version": "1.0.0",
   "description": "Haushaltshilfe",
-  "main": "generateContent.js",
+  "main": "",
   "scripts": {
     "start": "node Haushaltshilfe-Update/Server/Server.js"
   },
