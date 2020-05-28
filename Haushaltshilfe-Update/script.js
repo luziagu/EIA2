@@ -70,6 +70,9 @@ var haushaltshilfe;
         for (let entry of formData) {
             let item = document.querySelector("[value='" + entry[1] + "']");
             console.log(entry);
+            if (item === null) {
+                continue;
+            }
             console.log("entry[1]:", entry[1]);
             let amount = Number(formData.get("Amount"));
             let price = Number(item.getAttribute("price"));

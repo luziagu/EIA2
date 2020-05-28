@@ -104,6 +104,7 @@ namespace haushaltshilfe {
         for (let entry of formData) {
             let item: HTMLInputElement = <HTMLInputElement>document.querySelector("[value='" + entry[1] + "']");
             console.log(entry); 
+            if (item === null) { continue; }
 
             console.log("entry[1]:", entry[1]); 
             
