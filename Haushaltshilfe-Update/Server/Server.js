@@ -25,7 +25,7 @@ var haushaltshilfe;
             let jsonstring = JSON.stringify(url.query);
             _response.write(jsonstring);
         }
-        _response.write("Hallo, ich habe geantwortet :)");
+        _response.write("<br>" + "Deine Bestellung");
         _response.end();
     }
 })(haushaltshilfe = exports.haushaltshilfe || (exports.haushaltshilfe = {}));

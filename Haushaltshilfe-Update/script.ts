@@ -73,7 +73,7 @@ namespace haushaltshilfe {
             let query: URLSearchParams = new URLSearchParams(<any>formData);
             let response: Response = await fetch(url + "?" + query.toString()) ; 
             let responseText: string = await response.text(); 
-            alert(responseText); 
+            alert(responseText + ""); 
 
             //location.reload(); 
     }

@@ -46,7 +46,7 @@ var haushaltshilfe;
         let query = new URLSearchParams(formData);
         let response = await fetch(url + "?" + query.toString());
         let responseText = await response.text();
-        alert(responseText);
+        alert(responseText + "");
         //location.reload(); 
     }
     /*function addNewRowShopping (): void {
