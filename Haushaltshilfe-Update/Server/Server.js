@@ -20,12 +20,12 @@ var haushaltshilfe;
         if (_request.url) {
             let url = Url.parse(_request.url, true);
             for (let key in url.query) {
-                _response.write(key + ":" + url.query[key] + "<br>");
+                _response.write(key + ":" + url.query[key]);
             }
             let jsonstring = JSON.stringify(url.query);
             _response.write(jsonstring);
         }
-        _response.write("<br>" + "Deine Bestellung");
+        _response.write("");
         _response.end();
     }
 })(haushaltshilfe = exports.haushaltshilfe || (exports.haushaltshilfe = {}));
