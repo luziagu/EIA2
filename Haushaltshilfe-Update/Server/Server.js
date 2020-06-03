@@ -30,7 +30,7 @@ var haushaltshilfe;
         console.log("what's up?");
         console.log(_request.url);
         _response.setHeader("content-type", "text/html; charset=utf-8");
-        _response.setHeader("Access-Content-Allow-Origin", "*");
+        _response.setHeader("Access-Control-Allow-Origin", "*");
         if (_request.url) {
             let url = Url.parse(_request.url, true);
             for (let key in url.query) {
