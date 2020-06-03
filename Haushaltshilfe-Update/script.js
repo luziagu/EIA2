@@ -4,7 +4,7 @@ var haushaltshilfe;
     window.addEventListener("load", handleLoad);
     let totalcost = 0;
     //let url: string = "index.html"; 
-    let url = "https://haushaltshilfe-app.herokuapp.com/";
+    let url = "http://localhost:5001";
     async function handleLoad(_event) {
         let response = await fetch("Data.json");
         let offer = await response.text();
