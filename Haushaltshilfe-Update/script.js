@@ -4,7 +4,7 @@ var haushaltshilfe;
     window.addEventListener("load", handleLoad);
     let totalcost = 0;
     //let url: string = "index.html"; 
-    let url = "http://localhost:5001";
+    let url = "http://localhost:5000";
     async function handleLoad(_event) {
         let response = await fetch("Data.json");
         let offer = await response.text();

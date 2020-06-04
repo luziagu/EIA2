@@ -4,7 +4,7 @@
   "description": "Haushaltshilfe",
   "main": "",
   "scripts": {
-    "start": "node Haushaltshilfe-Update/Server/Server.js"
+    "start": "node Haushaltshilfe-Update/Server/Server.js remote"
   },
   "repository": {
     "type": "git",

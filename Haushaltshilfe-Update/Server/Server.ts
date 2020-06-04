@@ -2,6 +2,7 @@ import * as Http from "http";
 import * as Url from "url"; 
 import * as Mongo from "mongodb"; 
 
+
 export namespace haushaltshilfe {
     interface Order {
         [type: string]: string | string[] | undefined; 
@@ -12,7 +13,7 @@ export namespace haushaltshilfe {
     if (port == undefined )
     port = 5001; 
 
-    let databaseUrl: string = "mongodb://localhost:27017";
+    let databaseUrl: string = "mongodb+srv://Luziagu:<password>@eia2-lozyt.mongodb.net/<dbname>?retryWrites=true&w=majority";
     startServer(port);
     connectToDatabase(databaseUrl); 
 
