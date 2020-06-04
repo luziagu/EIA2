@@ -2,7 +2,7 @@ namespace haushaltshilfe {
     window.addEventListener("load", handleLoad);
     let totalcost: number = 0;
     //let url: string = "index.html"; 
-    let url: string = "http://localhost:5001"; 
+    let url: string = "https://haushaltshilfe-app.herokuapp.com/"; 
 
     async function handleLoad(_event: Event): Promise<void> {
 
