@@ -2,7 +2,7 @@ namespace haushaltshilfe {
     window.addEventListener("load", handleLoad);
     let totalcost: number = 0;
     //let url: string = "index.html"; 
-    let url: string = "https://haushaltshilfe-app.herokuapp.com/"; 
+    let serverUrl: string = "https://haushaltshilfe-app.herokuapp.com/"; 
 
     async function handleLoad(_event: Event): Promise<void> {
 
@@ -71,7 +71,7 @@ namespace haushaltshilfe {
             console.log("Send order"); 
             let formData: FormData = new FormData(document.forms[0]);
             let query: URLSearchParams = new URLSearchParams(<any>formData);
-            let response: Response = await fetch(url + "?" + query.toString()) ; 
+            let response: Response = await fetch(serverUrl + "?" + query.toString()) ; 
             let responseText: string = await response.text(); 
             alert("Dein gesamter Einkauf kostet: " + totalcost.toFixed(2) + "€" + "Das hast du bestellt: " + responseText ); 
 

@@ -9,7 +9,7 @@ var haushaltshilfe;
     let port = process.env.PORT;
     if (port == undefined)
         port = 5001;
-    let databaseUrl = "mongodb://localhost:27017";
+    let databaseUrl = "mongodb+srv://Luziagu:<password>@eia2-lozyt.mongodb.net/<dbname>?retryWrites=true&w=majority";
     startServer(port);
     connectToDatabase(databaseUrl);
     function startServer(_port) {
