@@ -43,8 +43,17 @@ var haushaltshilfe;
         _response.write("");
         _response.end();
     }
+    let anyOrder = [];
+    async function retrieveOrders() {
+        let cursor = await orders.find();
+        await cursor.forEach(revealOrders);
+    }
     function storeOrder(_order) {
         orders.insert(_order);
+    }
+    function revealOrders(_item) {
+        let jsonString = JSON.stringify(_item);
+        anyOrder.push(jsonString);
     }
 })(haushaltshilfe = exports.haushaltshilfe || (exports.haushaltshilfe = {}));
 //# sourceMappingURL=Server.js.map

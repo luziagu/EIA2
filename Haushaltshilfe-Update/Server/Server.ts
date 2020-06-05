@@ -62,8 +62,24 @@ export namespace haushaltshilfe {
 
     }
 
+
+    let anyOrder: string[] = []; 
+    async function retrieveOrders(): Promise<void> {
+
+        let cursor: Mongo.Cursor<any> = await orders.find(); 
+        await cursor.forEach(revealOrders); 
+    }
+
+
+
     function storeOrder(_order: Order): void {
         orders.insert(_order); 
+    }
+
+    function revealOrders(_item:object): void {
+        let jsonString: string = JSON.stringify(_item); 
+        anyOrder.push(jsonString); 
+
     }
 }
 
