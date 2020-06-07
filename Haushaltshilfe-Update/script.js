@@ -11,16 +11,14 @@ var haushaltshilfe;
         let data = JSON.parse(offer);
         haushaltshilfe.generateContent(data);
         console.log("verknüpft");
-        let showButton = document.querySelector("#show");
-        let hideButton = document.querySelector("#hide");
-        showButton.addEventListener("click", showDatabaseContent);
-        hideButton.addEventListener("click", hideDatabaseContent);
         let einkauf = document.querySelector("#Einkaufen");
         let haushalt = document.querySelector("#Householdtasks");
         let fieldeinkauf = document.querySelector("#fieldeinkauf");
         let fieldhaus = document.querySelector("#fieldhaus");
         let geteinkauf = document.querySelector("#buttoneinkauf");
         let gethaushalt = document.querySelector("#buttonhausarbeiten");
+        let showButton = document.querySelector("#show");
+        let hideButton = document.querySelector("#hide");
         //let fertigeBestellung: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#buttonFertig");
         let submit = document.querySelector("button#buttonFertig");
         console.log(submit);
@@ -30,6 +28,8 @@ var haushaltshilfe;
         geteinkauf.addEventListener("click", handleChange);
         gethaushalt.addEventListener("click", handleChange);
         submit.addEventListener("click", sendInOrder);
+        showButton.addEventListener("click", showDatabaseContent);
+        hideButton.addEventListener("click", hideDatabaseContent);
         //addButtonItem.addEventListener("click", addNewRowShopping);
         function showfieldset() {
             if (einkauf.checked == true) {

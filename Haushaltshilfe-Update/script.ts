@@ -9,15 +9,12 @@ namespace haushaltshilfe {
         let response: Response = await fetch("Data.json"); 
         let offer: string = await response.text(); 
         let data: Data = JSON.parse(offer); 
-
+        
         generateContent(data);
 
         console.log("verknüpft"); 
 
-        let showButton: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#show");
-        let hideButton: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#hide");
-        showButton.addEventListener("click", showDatabaseContent);
-        hideButton.addEventListener("click", hideDatabaseContent);
+        
 
         let einkauf: HTMLInputElement = <HTMLInputElement>document.querySelector("#Einkaufen");
         let haushalt: HTMLInputElement = <HTMLInputElement>document.querySelector("#Householdtasks");
@@ -27,6 +24,10 @@ namespace haushaltshilfe {
 
         let geteinkauf: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#buttoneinkauf");
         let gethaushalt: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#buttonhausarbeiten");
+
+        let showButton: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#show");
+        let hideButton: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#hide");
+
        
         //let fertigeBestellung: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#buttonFertig");
         let submit: HTMLButtonElement = <HTMLButtonElement>document.querySelector("button#buttonFertig"); 
@@ -40,6 +41,9 @@ namespace haushaltshilfe {
         gethaushalt.addEventListener("click", handleChange);
 
         submit.addEventListener("click", sendInOrder); 
+
+        showButton.addEventListener("click", showDatabaseContent);
+        hideButton.addEventListener("click", hideDatabaseContent);
 
        
 
