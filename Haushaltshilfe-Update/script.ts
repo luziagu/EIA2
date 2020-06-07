@@ -14,6 +14,11 @@ namespace haushaltshilfe {
 
         console.log("verknüpft"); 
 
+        let showButton: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#show");
+        let hideButton: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#hide");
+        showButton.addEventListener("click", showDatabaseContent);
+        hideButton.addEventListener("click", hideDatabaseContent);
+
         let einkauf: HTMLInputElement = <HTMLInputElement>document.querySelector("#Einkaufen");
         let haushalt: HTMLInputElement = <HTMLInputElement>document.querySelector("#Householdtasks");
 
@@ -99,10 +104,7 @@ namespace haushaltshilfe {
         let divhaushalt: HTMLDivElement = <HTMLDivElement>document.querySelector("#divhaushalt");
         let gesamt: HTMLSpanElement = <HTMLSpanElement>document.querySelector("#gesamt");
 
-        let showButton: HTMLButtonElement= <HTMLButtonElement>document.querySelector("#show");
-        let hideButton: HTMLButtonElement = <HTMLButtonElement>document.querySelector("#hide");
-        showButton.addEventListener("click", showDatabaseContent);
-        hideButton.addEventListener("click", hideDatabaseContent);
+        
 
         let formData: FormData = new FormData(document.forms[0]);
 
