@@ -178,7 +178,7 @@ var haushaltshilfe;
     }
     async function showDatabaseContent(_event) {
         console.log("Ich wurde geklickt");
-        let response = await fetch(URL + "?" + "getOrders=yes");
+        let response = await fetch(URL + "?" + "getorders=yes");
         let databaseContent = document.querySelector("#databaseContent");
         databaseContent.innerHTML = "";
         let responseText = await response.text();

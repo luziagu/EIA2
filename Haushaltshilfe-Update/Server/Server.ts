@@ -50,7 +50,7 @@ export namespace haushaltshilfe {
                // _response.write(key + ":" + url.query[key]); 
             //}
 
-            if (_request.url == "/?getOrders=yes") { //Wenn ein url angefraht wird, dann..
+            if (_request.url == "/?getorders=yes") { //Wenn ein url angefraht wird, dann..
                 let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
                 let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, options);
                 await mongoClient.connect(); // Mongo client wird verbindet. 
