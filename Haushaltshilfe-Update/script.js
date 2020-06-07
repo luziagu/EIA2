@@ -66,6 +66,10 @@ var haushaltshilfe;
         let diveinkauf = document.querySelector("#diveinkauf");
         let divhaushalt = document.querySelector("#divhaushalt");
         let gesamt = document.querySelector("#gesamt");
+        let showButton = document.querySelector("#show");
+        let hideButton = document.querySelector("#hide");
+        showButton.addEventListener("click", showDatabaseContent);
+        hideButton.addEventListener("click", hideDatabaseContent);
         let formData = new FormData(document.forms[0]);
         for (let entry of formData) {
             let item = document.querySelector("[value='" + entry[1] + "']");
@@ -171,6 +175,39 @@ var haushaltshilfe;
             let getgrandparentdiv = getparentdiv.parentNode;
             getgrandparentdiv.removeChild(getparentdiv);
         }
+    }
+    async function showDatabaseContent(_event) {
+        let response = await fetch(URL + "?" + "getOrders=yes");
+        let databaseContent = document.querySelector("#databaseContent");
+        databaseContent.innerHTML = "";
+        let responseText = await response.text();
+        let replace = responseText.replace(/\\|{|}|"|/g, "");
+        console.log(replace);
+        for (let entry of replace) {
+            switch (entry) {
+                case ("_"):
+                    databaseContent.innerHTML += "<br>" + entry;
+                    break;
+                case ("["):
+                    break;
+                case ("]"):
+                    break;
+                case (","):
+                    databaseContent.innerHTML += "<br>";
+                    break;
+                case (":"):
+                    databaseContent.innerHTML += entry + " ";
+                    break;
+                default:
+                    databaseContent.innerHTML += "" + entry;
+                    break;
+            }
+        }
+        console.log(responseText);
+    }
+    function hideDatabaseContent() {
+        let databaseContent = document.querySelector("#databaseContent");
+        databaseContent.innerHTML = "";
     }
 })(haushaltshilfe || (haushaltshilfe = {}));
 //# sourceMappingURL=script.js.map
