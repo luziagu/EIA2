@@ -261,6 +261,8 @@ namespace haushaltshilfe {
     }
     async function showDatabaseContent(_event: Event): Promise<void> {
 
+        console.log("Ich wurde geklickt"); 
+
         let response: Response = await fetch(URL + "?" + "getOrders=yes");
         let databaseContent: HTMLSpanElement = <HTMLSpanElement>document.querySelector("#databaseContent");
         databaseContent.innerHTML = "";
