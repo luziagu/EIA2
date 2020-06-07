@@ -267,7 +267,7 @@ namespace haushaltshilfe {
 
         console.log("Ich wurde geklickt"); 
 
-        let response: Response = await fetch(URL + "?" + "getorders=yes");
+        let response: Response = await fetch(URL + "?" + "getOrders=yes");
         let databaseContent: HTMLSpanElement = <HTMLSpanElement>document.querySelector("#databaseContent");
         databaseContent.innerHTML = "";
         let responseText: string = await response.text();

@@ -37,11 +37,11 @@ var haushaltshilfe;
             //for (let key in url.query) {
             // _response.write(key + ":" + url.query[key]); 
             //}
-            if (_request.url == "/?getorders=yes") { //Wenn ein url angefraht wird, dann..
+            if (_request.url == "/?getOrders=yes") { //Wenn ein url angefraht wird, dann..
                 let options = { useNewUrlParser: true, useUnifiedTopology: true };
                 let mongoClient = new Mongo.MongoClient(databaseUrl, options);
                 await mongoClient.connect(); // Mongo client wird verbindet. 
-                let orders = mongoClient.db("haushaltshilfe").collection("orders"); //Hier wird der CLient Household und in dieser die collection Orders erstellt. 
+                let orders = mongoClient.db("Haushaltshilfe").collection("orders"); //Hier wird der CLient Household und in dieser die collection Orders erstellt. 
                 let mongoCursor = orders.find();
                 await mongoCursor.forEach(retrieveOrder); //Es soll gewartet werden und die Funktion retrieveOrder wird dann für jeden Aufruf von Cursor aufgerufen.  
                 let jsonString = JSON.stringify(anyOrder);
