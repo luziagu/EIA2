@@ -179,7 +179,7 @@ var haushaltshilfe;
     async function showDatabaseContent(_event) {
         console.log("Ich wurde geklickt");
         let databaseContent = document.querySelector("#databaseContent");
-        let response = await fetch(URL + "?" + "getorders=yes");
+        let response = await fetch(serverUrl + "?" + "getorders=yes");
         databaseContent.innerHTML = "";
         let responseText = await response.text();
         let replace = responseText.replace(/\\|{|}|"|/g, "");
