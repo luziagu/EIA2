@@ -37,7 +37,8 @@ export namespace haushaltshilfe {
         console.log("Database connection", orders != undefined); 
     }
 
-    function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): void {
+    let anyOrder: string[] = []; 
+    async function handleRequest(_request: Http.IncomingMessage, _response: Http.ServerResponse): Promise<void>  {
         console.log("what's up?"); 
         console.log(_request.url); 
 
@@ -45,29 +46,45 @@ export namespace haushaltshilfe {
         _response.setHeader("Access-Control-Allow-Origin", "*"); 
         if (_request.url) {
             let url: Url.UrlWithParsedQuery = Url.parse(_request.url, true); 
-            for (let key in url.query) {
-                _response.write(key + ":" + url.query[key]); 
-            }
+            //for (let key in url.query) {
+               // _response.write(key + ":" + url.query[key]); 
+            //}
 
-            let jsonString: string = JSON.stringify(url.query); 
-            _response.write(jsonString); 
+            if (_request.url == "/?getOrders=yes") { //Wenn ein url angefraht wird, dann..
+                let options: Mongo.MongoClientOptions = { useNewUrlParser: true, useUnifiedTopology: true };
+                let mongoClient: Mongo.MongoClient = new Mongo.MongoClient(databaseUrl, options);
+                await mongoClient.connect(); // Mongo client wird verbindet. 
+                let orders: Mongo.Collection = mongoClient.db("Household").collection("Orders"); //Hier wird der CLient Household und in dieser die collection Orders erstellt. 
+                let mongoCursor: Mongo.Cursor<any> = orders.find();
+                await mongoCursor.forEach(retrieveOrder); //Es soll gewartet werden und die Funktion retrieveOrder wird dann für jeden Aufruf von Cursor aufgerufen.  
+                let jsonString: string = JSON.stringify(anyOrder);
+                let answer: string = jsonString.toString();
+                _response.write(answer);
+                anyOrder = [];
+            } else { // wenn nicht, dann soll eine Variable gebildet werden,
+                let jsonString: string = JSON.stringify(url.query);
+                _response.write(jsonString); //und diese als Antwort zurück geliefert werden
+                storeOrder(url.query); //Der url Query soll dann an die collection der Database geschickt/eingetragen werden
+            }
+            //let jsonString: string = JSON.stringify(url.query); 
+            //_response.write(jsonString); 
 
             storeOrder(url.query); 
 
 
         }
 
-        _response.write("");
-        _response.end(); 
+        _response.end(); //Antwort wird verschickt
 
     }
 
 
-    let anyOrder: string[] = []; 
-    async function retrieveOrders(): Promise<void> {
+    
 
-        let cursor: Mongo.Cursor<any> = await orders.find(); 
-        await cursor.forEach(revealOrders); 
+    function retrieveOrder(_order: Order): void {
+        let jsonString: string = JSON.stringify(_order); 
+        anyOrder.push(jsonString); // In das Array soll dann der jsonString gepusht werden 
+    
     }
 
 
@@ -76,10 +93,6 @@ export namespace haushaltshilfe {
         orders.insert(_order); 
     }
 
-    function revealOrders(_item:object): void {
-        let jsonString: string = JSON.stringify(_item); 
-        anyOrder.push(jsonString); 
-
-    }
+    
 }
 
