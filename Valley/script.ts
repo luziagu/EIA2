@@ -18,7 +18,7 @@ namespace Valley {
 
         drawBackground();
         drawSun({ x: 100, y: 75 });
-        drawCloud({ x: 500, y: 125 }, { x: 250, y: 75 });
+        drawCloud({ x: 350, y: 170 }, { x: 250, y: 75 });
         drawStreet({x: crc2.canvas.width / 2, y: horizon}, 100, 600); 
         drawMountains({x: 0, y: horizon}, 75, 200, "grey", "white");
         drawMountains({x: 0, y: horizon}, 50, 150, "darkgrey", "lightgrey");
