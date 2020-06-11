@@ -16,33 +16,28 @@ function init() {
     crc2.fillStyle = gradient;
     crc2.fillRect(0, 0, 200, 100);
     //Formen udn Linien 
-    /*crc2.fillStyle = "#FF0000";
+    crc2.fillStyle = "#FF0000";
     crc2.fillRect(0, 0.3, crc2.canvas.width, crc2.canvas.height);
-    
     crc2.beginPath();
-    crc2.arc(120, 70, 40, 0, 2 * Math.PI); //Links/Rechts-Höhe-Größe-Form des Kreises
+    crc2.arc(120, 70, 40, 0, 1.5 * Math.PI); //Links/Rechts-Höhe-Größe-Form des Kreises 
     crc2.strokeStyle = "yellow";
-    crc2.closePath(); // Was macht closePath?
+    crc2.closePath(); // Was macht closePath? 
     crc2.stroke();
-    
     crc2.beginPath();
     crc2.ellipse(100, 80, 50, 75, Math.PI / 4, 0, 2 * Math.PI);
     crc2.strokeStyle = "pink";
     crc2.stroke();
-    
     crc2.beginPath();
-    crc2.moveTo(75, 50); //Eckige Formen lassen sich darstellen
+    crc2.moveTo(75, 50); //Eckige Formen lassen sich darstellen 
     crc2.lineTo(110, 75); //mithilfe von line to
     crc2.lineTo(110, 25);
     crc2.closePath();
     crc2.stroke();
-    
-    
-    let path: Path2D = new Path2D(); // new Path2D: individuelles Pfadobjekt zu erzeugen und die
-                                    // Pfadanweisung darauf auszuführen. Pfad wird gespeichert und im Laufe des Programms wiederverwendet werden.
-                                    //ohne das der Algorithmus zur PFaderstellung wieder durchlaufen werden muss.
+    let path = new Path2D(); // new Path2D: individuelles Pfadobjekt zu erzeugen und die 
+    // Pfadanweisung darauf auszuführen. Pfad wird gespeichert und im Laufe des Programms wiederverwendet werden. 
+    //ohne das der Algorithmus zur PFaderstellung wieder durchlaufen werden muss. 
     path.arc(60, 60, 50, 0, 2 * Math.PI);
-    crc2.stroke(path);*/
+    crc2.stroke(path);
     //Pattern 
     /*let pattern: CanvasRenderingContext = document.createElement('canvas').getContext('2d');
     pattern.canvas.width = 40;
