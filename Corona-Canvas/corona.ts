@@ -21,8 +21,8 @@ namespace coronaVirus {
         drawBackground();
         drawHumanCell({x: 350, y: 170},  {x: 450, y: 450}); 
         showAntibodies ({x: 250, y: 370});
-        drawKillercell ({x: 250, y: 400}, {x: 450, y: 650});
-        drawParticles({x: 20, y: 100},  {x: 600, y: 600}); 
+        buildKillercells ({x: 250, y: 370}); 
+        drawParticles({x: 20, y: 700},  {x: 600, y: 600}); 
 
     }
 
@@ -150,10 +150,10 @@ namespace coronaVirus {
         
 
         for (let drawn: number = 0; drawn < 7; drawn++) {
-            _position.x = Math.random() * crc2.canvas.width / 1.4;
+            _position.x = Math.random() * crc2.canvas.width / 1.4; //Variieren der Werte
             _position.y = 450 + (20 * Math.random());
      
-            drawAntibodies({x: 250, y: 600}, {x: 450, y: 650});
+            drawAntibodies(_position, {x: 450, y: 650});
         }
     }
 
@@ -204,10 +204,24 @@ namespace coronaVirus {
 
     }
 
+    function buildKillercells (_position: Vector): void {
+
+        for (let drawn: number = 0; drawn < 5; drawn++) {
+            _position.x = Math.random() * crc2.canvas.width/ 1.8;
+            _position.y = 400 + (20 * Math.random());
+     
+            drawKillercell(_position, {x: 450, y: 350});
+        }
+    }
+
+    function drawCoronaCell (_position: Vector): void {
+
+
+    }
     function drawParticles (_position: Vector, _size: Vector ): void {
 
-        let nParticles: number = 80; 
-        let radiusParticle: number = 7; 
+        let nParticles: number = 90; 
+        let radiusParticle: number = 4; 
         let particle: Path2D = new Path2D(); 
         let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle); 
 
@@ -216,9 +230,6 @@ namespace coronaVirus {
         gradient.addColorStop(0, "HSLA(0, 100%, 100%, 20%)");
         gradient.addColorStop(0, "HSLA(0, 100%, 100%, 20%)");
         gradient.addColorStop(1, "#ffcc01");
-        
-
-
         
 
         crc2.save(); 
@@ -239,6 +250,7 @@ namespace coronaVirus {
         crc2.restore();
 
     }
+
 
 
 

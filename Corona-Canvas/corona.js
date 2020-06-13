@@ -12,8 +12,8 @@ var coronaVirus;
         drawBackground();
         drawHumanCell({ x: 350, y: 170 }, { x: 450, y: 450 });
         showAntibodies({ x: 250, y: 370 });
-        drawKillercell({ x: 250, y: 400 }, { x: 450, y: 650 });
-        drawParticles({ x: 20, y: 100 }, { x: 600, y: 600 });
+        buildKillercells({ x: 250, y: 370 });
+        drawParticles({ x: 20, y: 700 }, { x: 600, y: 600 });
     }
     function drawBackground() {
         console.log("Background");
@@ -99,9 +99,9 @@ var coronaVirus;
     }
     function showAntibodies(_position) {
         for (let drawn = 0; drawn < 7; drawn++) {
-            _position.x = Math.random() * crc2.canvas.width / 1.4;
+            _position.x = Math.random() * crc2.canvas.width / 1.4; //Variieren der Werte
             _position.y = 450 + (20 * Math.random());
-            drawAntibodies({ x: 250, y: 600 }, { x: 450, y: 650 });
+            drawAntibodies(_position, { x: 450, y: 650 });
         }
     }
     function drawKillercell(_position, _size) {
@@ -141,9 +141,18 @@ var coronaVirus;
         }
         crc2.restore();*/
     }
+    function buildKillercells(_position) {
+        for (let drawn = 0; drawn < 5; drawn++) {
+            _position.x = Math.random() * crc2.canvas.width / 1.8;
+            _position.y = 400 + (20 * Math.random());
+            drawKillercell(_position, { x: 450, y: 350 });
+        }
+    }
+    function drawCoronaCell(_position) {
+    }
     function drawParticles(_position, _size) {
-        let nParticles = 80;
-        let radiusParticle = 7;
+        let nParticles = 90;
+        let radiusParticle = 4;
         let particle = new Path2D();
         let gradient = crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle);
         particle.arc(0, 0, radiusParticle, 0, 2 * Math.PI);
