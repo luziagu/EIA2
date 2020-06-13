@@ -20,7 +20,7 @@ namespace coronaVirus {
         
         drawBackground();
         drawHumanCell({x: 350, y: 170},  {x: 450, y: 450}); 
-        drawAntibodies({x: 250, y: 600}, {x: 450, y: 650});
+        showAntibodies ({x: 250, y: 370});
         drawKillercell ({x: 250, y: 400}, {x: 450, y: 650});
         drawParticles({x: 20, y: 100},  {x: 600, y: 600}); 
 
@@ -96,6 +96,7 @@ namespace coronaVirus {
         crc2.restore();
 
     }
+    
 
 
     function drawAntibodies (_position: Vector, _size: Vector): void {
@@ -123,24 +124,37 @@ namespace coronaVirus {
         crc2.translate(_position.x, _position.y); 
 
 
-
+        
         
         /*for (let drawn: number = 0; drawn < nAntibodies; drawn++) {
 
             
-            buildAntibody.save(); 
+            
             let x: number = (Math.random() - 0.5) * _size.x; 
             let y: number = -(Math.random() * _size.y); 
             buildAntibody.translate(x, y); 
             buildAntibody.fill(antibodies); 
-            buildAntibody.restore(); 
+           
 
         }
+        */
 
-        buildAntibody.restore();*/
+        crc2.restore();
         
 
 
+    }
+
+    function showAntibodies (_position: Vector): void {
+        
+        
+
+        for (let drawn: number = 0; drawn < 7; drawn++) {
+            _position.x = Math.random() * crc2.canvas.width / 1.4;
+            _position.y = 450 + (20 * Math.random());
+     
+            drawAntibodies({x: 250, y: 600}, {x: 450, y: 650});
+        }
     }
 
     function drawKillercell (_position: Vector, _size: Vector): void {
@@ -187,9 +201,6 @@ namespace coronaVirus {
             crc2.restore(); 
         }
         crc2.restore();*/
-
-
-
 
     }
 

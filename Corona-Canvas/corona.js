@@ -11,7 +11,7 @@ var coronaVirus;
         crc2 = canvas.getContext("2d");
         drawBackground();
         drawHumanCell({ x: 350, y: 170 }, { x: 450, y: 450 });
-        drawAntibodies({ x: 250, y: 600 }, { x: 450, y: 650 });
+        showAntibodies({ x: 250, y: 370 });
         drawKillercell({ x: 250, y: 400 }, { x: 450, y: 650 });
         drawParticles({ x: 20, y: 100 }, { x: 600, y: 600 });
     }
@@ -86,16 +86,23 @@ var coronaVirus;
         /*for (let drawn: number = 0; drawn < nAntibodies; drawn++) {
 
             
-            buildAntibody.save();
+            
             let x: number = (Math.random() - 0.5) * _size.x;
             let y: number = -(Math.random() * _size.y);
             buildAntibody.translate(x, y);
             buildAntibody.fill(antibodies);
-            buildAntibody.restore();
+           
 
         }
-
-        buildAntibody.restore();*/
+        */
+        crc2.restore();
+    }
+    function showAntibodies(_position) {
+        for (let drawn = 0; drawn < 7; drawn++) {
+            _position.x = Math.random() * crc2.canvas.width / 1.4;
+            _position.y = 450 + (20 * Math.random());
+            drawAntibodies({ x: 250, y: 600 }, { x: 450, y: 650 });
+        }
     }
     function drawKillercell(_position, _size) {
         //let nKillerCell: number = 15;
