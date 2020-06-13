@@ -21,15 +21,17 @@ namespace coronaVirus {
         drawBackground();
         drawHumanCell({x: 350, y: 170},  {x: 450, y: 450}); 
         showAntibodies ({x: 250, y: 370});
-        buildKillercells ({x: 250, y: 370}); 
-        drawParticles({x: 20, y: 700},  {x: 600, y: 600}); 
+        buildKillercells ({x: 50, y: 270}); 
+        //drawCoronaCell ({x: 150, y: 150}); 
+        buildCorona ({x: 10, y: 20}); 
+        drawParticles({x: 190, y: 700},  {x: 600, y: 600}); 
 
     }
 
     function drawBackground(): void {
         console.log("Background");
 
-        //Pattern
+        //Pattern - Hintergrund 
         let pattern: CanvasRenderingContext2D = <CanvasRenderingContext2D>document.createElement("canvas").getContext("2d");
         pattern.canvas.width = 100;
         pattern.canvas.height = 40;
@@ -61,6 +63,7 @@ namespace coronaVirus {
 
     function drawHumanCell (_position: Vector, _size: Vector ): void {
 
+        //Zeichenen der Cellen sowie das dunlizieren dieser 
         console.log("HumanCell", _position, _size);
         let nParticles: number = 40; 
         let radiusParticle: number = 20; 
@@ -75,8 +78,6 @@ namespace coronaVirus {
         gradient.addColorStop(1, "#E6E6FA");
         
 
-
-        
 
         crc2.save(); 
 
@@ -101,10 +102,8 @@ namespace coronaVirus {
 
     function drawAntibodies (_position: Vector, _size: Vector): void {
 
-        
-        //let nAntibodies: number = 15;
-        //let antibodies: Path2D = new Path2D(); 
-       
+    
+        //Zeichnen der Antikörper 
 
         crc2.beginPath();
         crc2.moveTo(_position.x, _position.y);
@@ -124,21 +123,6 @@ namespace coronaVirus {
         crc2.translate(_position.x, _position.y); 
 
 
-        
-        
-        /*for (let drawn: number = 0; drawn < nAntibodies; drawn++) {
-
-            
-            
-            let x: number = (Math.random() - 0.5) * _size.x; 
-            let y: number = -(Math.random() * _size.y); 
-            buildAntibody.translate(x, y); 
-            buildAntibody.fill(antibodies); 
-           
-
-        }
-        */
-
         crc2.restore();
         
 
@@ -147,7 +131,7 @@ namespace coronaVirus {
 
     function showAntibodies (_position: Vector): void {
         
-        
+        //Dublizieren der Antikörper 
 
         for (let drawn: number = 0; drawn < 7; drawn++) {
             _position.x = Math.random() * crc2.canvas.width / 1.4; //Variieren der Werte
@@ -159,29 +143,14 @@ namespace coronaVirus {
 
     function drawKillercell (_position: Vector, _size: Vector): void {
 
-        //let nKillerCell: number = 15;
         let radiusKillerCell: number = 25; 
-        //let KillerCell: Path2D = new Path2D(); 
-        //let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, radiusKillerCell); 
 
-
-        /*crc2.beginPath();
-        crc2.moveTo(_position.x, _position.y); 
-        crc2.arc(_position.x, _position.y, radiusKillerCell, 0.2 * Math.PI, 1.8 * Math.PI, false);
-        crc2.lineTo(_position.x, _position.y);
-        crc2.stroke();
-        //crc2.fillStyle = gradient;
-        crc2.fillStyle = "darkred"; 
-        //gradient.addColorStop(0, "darkblue");
-        //gradient.addColorStop(1, "#B0C4DE");
-        crc2.fill(); 
-        crc2.closePath();
-        crc2.save(); */
-
+        //Zeichnen einer Killerzelle 
         
         crc2.beginPath();
-        crc2.arc(100, 100, radiusKillerCell, 0.2 * Math.PI, 1.8 * Math.PI, false);
-        crc2.lineTo(100, 100);
+        crc2.moveTo(_position.x, _position.y);
+        crc2.arc(_position.x + 20, _position.y + 20, radiusKillerCell, 0.2 * Math.PI, 1.8 * Math.PI, false);
+        crc2.lineTo(_position.x + 20, _position.y + 20);
         crc2.closePath();
         crc2.fillStyle = "#FFDAB9";
         crc2.strokeStyle = "#FFDAB9";
@@ -190,34 +159,60 @@ namespace coronaVirus {
         crc2.save();
        
        
-
-        /*for (let drawn: number = 0; drawn < nKillerCell; drawn++) {
-
-            crc2.save(); 
-            let x: number = (Math.random() - 0.5) * _size.x; 
-            let y: number = -(Math.random() * _size.y); 
-            crc2.translate(x, y); 
-            crc2.fill(KillerCell); 
-            crc2.restore(); 
-        }
-        crc2.restore();*/
-
     }
 
     function buildKillercells (_position: Vector): void {
 
         for (let drawn: number = 0; drawn < 5; drawn++) {
-            _position.x = Math.random() * crc2.canvas.width/ 1.8;
-            _position.y = 400 + (20 * Math.random());
+            _position.x = Math.random() * crc2.canvas.width / 1.8;
+            _position.y = 300 + (20 * Math.random());
      
-            drawKillercell(_position, {x: 450, y: 350});
+            drawKillercell(_position, {x: 150 , y: 150});
         }
     }
 
-    function drawCoronaCell (_position: Vector): void {
+    function drawCoronaCell (_position: Vector,  _size: Vector): void {
+        
+        //Zeichen der Stängel 
+        for (let i: number = 0; i < 8; i++) {
+            crc2.beginPath(); 
+            crc2.rotate(20); 
+            crc2.moveTo(0, 40); 
+            crc2.lineTo(0, 45); 
+            crc2.strokeStyle = "#B43104"; 
+            crc2.lineWidth = 2; 
+            crc2.stroke(); 
+            crc2.closePath(); 
+        }
+
+
+        //Zeichnen des Kreises 
+        crc2.beginPath();
+        crc2.arc(0, 0, 40, 0, 2 * Math.PI);
+        crc2.fillStyle = "#ae2d16";
+        crc2.fill();
+        crc2.closePath();
+        crc2.restore();
 
 
     }
+
+    function buildCorona (_position: Vector): void {
+        let radius: number; 
+        let position: number = 10; 
+
+        //Fünf Coronazellen sollen gezeichnet werden 
+        for (let i: number = 0; i < 5; i++) {
+            radius = 50;
+            _position.x = position + radius;
+            position = _position.x + radius;
+            _position.y = 200 + (50 * Math.random());
+
+            drawCoronaCell (_position, {x: 20, y: 20}); 
+        }
+    }
+
+    //Luftpartikel werden gezeichnet und dubliziert 
     function drawParticles (_position: Vector, _size: Vector ): void {
 
         let nParticles: number = 90; 
