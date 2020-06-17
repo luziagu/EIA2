@@ -21,10 +21,10 @@ namespace coronaVirus {
         drawBackground();
         drawHumanCell({x: 350, y: 170},  {x: 450, y: 450}); 
         showAntibodies ({x: 250, y: 370});
-        buildKillercells ({x: 50, y: 270}); 
+        buildKillercells ({x: 50, y: 670}); 
         //drawCoronaCell ({x: 150, y: 150}); 
         buildCorona ({x: 10, y: 20}); 
-        drawParticles({x: 190, y: 700},  {x: 600, y: 600}); 
+        drawParticles({x: 40, y: 500},  {x: 600, y: 600}); 
 
     }
 
@@ -157,6 +157,7 @@ namespace coronaVirus {
         crc2.fill();
         crc2.stroke();
         crc2.save();
+        crc2.restore();
        
        
     }
@@ -177,8 +178,8 @@ namespace coronaVirus {
         for (let i: number = 0; i < 8; i++) {
             crc2.beginPath(); 
             crc2.rotate(20); 
-            crc2.moveTo(0, 40); 
-            crc2.lineTo(0, 45); 
+            crc2.moveTo(_position.x + 0, _position.y + 0); 
+            crc2.lineTo(_position.x + 0, _position.y + 10); 
             crc2.strokeStyle = "#B43104"; 
             crc2.lineWidth = 2; 
             crc2.stroke(); 
@@ -188,28 +189,34 @@ namespace coronaVirus {
 
         //Zeichnen des Kreises 
         crc2.beginPath();
-        crc2.arc(0, 0, 40, 0, 2 * Math.PI);
+        crc2.arc(_position.x + 0, _position.y + 0 , 40, 0, 2 * Math.PI);
         crc2.fillStyle = "#ae2d16";
         crc2.fill();
         crc2.closePath();
-        crc2.restore();
+        //crc2.save(); 
+        //crc2.translate(_position.x, _position.y); 
+        //crc2.restore();
 
 
     }
 
     function buildCorona (_position: Vector): void {
         let radius: number; 
-        let position: number = 10; 
+        let position: number = 20; 
 
         //Fünf Coronazellen sollen gezeichnet werden 
         for (let i: number = 0; i < 5; i++) {
-            radius = 50;
+            radius = 5;
             _position.x = position + radius;
             position = _position.x + radius;
-            _position.y = 200 + (50 * Math.random());
+            _position.y = 300 + (50 * Math.random());
 
             drawCoronaCell (_position, {x: 20, y: 20}); 
         }
+
+        crc2.save(); 
+        crc2.translate(_position.x, _position.y); 
+        crc2.restore();
     }
 
     //Luftpartikel werden gezeichnet und dubliziert 
@@ -225,13 +232,14 @@ namespace coronaVirus {
         gradient.addColorStop(0, "HSLA(0, 100%, 100%, 20%)");
         gradient.addColorStop(0, "HSLA(0, 100%, 100%, 20%)");
         gradient.addColorStop(1, "#ffcc01");
-        
+        crc2.fillStyle = gradient;
 
         crc2.save(); 
 
         crc2.translate(_position.x, _position.y); 
 
-        crc2.fillStyle = gradient;
+        
+        crc2.restore(); 
 
         for (let drawn: number = 0; drawn < nParticles; drawn++) {
 
@@ -242,7 +250,7 @@ namespace coronaVirus {
             crc2.fill(particle); 
             crc2.restore(); 
         }
-        crc2.restore();
+        //crc2.restore();
 
     }
 
