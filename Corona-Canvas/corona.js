@@ -14,8 +14,8 @@ var coronaVirus;
         showAntibodies({ x: 250, y: 370 });
         buildKillercells({ x: 50, y: 670 });
         //drawCoronaCell ({x: 150, y: 150}); 
-        buildCorona({ x: 10, y: 20 });
-        drawParticles({ x: 40, y: 500 }, { x: 600, y: 600 });
+        buildCorona({ x: 50, y: 100 });
+        drawParticles({ x: 40, y: 200 }, { x: 400, y: 500 });
     }
     function drawBackground() {
         console.log("Background");
@@ -120,11 +120,11 @@ var coronaVirus;
     function drawCoronaCell(_position, _size) {
         crc2.translate(_position.x, _position.y);
         //Zeichen der Stängel 
-        for (let i = 0; i < 8; i++) {
+        for (let i = 0; i < 10; i++) {
             crc2.beginPath();
             crc2.rotate(20);
             crc2.moveTo(0, 0);
-            crc2.lineTo(0, 10);
+            crc2.lineTo(0, 40);
             crc2.strokeStyle = "#B43104";
             crc2.lineWidth = 2;
             crc2.stroke();
@@ -132,7 +132,7 @@ var coronaVirus;
         }
         //Zeichnen des Kreises 
         crc2.beginPath();
-        crc2.arc(0, 0, 40, 0, 2 * Math.PI);
+        crc2.arc(0, 0, 30, 0, 2 * Math.PI);
         crc2.fillStyle = "#ae2d16";
         crc2.fill();
         crc2.closePath();
@@ -144,8 +144,8 @@ var coronaVirus;
         let radius;
         let position = 20;
         //Fünf Coronazellen sollen gezeichnet werden 
-        for (let i = 0; i < 5; i++) {
-            radius = 5;
+        for (let i = 0; i < 8; i++) {
+            radius = 2;
             _position.x = position + radius;
             position = _position.x + radius;
             _position.y = 300 + (50 * Math.random());
