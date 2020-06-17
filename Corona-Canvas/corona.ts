@@ -174,12 +174,14 @@ namespace coronaVirus {
 
     function drawCoronaCell (_position: Vector,  _size: Vector): void {
         
+        crc2.translate(_position.x, _position.y); 
         //Zeichen der Stängel 
         for (let i: number = 0; i < 8; i++) {
+            
             crc2.beginPath(); 
             crc2.rotate(20); 
-            crc2.moveTo(_position.x + 0, _position.y + 0); 
-            crc2.lineTo(_position.x + 0, _position.y + 10); 
+            crc2.moveTo( 0,  0); 
+            crc2.lineTo( 0,   10); 
             crc2.strokeStyle = "#B43104"; 
             crc2.lineWidth = 2; 
             crc2.stroke(); 
@@ -189,7 +191,7 @@ namespace coronaVirus {
 
         //Zeichnen des Kreises 
         crc2.beginPath();
-        crc2.arc(_position.x + 0, _position.y + 0 , 40, 0, 2 * Math.PI);
+        crc2.arc( 0,  0 , 40, 0, 2 * Math.PI);
         crc2.fillStyle = "#ae2d16";
         crc2.fill();
         crc2.closePath();
