@@ -23,10 +23,10 @@ var coronaVirusAnimation;
             if (this.position.y > coronaVirusAnimation.crc2.canvas.height)
                 this.position.y -= coronaVirusAnimation.crc2.canvas.height;
         }
+        //die Partikel sollen gezeichnet werden, wie zuvor. 
         draw(_position, _size) {
             coronaVirusAnimation.crc2.save();
             let circle = 2 * Math.PI;
-            let nParticles = 90;
             let radiusParticle = 4;
             let particle = new Path2D();
             let gradient = coronaVirusAnimation.crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle);
@@ -38,14 +38,6 @@ var coronaVirusAnimation;
             coronaVirusAnimation.crc2.fillStyle = gradient;
             coronaVirusAnimation.crc2.translate(_position.x, _position.y);
             coronaVirusAnimation.crc2.restore();
-            for (let drawn = 0; drawn < nParticles; drawn++) {
-                coronaVirusAnimation.crc2.save();
-                let x = (Math.random() - 0.5) * _size.x;
-                let y = -(Math.random() * _size.y);
-                coronaVirusAnimation.crc2.translate(x, y);
-                coronaVirusAnimation.crc2.fill(particle);
-                coronaVirusAnimation.crc2.restore();
-            }
         }
     }
     coronaVirusAnimation.Particles = Particles;

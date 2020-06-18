@@ -35,11 +35,12 @@ namespace coronaVirusAnimation  {
 
         }
 
+        //die Partikel sollen gezeichnet werden, wie zuvor. 
+
         draw(_position: Vector, _size: Vector): void {
 
             crc2.save(); 
             let circle: number = 2 * Math.PI;
-            let nParticles: number = 90; 
             let radiusParticle: number = 4; 
             let particle: Path2D = new Path2D(); 
             let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle); 
@@ -58,15 +59,7 @@ namespace coronaVirusAnimation  {
         
             crc2.restore(); 
 
-            for (let drawn: number = 0; drawn < nParticles; drawn++) {
-
-                crc2.save(); 
-                let x: number = (Math.random() - 0.5) * _size.x; 
-                let y: number = -(Math.random() * _size.y); 
-                crc2.translate(x, y); 
-                crc2.fill(particle); 
-                crc2.restore(); 
-            }
+            
         }
     }
 
