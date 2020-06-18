@@ -9,9 +9,11 @@ namespace coronaVirus {
     
     let crc2: CanvasRenderingContext2D; 
 
+    
+
     window.addEventListener("load", handleLoad);
 
-    function handleLoad(_event: Event): void {
+    export function handleLoad(_event: Event): void {
         let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.querySelector("canvas"); 
         if (!canvas)
             return; 
@@ -22,9 +24,9 @@ namespace coronaVirus {
         drawHumanCell({x: 350, y: 170},  {x: 450, y: 450}); 
         showAntibodies ({x: 250, y: 370});
         buildKillercells ({x: 50, y: 670}); 
-        //drawCoronaCell ({x: 150, y: 150}); 
         buildCorona ({x: 50, y: 100}); 
-        drawParticles({x: 40, y: 200},  {x: 400, y: 500}); 
+        drawParticles({x: 40, y: 200},  {x: 400, y: 500});
+        
 
     }
 
@@ -255,6 +257,8 @@ namespace coronaVirus {
         //crc2.restore();
 
     }
+
+    
 
 
 

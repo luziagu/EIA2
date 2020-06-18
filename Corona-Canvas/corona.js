@@ -13,10 +13,10 @@ var coronaVirus;
         drawHumanCell({ x: 350, y: 170 }, { x: 450, y: 450 });
         showAntibodies({ x: 250, y: 370 });
         buildKillercells({ x: 50, y: 670 });
-        //drawCoronaCell ({x: 150, y: 150}); 
         buildCorona({ x: 50, y: 100 });
         drawParticles({ x: 40, y: 200 }, { x: 400, y: 500 });
     }
+    coronaVirus.handleLoad = handleLoad;
     function drawBackground() {
         console.log("Background");
         //Pattern - Hintergrund 
