@@ -22,13 +22,13 @@ namespace coronaVirusAnimation {
 
         
         drawBackground();
-        //createCells(); 
-        //drawHumanCell({x: 350, y: 170},  {x: 450, y: 450}); 
-        //showAntibodies ({x: 250, y: 370});
+        createCells(); 
+        drawHumanCell({x: 350, y: 170},  {x: 450, y: 450}); 
+        showAntibodies ({x: 250, y: 370});
         //buildKillercells ({x: 50, y: 670}); 
        // buildCorona ({x: 50, y: 100}); 
         //drawParticles({x: 40, y: 200},  {x: 400, y: 500});
-        //window.setInterval(animation, 20); 
+        window.setInterval(animation, 20); 
 
     }
 
@@ -65,7 +65,7 @@ namespace coronaVirusAnimation {
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
     }
 
-    /*function createCells(): void {
+    function createCells(): void {
         let radius: number; 
         let positionCorona: number = 10; 
         let positionX: number; 
@@ -300,7 +300,7 @@ namespace coronaVirusAnimation {
 
     }*/
 
-    /*function animation(): void {
+    function animation(): void {
 
         for (let Particles of particle) {
             Particles.move(1 / 50);
@@ -312,7 +312,7 @@ namespace coronaVirusAnimation {
             corona.draw(corona.position);
         }
 
-    }*/
+    }
 
 
 
