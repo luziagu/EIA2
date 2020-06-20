@@ -7,6 +7,7 @@ namespace coronaVirusAnimation {
     let coronas: Corona [] = [];
     let particles: Particle [] = [];
     let antibodys: Antibody[] = []; 
+    let killercells: Killercell[] = [];
     //let humanCells: Humancell [] = [];
     
     let backgroundImage: ImageData; 
@@ -26,6 +27,9 @@ namespace coronaVirusAnimation {
         
         drawBackground();
         createCorona(7);
+        createAntibody(15); 
+        createKillerCell(5); 
+        createParticel(50);
 
         
 
@@ -76,7 +80,29 @@ namespace coronaVirusAnimation {
 
     }
 
-    
+    function createAntibody (_nAntibody: number): void {
+        console.log("Create Antibody"); 
+        for (let i: number = 0; i < _nAntibody; i++){
+            let antibody: Antibody = new Antibody(1.0); 
+            antibodys.push(antibody); 
+        }
+    }
+
+    function createKillerCell (_nKiller: number): void {
+        console.log("Create Antibody"); 
+        for (let i: number = 0; i < _nKiller; i++) {
+            let Killercell: Killercell = new Killer(1.0); 
+            killercells.push(Killercell); 
+        }
+    }
+
+    function createParticel (_nParticel: number): void {
+        console.log("Create Particel"); 
+        for (let i: number = 0; i < _nParticel; i++) {
+            let particel: Particle = new Particle(1.0); 
+            particles.push(particel); 
+        }
+    }
     
 
     function createHumanCell (_position: Vector, _size: Vector ): void {

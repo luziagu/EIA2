@@ -5,6 +5,7 @@ var coronaVirusAnimation;
     let coronas = [];
     let particles = [];
     let antibodys = [];
+    let killercells = [];
     //let humanCells: Humancell [] = [];
     let backgroundImage;
     window.addEventListener("load", handleLoad);
@@ -15,6 +16,9 @@ var coronaVirusAnimation;
         coronaVirusAnimation.crc2 = canvas.getContext("2d");
         drawBackground();
         createCorona(7);
+        createAntibody(15);
+        createKillerCell(5);
+        createParticel(50);
         window.setInterval(animation, 20);
     }
     coronaVirusAnimation.handleLoad = handleLoad;
@@ -50,6 +54,27 @@ var coronaVirusAnimation;
         for (let i = 0; i < _nCorona; i++) {
             let corona = new coronaVirusAnimation.Corona(1.0);
             coronas.push(corona);
+        }
+    }
+    function createAntibody(_nAntibody) {
+        console.log("Create Antibody");
+        for (let i = 0; i < _nAntibody; i++) {
+            let antibody = new coronaVirusAnimation.Antibody(1.0);
+            antibodys.push(antibody);
+        }
+    }
+    function createKillerCell(_nKiller) {
+        console.log("Create Antibody");
+        for (let i = 0; i < _nKiller; i++) {
+            let Killercell = new Killer(1.0);
+            killercells.push(Killercell);
+        }
+    }
+    function createParticel(_nParticel) {
+        console.log("Create Particel");
+        for (let i = 0; i < _nParticel; i++) {
+            let particel = new coronaVirusAnimation.Particle(1.0);
+            particles.push(particel);
         }
     }
     function createHumanCell(_position, _size) {
