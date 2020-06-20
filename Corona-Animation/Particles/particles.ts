@@ -1,6 +1,6 @@
 namespace coronaVirusAnimation  {
 
-    export class Particles {
+    export class Particle {
         position: Vector; 
         velocity: Vector; 
         rotate: number; 

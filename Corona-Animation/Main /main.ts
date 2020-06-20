@@ -4,9 +4,12 @@ namespace coronaVirusAnimation {
     console.log("load");
 
 
-    let coronas: Corona[] = [];
-    let particle: Particles[] = [];
+    let coronas: Corona [] = [];
+    let particles: Particle [] = [];
+    let antibodys: Antibody[] = []; 
+    //let humanCells: Humancell [] = [];
     
+    let backgroundImage: ImageData; 
     
     export let crc2: CanvasRenderingContext2D; 
 
@@ -22,12 +25,10 @@ namespace coronaVirusAnimation {
 
         
         drawBackground();
-        createCells(); 
-        drawHumanCell({x: 350, y: 170},  {x: 450, y: 450}); 
-        showAntibodies ({x: 250, y: 370});
-        //buildKillercells ({x: 50, y: 670}); 
-       // buildCorona ({x: 50, y: 100}); 
-        //drawParticles({x: 40, y: 200},  {x: 400, y: 500});
+        createCorona(7);
+
+        
+
         window.setInterval(animation, 20); 
 
     }
@@ -65,47 +66,20 @@ namespace coronaVirusAnimation {
         crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
     }
 
-    function createCells(): void {
-        let radius: number; 
-        let positionCorona: number = 10; 
-        let positionX: number; 
-        let positionY: number; 
-        let nParticles: number = 90; 
-        
+    function createCorona(_nCorona: number): void {
 
-        //create Paticles: 
-
-        for (let drawn: number = 0; drawn < nParticles; drawn++) {
-
-            positionX = Math.random() * crc2.canvas.width; 
-            positionY = Math.random() * crc2.canvas.height; 
-            
-            let position: Vector = new Vector (positionX, positionY); 
-            let cells: Particles = new Particles(position); 
-            cells.draw(position); 
-            particle.push(cells); 
+        console.log("Create Corona"); 
+        for (let i: number = 0; i < _nCorona; i++){
+            let corona: Corona = new Corona(1.0); 
+            coronas.push(corona); 
         }
-
-        //create Corona: 
-
-
-        for (let i: number = 0; i < 8; i++) {
-            radius = 2;
-            positionX = positionCorona + radius;
-            positionCorona = positionX + radius;
-            positionY = 300 + (50 * Math.random());
-
-            
-        }
-
-        let position: Vector = new Vector(positionX, positionY); 
-        let corona: Corona = new Corona(position); 
-        corona.draw(position); 
-        corona.push(corona);
 
     }
 
-    function drawHumanCell (_position: Vector, _size: Vector ): void {
+    
+    
+
+    function createHumanCell (_position: Vector, _size: Vector ): void {
 
         //Zeichenen der Cellen sowie das dunlizieren dieser 
         console.log("HumanCell", _position, _size);
@@ -144,176 +118,11 @@ namespace coronaVirusAnimation {
     
 
 
-    function drawAntibodies (_position: Vector, _size: Vector): void {
+   
 
     
-        //Zeichnen der Antikörper 
 
-        crc2.beginPath();
-        crc2.moveTo(_position.x, _position.y);
-        crc2.lineTo(_position.x + 22, _position.y - 12);
-        crc2.lineWidth = 2.5;
-        crc2.strokeStyle = "#000000";
-        crc2.stroke();
-        crc2.closePath();
-
-        crc2.beginPath();
-        crc2.arc(_position.x + 31, _position.y - 18, 12, 0.7, 1.4 * Math.PI);
-        crc2.stroke();
-        crc2.closePath();
-
-        crc2.save(); 
-
-        crc2.translate(_position.x, _position.y); 
-
-
-        crc2.restore();
-        
-
-
-    }
-
-    function showAntibodies (_position: Vector): void {
-        
-        //Dublizieren der Antikörper 
-
-        for (let drawn: number = 0; drawn < 7; drawn++) {
-            _position.x = Math.random() * crc2.canvas.width / 1.4; //Variieren der Werte
-            _position.y = 450 + (20 * Math.random());
-     
-            drawAntibodies(_position, {x: 450, y: 650});
-        }
-    }
-
-    function drawKillercell (_position: Vector, _size: Vector): void {
-
-        let radiusKillerCell: number = 25; 
-
-        //Zeichnen einer Killerzelle 
-        
-        crc2.beginPath();
-        crc2.moveTo(_position.x, _position.y);
-        crc2.arc(_position.x + 20, _position.y + 20, radiusKillerCell, 0.2 * Math.PI, 1.8 * Math.PI, false);
-        crc2.lineTo(_position.x + 20, _position.y + 20);
-        crc2.closePath();
-        crc2.fillStyle = "#FFDAB9";
-        crc2.strokeStyle = "#FFDAB9";
-        crc2.fill();
-        crc2.stroke();
-        crc2.save();
-        crc2.restore();
-       
-       
-    }
-
-    function buildKillercells (_position: Vector): void {
-
-        for (let drawn: number = 0; drawn < 5; drawn++) {
-            _position.x = Math.random() * crc2.canvas.width / 1.8;
-            _position.y = 300 + (20 * Math.random());
-     
-            drawKillercell(_position, {x: 150 , y: 150});
-        }
-    }
-
-    /*function drawCoronaCell (_position: Vector,  _size: Vector): void {
-        
-        crc2.translate(_position.x, _position.y); 
-        //Zeichen der Stängel 
-        for (let i: number = 0; i < 10; i++) {
-            
-            crc2.beginPath(); 
-            crc2.rotate(20); 
-            crc2.moveTo( 0,  0); 
-            crc2.lineTo( 0,   40); 
-            crc2.strokeStyle = "#B43104"; 
-            crc2.lineWidth = 2; 
-            crc2.stroke(); 
-            crc2.closePath(); 
-        }
-
-
-        //Zeichnen des Kreises 
-        crc2.beginPath();
-        crc2.arc( 0,  0 , 30, 0, 2 * Math.PI);
-        crc2.fillStyle = "#ae2d16";
-        crc2.fill();
-        crc2.closePath();
-        //crc2.save(); 
-        //crc2.translate(_position.x, _position.y); 
-        //crc2.restore();
-
-
-    }
-
-    function buildCorona (_position: Vector): void {
-        let radius: number; 
-        let position: number = 20; 
-
-        //Fünf Coronazellen sollen gezeichnet werden 
-        for (let i: number = 0; i < 8; i++) {
-            radius = 2;
-            _position.x = position + radius;
-            position = _position.x + radius;
-            _position.y = 300 + (50 * Math.random());
-
-            drawCoronaCell (_position, {x: 20, y: 20}); 
-        }
-
-        crc2.save(); 
-        crc2.translate(_position.x, _position.y); 
-        crc2.restore();
-    }*/
-
-    //Luftpartikel werden gezeichnet und dubliziert 
-    /*function drawParticles (_position: Vector, _size: Vector ): void {
-
-        let nParticles: number = 90; 
-        let radiusParticle: number = 4; 
-        let particle: Path2D = new Path2D(); 
-        let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle); 
-
-        particle.arc(0, 0, radiusParticle, 0, 2 * Math.PI); 
-        gradient.addColorStop(0, "HSLA(0, 100%, 100%, 50%)");
-        gradient.addColorStop(0, "HSLA(0, 100%, 100%, 20%)");
-        gradient.addColorStop(0, "HSLA(0, 100%, 100%, 20%)");
-        gradient.addColorStop(1, "#ffcc01");
-        crc2.fillStyle = gradient;
-
-        crc2.save(); 
-
-        crc2.translate(_position.x, _position.y); 
-
-        
-        crc2.restore(); 
-
-        /*for (let drawn: number = 0; drawn < nParticles; drawn++) {
-
-            crc2.save(); 
-            let x: number = (Math.random() - 0.5) * _size.x; 
-            let y: number = -(Math.random() * _size.y); 
-            crc2.translate(x, y); 
-            crc2.fill(particle); 
-            crc2.restore(); 
-        }
-        //crc2.restore();
-
-    }*/
-
-    function animation(): void {
-
-        for (let Particles of particle) {
-            Particles.move(1 / 50);
-            Particles.draw(Particles.position, Particles.position);
-        }
-        
-        for (let corona of coronas) {
-            corona.move(1 / 30);
-            corona.draw(corona.position);
-        }
-
-    }
-
+    
 
 
 

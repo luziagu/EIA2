@@ -1,7 +1,7 @@
 "use strict";
 var coronaVirusAnimation;
 (function (coronaVirusAnimation) {
-    class Particles {
+    class Particle {
         constructor(_position) {
             this.position = _position;
             this.rotate = Math.random() * 360;
@@ -40,6 +40,6 @@ var coronaVirusAnimation;
             coronaVirusAnimation.crc2.restore();
         }
     }
-    coronaVirusAnimation.Particles = Particles;
+    coronaVirusAnimation.Particle = Particle;
 })(coronaVirusAnimation || (coronaVirusAnimation = {}));
 //# sourceMappingURL=particles.js.map
