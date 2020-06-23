@@ -11,15 +11,24 @@ var coronaVirusAnimation;
         draw(_position) {
             // console.log("drawHumanCell");
             let gradient = coronaVirusAnimation.crc2.createRadialGradient(0, 0, 0, 0, 0, this.radius);
+            coronaVirusAnimation.crc2.save();
+            coronaVirusAnimation.crc2.translate(_position.x, _position.y);
+            coronaVirusAnimation.crc2.beginPath();
             coronaVirusAnimation.crc2.arc(0, 0, this.radius, 0, 2 * Math.PI);
+            coronaVirusAnimation.crc2.closePath();
             gradient.addColorStop(0, "midnightblue");
             gradient.addColorStop(0.3, "#E6E6FA");
             gradient.addColorStop(0.5, "#E6E6FA");
             gradient.addColorStop(0.7, "#E6E6FA");
             gradient.addColorStop(1, "#E6E6FA");
-            coronaVirusAnimation.crc2.save();
-            coronaVirusAnimation.crc2.translate(_position.x, _position.y);
             coronaVirusAnimation.crc2.fillStyle = gradient;
+            coronaVirusAnimation.crc2.fillStyle = gradient;
+            coronaVirusAnimation.crc2.lineWidth = 2;
+            coronaVirusAnimation.crc2.strokeStyle = "#E6E6FA";
+            coronaVirusAnimation.crc2.save();
+            coronaVirusAnimation.crc2.stroke();
+            coronaVirusAnimation.crc2.fill();
+            coronaVirusAnimation.crc2.restore();
             coronaVirusAnimation.crc2.restore();
         }
         move(_timeslice) {
