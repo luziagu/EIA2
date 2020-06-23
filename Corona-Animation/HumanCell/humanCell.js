@@ -11,7 +11,6 @@ var coronaVirusAnimation;
         draw(_position) {
             // console.log("drawHumanCell");
             let gradient = coronaVirusAnimation.crc2.createRadialGradient(0, 0, 3, 0, 0, this.radius);
-            coronaVirusAnimation.crc2.save();
             coronaVirusAnimation.crc2.translate(_position.x, _position.y);
             coronaVirusAnimation.crc2.beginPath();
             coronaVirusAnimation.crc2.arc(0, 0, this.radius, 0, 2 * Math.PI);
