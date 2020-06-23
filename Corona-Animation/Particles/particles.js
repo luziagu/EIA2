@@ -6,7 +6,7 @@ var coronaVirusAnimation;
             this.position = _position;
             this.velocity = new coronaVirusAnimation.Vector(0, 0);
             this.velocity.random(100, 200);
-            this.radius = (Math.random() * 15) + 1;
+            this.radius = (Math.random() * 7) + 1;
         }
         draw(_position) {
             console.log("draw Particle");
