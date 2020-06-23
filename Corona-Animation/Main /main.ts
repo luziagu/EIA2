@@ -6,9 +6,9 @@ namespace coronaVirusAnimation {
     export let crc2: CanvasRenderingContext2D; 
     
 
-    let particles: Particle[] = [];
     let humanCells: HumanCell[] = [];
     let antibodies: Antibody[] = [];
+    let particles: Particle[] = [];
     let killerCells: KillerCell[] = [];
     let coroni: Corona[] = [];
     let changedhumanCells: HumanCell[] = [];
@@ -74,11 +74,21 @@ namespace coronaVirusAnimation {
             particles.push(particle);
         }
 
+        //Antibodies
+        for (let i: number = 0; i < nAntibodies; i++) {
+            x = (Math.random() * crc2.canvas.width);
+            y = (100 + Math.random() * crc2.canvas.height / 1.5);
+
+            let position: Vector = new Vector(x, y);
+            let antibody: Antibody = new Antibody(position);
+            antibody.draw(position);
+            antibodies.push(antibody);
+        }
+
         //HumanCells
         for (let i: number = 0; i < nCells; i++) {
             x = (Math.random() * crc2.canvas.width);
             y = (100 + Math.random() * crc2.canvas.height / 1.5);
-            // console.log(x, y);
             let position: Vector = new Vector(x, y);
             let humancell: HumanCell = new HumanCell(position);
             humancell.draw(position);
@@ -97,16 +107,6 @@ namespace coronaVirusAnimation {
             killerCells.push(killercell);
         }
 
-        //Antibodies
-        for (let i: number = 0; i < nAntibodies; i++) {
-            x = (Math.random() * crc2.canvas.width);
-            y = (100 + Math.random() * crc2.canvas.height / 1.5);
-
-            let position: Vector = new Vector(x, y);
-            let antibody: Antibody = new Antibody(position);
-            antibody.draw(position);
-            antibodies.push(antibody);
-        }
 
 
         //coronaCell
@@ -125,7 +125,7 @@ namespace coronaVirusAnimation {
     }
 
     function animate(): void {
-        
+
         console.log("animate");
        
         crc2.putImageData(background, 0, 0);

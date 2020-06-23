@@ -19,7 +19,7 @@ namespace coronaVirusAnimation {
             crc2.rotate(this.rotation);
             crc2.moveTo(0, 0);
             crc2.lineTo(0, 24);
-            crc2.strokeStyle = "#114d89"; 
+            crc2.strokeStyle = "black"; 
             crc2.lineWidth = 2;
             crc2.stroke();
             crc2.closePath();

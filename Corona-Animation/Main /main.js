@@ -2,9 +2,9 @@
 var coronaVirusAnimation;
 (function (coronaVirusAnimation) {
     console.log("load");
-    let particles = [];
     let humanCells = [];
     let antibodies = [];
+    let particles = [];
     let killerCells = [];
     let coroni = [];
     let changedhumanCells = [];
@@ -44,11 +44,19 @@ var coronaVirusAnimation;
             particle.draw(position);
             particles.push(particle);
         }
+        //Antibodies
+        for (let i = 0; i < nAntibodies; i++) {
+            x = (Math.random() * coronaVirusAnimation.crc2.canvas.width);
+            y = (100 + Math.random() * coronaVirusAnimation.crc2.canvas.height / 1.5);
+            let position = new coronaVirusAnimation.Vector(x, y);
+            let antibody = new coronaVirusAnimation.Antibody(position);
+            antibody.draw(position);
+            antibodies.push(antibody);
+        }
         //HumanCells
         for (let i = 0; i < nCells; i++) {
             x = (Math.random() * coronaVirusAnimation.crc2.canvas.width);
             y = (100 + Math.random() * coronaVirusAnimation.crc2.canvas.height / 1.5);
-            // console.log(x, y);
             let position = new coronaVirusAnimation.Vector(x, y);
             let humancell = new coronaVirusAnimation.HumanCell(position);
             humancell.draw(position);
@@ -62,15 +70,6 @@ var coronaVirusAnimation;
             let killercell = new coronaVirusAnimation.KillerCell(position);
             killercell.draw(position);
             killerCells.push(killercell);
-        }
-        //Antibodies
-        for (let i = 0; i < nAntibodies; i++) {
-            x = (Math.random() * coronaVirusAnimation.crc2.canvas.width);
-            y = (100 + Math.random() * coronaVirusAnimation.crc2.canvas.height / 1.5);
-            let position = new coronaVirusAnimation.Vector(x, y);
-            let antibody = new coronaVirusAnimation.Antibody(position);
-            antibody.draw(position);
-            antibodies.push(antibody);
         }
         //coronaCell
         for (let i = 0; i < nCells; i++) {

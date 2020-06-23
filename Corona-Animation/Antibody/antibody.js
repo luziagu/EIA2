@@ -15,7 +15,7 @@ var coronaVirusAnimation;
             coronaVirusAnimation.crc2.rotate(this.rotation);
             coronaVirusAnimation.crc2.moveTo(0, 0);
             coronaVirusAnimation.crc2.lineTo(0, 24);
-            coronaVirusAnimation.crc2.strokeStyle = "#114d89";
+            coronaVirusAnimation.crc2.strokeStyle = "black";
             coronaVirusAnimation.crc2.lineWidth = 2;
             coronaVirusAnimation.crc2.stroke();
             coronaVirusAnimation.crc2.closePath();
