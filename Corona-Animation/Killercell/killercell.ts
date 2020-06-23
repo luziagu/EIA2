@@ -1,51 +1,66 @@
 namespace coronaVirusAnimation {
-    export class Killercell {
-        position: Vector;
-        velocity: Vector;
+    export class KillerCell {
 
-        rotation: number;
+        position: Vector;
+        radius: number;
+        velocity: Vector;
 
         constructor(_position: Vector) {
             this.position = _position;
+            this.radius = 20;
+
+
             this.velocity = new Vector(0, 0);
-            this.velocity.random(2, 5);
-            this.rotation = Math.random() * 360
+            this.velocity.random(5, 10);
         }
 
         draw(_position: Vector): void {
+            console.log("KillerCells");
+
+            
             crc2.save();
             crc2.translate(_position.x, _position.y);
             crc2.beginPath();
-            crc2.rotate(this.rotation);
+
             crc2.moveTo(0, 0);
-            crc2.lineTo(0, 24);
-            crc2.strokeStyle = "#114d89"; 
-            crc2.lineWidth = 2;
-            crc2.stroke();
+            // particle.arc(0, 0, radiusParticle, -Math.PI / 3, Math.PI / 48, true); //anticlockwise
+            crc2.arc(0, 0, this.radius, 0, Math.PI * 1.6);
+            crc2.lineTo(0, 0);
             crc2.closePath();
-            crc2.beginPath();
-            crc2.arc(0, 36, 12, 0, 1 * Math.PI, true);
+            
+            crc2.fillStyle = "#FFDAB9"; 
+            crc2.strokeStyle = "#FFDAB9";
+
+            crc2.save();
+            // crc2.translate(_position.x, _position.y);
             crc2.stroke();
+            crc2.fill();
             crc2.restore();
+            
+          
+       
+
+
         }
 
         move(_timeslice: number): void {
-            // Offset = Geschwindigkeit
+
             let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
-            // Mit der Zeit multiplizieren
-            offset.x *= 0;
+            //offset.scale(_timeslice);
+            offset.x *= _timeslice * 0.5;
             offset.y *= _timeslice;
-            // Zu der Posiition addieren 
             this.position.add(offset);
 
             if (this.position.x < 0)
-                this.position.x += crc2.canvas.width;
+                this.position.x += (crc2.canvas.width);
             if (this.position.y < 0)
                 this.position.y += crc2.canvas.height;
-            if (this.position.x > crc2.canvas.width)
-                this.position.x -= crc2.canvas.width;
+            if (this.position.x > (crc2.canvas.width))
+                this.position.x -= (crc2.canvas.width);
             if (this.position.y > crc2.canvas.height)
                 this.position.y -= crc2.canvas.height;
         }
+
+
     }
 }

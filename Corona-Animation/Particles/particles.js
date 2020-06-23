@@ -4,40 +4,45 @@ var coronaVirusAnimation;
     class Particle {
         constructor(_position) {
             this.position = _position;
-            this.rotate = Math.random() * 360;
+            this.velocity = new coronaVirusAnimation.Vector(0, 0);
+            this.velocity.random(100, 200);
+            this.radius = (Math.random() * 15) + 1;
         }
-        move(_timeslice) {
-            let speed = new coronaVirusAnimation.Vector(this.velocity.x, this.velocity.y);
-            //Die Geschwindigkeit wird mit der Zeit multipliziert 
-            speed.x *= 0;
-            speed.y *= _timeslice * 2;
-            //Ausgerechnete Geschindigkeit und Zeit soll mit der Position addiert werden:
-            this.position.add(speed);
-            //Position soll immer auf dem Canvas liegen, deswegen überprüfung: 
-            if (this.position.x < 0)
-                this.position.x += coronaVirusAnimation.crc2.canvas.width;
-            if (this.position.y < 0)
-                this.position.y += coronaVirusAnimation.crc2.canvas.height;
-            if (this.position.x > coronaVirusAnimation.crc2.canvas.width)
-                this.position.x -= coronaVirusAnimation.crc2.canvas.width;
-            if (this.position.y > coronaVirusAnimation.crc2.canvas.height)
-                this.position.y -= coronaVirusAnimation.crc2.canvas.height;
-        }
-        //die Partikel sollen gezeichnet werden, wie zuvor. 
-        draw(_position, _size) {
+        draw(_position) {
+            console.log("draw Particle");
+            let gradient = coronaVirusAnimation.crc2.createRadialGradient(0, 0, 0, 0, 0, this.radius);
             coronaVirusAnimation.crc2.save();
-            let circle = 2 * Math.PI;
-            let radiusParticle = 4;
-            let particle = new Path2D();
-            let gradient = coronaVirusAnimation.crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle);
-            particle.arc(_position.x, _position.y, radiusParticle, 0, this.rotate, circle);
+            coronaVirusAnimation.crc2.translate(_position.x, _position.y);
+            coronaVirusAnimation.crc2.beginPath();
+            coronaVirusAnimation.crc2.arc(0, 0, this.radius, 0, 2 * Math.PI);
+            coronaVirusAnimation.crc2.closePath();
             gradient.addColorStop(0, "HSLA(0, 100%, 100%, 50%)");
             gradient.addColorStop(0, "HSLA(0, 100%, 100%, 20%)");
             gradient.addColorStop(0, "HSLA(0, 100%, 100%, 20%)");
             gradient.addColorStop(1, "#ffcc01");
             coronaVirusAnimation.crc2.fillStyle = gradient;
-            coronaVirusAnimation.crc2.translate(_position.x, _position.y);
+            coronaVirusAnimation.crc2.save();
+            coronaVirusAnimation.crc2.fill();
             coronaVirusAnimation.crc2.restore();
+            coronaVirusAnimation.crc2.restore();
+        }
+        move(_timeslice) {
+            let offset = new coronaVirusAnimation.Vector(this.velocity.x, this.velocity.y);
+            offset.x *= 0;
+            offset.y *= _timeslice * 1.5;
+            this.position.add(offset);
+            if (this.position.x < 0) {
+                this.position.x += coronaVirusAnimation.crc2.canvas.width;
+            }
+            if (this.position.y < 0) {
+                this.position.y += coronaVirusAnimation.crc2.canvas.height;
+            }
+            if (this.position.x > coronaVirusAnimation.crc2.canvas.width) {
+                this.position.x -= coronaVirusAnimation.crc2.canvas.width;
+            }
+            if (this.position.y > coronaVirusAnimation.crc2.canvas.height) {
+                this.position.y -= coronaVirusAnimation.crc2.canvas.height;
+            }
         }
     }
     coronaVirusAnimation.Particle = Particle;

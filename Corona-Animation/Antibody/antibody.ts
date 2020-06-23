@@ -9,7 +9,7 @@ namespace coronaVirusAnimation {
             this.position = _position;
             this.velocity = new Vector(0, 0);
             this.velocity.random(2, 5);
-            this.rotation = Math.random() * 360
+            this.rotation = Math.random() * 360; 
         }
 
         draw(_position: Vector): void {

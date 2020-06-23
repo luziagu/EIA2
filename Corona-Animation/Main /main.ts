@@ -3,16 +3,16 @@ namespace coronaVirusAnimation {
     
     console.log("load");
 
-
-    let coronas: Corona [] = [];
-    let particles: Particle [] = [];
-    let antibodys: Antibody[] = []; 
-    let killercells: Killercell[] = [];
-    //let humanCells: Humancell [] = [];
-    
-    let backgroundImage: ImageData; 
-    
     export let crc2: CanvasRenderingContext2D; 
+    
+
+    let particles: Particle[] = [];
+    let humanCells: HumanCell[] = [];
+    let antibodies: Antibody[] = [];
+    let killerCells: KillerCell[] = [];
+    let coroni: Corona[] = [];
+    let changedhumanCells: HumanCell[] = [];
+    let background: ImageData;
 
    
 
@@ -20,139 +20,146 @@ namespace coronaVirusAnimation {
 
     export function handleLoad(_event: Event): void {
         let canvas: HTMLCanvasElement = <HTMLCanvasElement> document.querySelector("canvas"); 
-        if (!canvas)
+        if (!canvas) {
             return; 
+        }
+
         crc2 = <CanvasRenderingContext2D>canvas.getContext("2d"); 
 
+
+        createBackground();
+        createCells();
         
-        drawBackground();
-        createCorona(7);
-        createAntibody(15); 
-        createKillerCell(5); 
-        createParticel(50);
+        window.setInterval(animate, 20);
+       
 
+
+    }
+
+    function createBackground(): void {
+
+
+        let x: number = 0;
+        let y: number = 0;
+        let position: Vector = new Vector(x, y);
+        let pattern: Pattern = new Pattern(position);
+        pattern.draw(position);
+
+       
+
+        background = crc2.getImageData(0, 0, crc2.canvas.width, crc2.canvas.height);
+
+
+    }
+
+
+
+    function createCells(): void {
+
+        let x: number;
+        let y: number;
+        let nParticles: number = 100;
+        let nCells: number = 15;
+        let nAntibodies: number = 20;
+
+        //Particles
+        for (let i: number = 0; i < nParticles; i++) {
+
+            x = (Math.random() * crc2.canvas.width);
+            y = (Math.random() * crc2.canvas.height);
+
+            let position: Vector = new Vector(x, y);
+            let particle: Particle = new Particle(position);
+            particle.draw(position);
+            particles.push(particle);
+        }
+
+        //HumanCells
+        for (let i: number = 0; i < nCells; i++) {
+            x = (Math.random() * crc2.canvas.width);
+            y = (100 + Math.random() * crc2.canvas.height / 1.5);
+            // console.log(x, y);
+            let position: Vector = new Vector(x, y);
+            let humancell: HumanCell = new HumanCell(position);
+            humancell.draw(position);
+            humanCells.push(humancell);
+        }
+
+
+        //KillerCells
+        for (let i: number = 0; i < nCells; i++) {
+            x = (Math.random() * crc2.canvas.width);
+            y = (100 + Math.random() * crc2.canvas.height / 1.5);
+
+            let position: Vector = new Vector(x, y);
+            let killercell: KillerCell = new KillerCell(position);
+            killercell.draw(position);
+            killerCells.push(killercell);
+        }
+
+        //Antibodies
+        for (let i: number = 0; i < nAntibodies; i++) {
+            x = (Math.random() * crc2.canvas.width);
+            y = (100 + Math.random() * crc2.canvas.height / 1.5);
+
+            let position: Vector = new Vector(x, y);
+            let antibody: Antibody = new Antibody(position);
+            antibody.draw(position);
+            antibodies.push(antibody);
+        }
+
+
+        //coronaCell
+        for (let i: number = 0; i < nCells; i++) {
+            x = (Math.random() * crc2.canvas.width);
+            y = (100 + Math.random() * crc2.canvas.height / 1.5);
+
+            let position: Vector = new Vector(x, y);
+            let corona: Corona = new Corona(position);
+            corona.draw(position);
+            coroni.push(corona);
+        }
+
+
+
+    }
+
+    function animate(): void {
         
+        console.log("animate");
+       
+        crc2.putImageData(background, 0, 0);
 
-        window.setInterval(animation, 20); 
-
-    }
-
-    function drawBackground(): void {
-        console.log("Background");
-
-        //Pattern - Hintergrund 
-        let pattern: CanvasRenderingContext2D = <CanvasRenderingContext2D>document.createElement("canvas").getContext("2d");
-        pattern.canvas.width = 100;
-        pattern.canvas.height = 40;
-        pattern.fillStyle = "#FFA07A";
-        pattern.fillRect(0, 0, pattern.canvas.width, pattern.canvas.height);
-        pattern.moveTo(0, 20);
-        pattern.lineTo(20, 20);
-        pattern.lineTo(40, 0);
-        pattern.lineTo(60, 0);
-        pattern.lineTo(100, 20);
-        pattern.lineTo(60, 40);
-        pattern.lineTo(40, 40);
-        pattern.lineTo(20, 20);
-
-        
-        pattern.strokeStyle = "#E9967A";
-        pattern.stroke();
-        pattern.closePath();
-
-        //Punkt in Zelle
-        pattern.beginPath();
-        pattern.arc(50, 20, 2, 0, 2 * Math.PI);
-        pattern.fillStyle = "#88888844";
-        pattern.fill();
-
-        crc2.fillStyle = <CanvasRenderingContext2D>crc2.createPattern(pattern.canvas, "repeat");
-        crc2.fillRect(0, 0, crc2.canvas.width, crc2.canvas.height);
-    }
-
-    function createCorona(_nCorona: number): void {
-
-        console.log("Create Corona"); 
-        for (let i: number = 0; i < _nCorona; i++){
-            let corona: Corona = new Corona(1.0); 
-            coronas.push(corona); 
+        for (let particle of particles) {
+            particle.move(1 / 70);
+            particle.draw(particle.position);
         }
 
-    }
-
-    function createAntibody (_nAntibody: number): void {
-        console.log("Create Antibody"); 
-        for (let i: number = 0; i < _nAntibody; i++){
-            let antibody: Antibody = new Antibody(1.0); 
-            antibodys.push(antibody); 
+        for (let corona of coroni) {
+            corona.move(1 / 10);
+            corona.draw(corona.position);
         }
-    }
 
-    function createKillerCell (_nKiller: number): void {
-        console.log("Create Antibody"); 
-        for (let i: number = 0; i < _nKiller; i++) {
-            let Killercell: Killercell = new Killer(1.0); 
-            killercells.push(Killercell); 
+        for (let antibody of antibodies) {
+            antibody.move(1 / 50);
+            antibody.draw(antibody.position);
         }
-    }
 
-    function createParticel (_nParticel: number): void {
-        console.log("Create Particel"); 
-        for (let i: number = 0; i < _nParticel; i++) {
-            let particel: Particle = new Particle(1.0); 
-            particles.push(particel); 
+        for (let killercell of killerCells) {
+            killercell.move(1 / 80);
+            killercell.draw(killercell.position);
         }
-    }
-    
 
-    function createHumanCell (_position: Vector, _size: Vector ): void {
-
-        //Zeichenen der Cellen sowie das dunlizieren dieser 
-        console.log("HumanCell", _position, _size);
-        let nParticles: number = 40; 
-        let radiusParticle: number = 20; 
-        let particle: Path2D = new Path2D(); 
-        let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, radiusParticle); 
-
-        particle.arc(0, 0, radiusParticle, 0, 2 * Math.PI); 
-        gradient.addColorStop(0, "midnightblue");
-        gradient.addColorStop(0.3, "#E6E6FA");
-        gradient.addColorStop(0.5, "#E6E6FA");
-        gradient.addColorStop(0.7, "#E6E6FA");
-        gradient.addColorStop(1, "#E6E6FA");
-        
-
-
-        crc2.save(); 
-
-        crc2.translate(_position.x, _position.y); 
-
-        crc2.fillStyle = gradient;
-
-        for (let drawn: number = 0; drawn < nParticles; drawn++) {
-
-            crc2.save(); 
-            let x: number = (Math.random() - 0.5) * _size.x; 
-            let y: number = -(Math.random() * _size.y); 
-            crc2.translate(x, y); 
-            crc2.fill(particle); 
-            crc2.restore(); 
+        for (let humancell of humanCells) {
+            humancell.move(1 / 20);
+            humancell.draw(humancell.position);
         }
-        crc2.restore();
 
-    }
-    
+        for (let changedhumancell of changedhumanCells) {
+            changedhumancell.move(1 / 20);
+            changedhumancell.draw(changedhumancell.position);
+        }
 
-
-   
-
-    
-
-    
-
-
-
-
-
+    } 
 
 }

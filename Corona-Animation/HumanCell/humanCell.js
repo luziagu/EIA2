@@ -1,27 +1,30 @@
 "use strict";
 var coronaVirusAnimation;
 (function (coronaVirusAnimation) {
-    class KillerCell {
+    class HumanCell {
         constructor(_position) {
             this.position = _position;
-            this.radius = 20;
+            this.radius = 30;
             this.velocity = new coronaVirusAnimation.Vector(0, 0);
             this.velocity.random(5, 10);
         }
         draw(_position) {
-            console.log("KillerCells");
+            // console.log("drawHumanCell");
+            let gradient = coronaVirusAnimation.crc2.createRadialGradient(0, 0, 3, 0, 0, this.radius);
             coronaVirusAnimation.crc2.save();
             coronaVirusAnimation.crc2.translate(_position.x, _position.y);
             coronaVirusAnimation.crc2.beginPath();
-            coronaVirusAnimation.crc2.moveTo(0, 0);
-            // particle.arc(0, 0, radiusParticle, -Math.PI / 3, Math.PI / 48, true); //anticlockwise
-            coronaVirusAnimation.crc2.arc(0, 0, this.radius, 0, Math.PI * 1.6);
-            coronaVirusAnimation.crc2.lineTo(0, 0);
+            coronaVirusAnimation.crc2.arc(0, 0, this.radius, 0, 2 * Math.PI);
             coronaVirusAnimation.crc2.closePath();
-            coronaVirusAnimation.crc2.fillStyle = "#FFDAB9";
-            coronaVirusAnimation.crc2.strokeStyle = "#FFDAB9";
+            gradient.addColorStop(0, "midnightblue");
+            gradient.addColorStop(0.3, "#E6E6FA");
+            gradient.addColorStop(0.5, "#E6E6FA");
+            gradient.addColorStop(0.7, "#E6E6FA");
+            gradient.addColorStop(1, "#E6E6FA");
+            coronaVirusAnimation.crc2.fillStyle = gradient;
+            coronaVirusAnimation.crc2.lineWidth = 2;
+            coronaVirusAnimation.crc2.strokeStyle = "#E6E6FA";
             coronaVirusAnimation.crc2.save();
-            // crc2.translate(_position.x, _position.y);
             coronaVirusAnimation.crc2.stroke();
             coronaVirusAnimation.crc2.fill();
             coronaVirusAnimation.crc2.restore();
@@ -42,6 +45,6 @@ var coronaVirusAnimation;
                 this.position.y -= coronaVirusAnimation.crc2.canvas.height;
         }
     }
-    coronaVirusAnimation.KillerCell = KillerCell;
+    coronaVirusAnimation.HumanCell = HumanCell;
 })(coronaVirusAnimation || (coronaVirusAnimation = {}));
-//# sourceMappingURL=killercell.js.map
+//# sourceMappingURL=humanCell.js.map

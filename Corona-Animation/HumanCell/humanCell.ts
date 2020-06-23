@@ -1,14 +1,18 @@
 namespace coronaVirusAnimation {
-    export class Corona {
+
+    export class HumanCell {
 
         position: Vector;
         radius: number;
-        //  gradient: CanvasGradient;
+
         velocity: Vector;
+
 
         constructor(_position: Vector) {
             this.position = _position;
-            this.radius = 10;
+
+            this.radius = 30;
+
 
 
             this.velocity = new Vector(0, 0);
@@ -16,37 +20,30 @@ namespace coronaVirusAnimation {
         }
 
         draw(_position: Vector): void {
-            // console.log("draw Corona");
-
-            
-            // crc2.restore();
+            // console.log("drawHumanCell");
+            let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 3, 0, 0, this.radius);
             crc2.save();
-            crc2.translate(_position.x, _position.y); 
-             //Zeichen der Stängel 
-            for (let i: number = 0; i < 10; i++) {
-            
-                crc2.beginPath(); 
-                crc2.rotate(20); 
-                crc2.moveTo( 0,  0); 
-                crc2.lineTo( 0,   40); 
-                crc2.strokeStyle = "#B43104"; 
-                crc2.lineWidth = 2; 
-                crc2.stroke(); 
-                crc2.closePath(); 
-            }
-
-            crc2.restore();
-
-
-        //Zeichnen des Kreises 
+            crc2.translate(_position.x, _position.y);
             crc2.beginPath();
-            crc2.arc( 0,  0 , 30, 0, 2 * Math.PI);
-            crc2.fillStyle = "#ae2d16";
-            crc2.fill();
+            crc2.arc(0, 0, this.radius, 0, 2 * Math.PI);
             crc2.closePath();
-            
-           
+            gradient.addColorStop(0, "midnightblue");
+            gradient.addColorStop(0.3, "#E6E6FA");
+            gradient.addColorStop(0.5, "#E6E6FA");
+            gradient.addColorStop(0.7, "#E6E6FA");
+            gradient.addColorStop(1, "#E6E6FA");
+
+            crc2.fillStyle = gradient;
+            crc2.lineWidth = 2;
+            crc2.strokeStyle = "#E6E6FA";
+            crc2.save();
+            crc2.stroke();
+            crc2.fill();
+            crc2.restore();
+       
         }
+
+        
 
         move(_timeslice: number): void {
 
@@ -64,9 +61,8 @@ namespace coronaVirusAnimation {
                 this.position.x -= (crc2.canvas.width);
             if (this.position.y > crc2.canvas.height)
                 this.position.y -= crc2.canvas.height;
-
         }
 
-
+        
     }
 }
