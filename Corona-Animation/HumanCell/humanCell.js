@@ -4,7 +4,7 @@ var coronaVirusAnimation;
     class HumanCell {
         constructor(_position) {
             this.position = _position;
-            this.radius = 30;
+            this.radius = 15;
             this.velocity = new coronaVirusAnimation.Vector(0, 0);
             this.velocity.random(5, 10);
         }

@@ -11,7 +11,7 @@ namespace coronaVirusAnimation {
         constructor(_position: Vector) {
             this.position = _position;
 
-            this.radius = 30;
+            this.radius = 15;
 
 
 
@@ -35,14 +35,6 @@ namespace coronaVirusAnimation {
             gradient.addColorStop(1, "#E6E6FA");
         
             crc2.fillStyle = gradient;
-
-    
-
-            
-            
-            
-
-
             crc2.fillStyle = gradient;
             crc2.lineWidth = 2;
             crc2.strokeStyle = "#E6E6FA";
