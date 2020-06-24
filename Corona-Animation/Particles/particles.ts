@@ -23,11 +23,12 @@ namespace coronaVirusAnimation {
         draw(_position: Vector): void {
             console.log("draw Particle");
 
-            let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, this.radius);
             crc2.save();
-            crc2.translate(_position.x, _position.y);
+            let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, this.radius);
+            
+           
             crc2.beginPath();
-            crc2.arc(0, 0, this.radius, 0, 2 * Math.PI);
+            crc2.arc(_position.x, _position.y, this.radius, 0, 2 * Math.PI);
 
             crc2.closePath();
             
@@ -37,12 +38,12 @@ namespace coronaVirusAnimation {
             gradient.addColorStop(1, "#ffcc01");
 
             crc2.fillStyle = gradient;
-            crc2.save();
+            
           
-         
+            
             crc2.fill();
             crc2.restore();
-            crc2.restore();
+         
 
         }
 

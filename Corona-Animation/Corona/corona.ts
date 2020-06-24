@@ -21,13 +21,12 @@ namespace coronaVirusAnimation {
             
             // crc2.restore();
             crc2.save();
-            crc2.translate(_position.x, _position.y); 
              //Zeichen der Stängel 
             for (let i: number = 0; i < 10; i++) {
             
                 crc2.beginPath(); 
                 crc2.rotate(20); 
-                crc2.moveTo( 0,  0); 
+                crc2.moveTo( _position.x,  _position.y); 
                 crc2.lineTo( 0,   40); 
                 crc2.strokeStyle = "#B43104"; 
                 crc2.lineWidth = 2; 
@@ -40,7 +39,7 @@ namespace coronaVirusAnimation {
 
         //Zeichnen des Kreises 
             crc2.beginPath();
-            crc2.arc( 0,  0 , 30, 0, 2 * Math.PI);
+            crc2.arc( _position.x,  _position.y, 30, 0, 2 * Math.PI);
             crc2.fillStyle = "#ae2d16";
             crc2.fill();
             crc2.closePath();
