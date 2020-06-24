@@ -23,7 +23,7 @@ namespace coronaVirusAnimation {
             crc2.beginPath();
 
             crc2.moveTo(0, 0);
-            crc2.arc(_position.x, _position.y, this.radius, 0, Math.PI * 1.6);
+            crc2.arc(0, 0, this.radius, 0, Math.PI * 1.6);
             crc2.lineTo(0, 0);
             crc2.closePath();
             

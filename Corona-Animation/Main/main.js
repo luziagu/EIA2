@@ -7,7 +7,6 @@ var coronaVirusAnimation;
     let particles = [];
     let killerCells = [];
     let coroni = [];
-    let changedhumanCells = [];
     let background;
     window.addEventListener("load", handleLoad);
     function handleLoad(_event) {
@@ -82,7 +81,6 @@ var coronaVirusAnimation;
         }
     }
     function animate() {
-        console.log("animate");
         coronaVirusAnimation.crc2.putImageData(background, 0, 0);
         for (let particle of particles) {
             particle.move(1 / 70);
@@ -103,10 +101,6 @@ var coronaVirusAnimation;
         for (let humancell of humanCells) {
             humancell.move(1 / 20);
             humancell.draw(humancell.position);
-        }
-        for (let changedhumancell of changedhumanCells) {
-            changedhumancell.move(1 / 20);
-            changedhumancell.draw(changedhumancell.position);
         }
     }
 })(coronaVirusAnimation || (coronaVirusAnimation = {}));

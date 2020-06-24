@@ -10,9 +10,9 @@ var coronaVirusAnimation;
             this.x = _x;
             this.y = _y;
         }
-        add(_add) {
-            this.x = _add.x;
-            this.y = _add.y;
+        add(_addend) {
+            this.x += _addend.x;
+            this.y += _addend.y;
         }
         scale(_scale) {
             this.x *= _scale;

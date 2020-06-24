@@ -23,8 +23,9 @@ namespace coronaVirusAnimation {
         draw(_position: Vector): void {
             console.log("draw Particle");
 
-            crc2.save();
             let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, this.radius);
+            crc2.save();
+            
             
            
             crc2.beginPath();
@@ -32,6 +33,7 @@ namespace coronaVirusAnimation {
 
             crc2.closePath();
             
+
             gradient.addColorStop(0, "HSLA(0, 100%, 100%, 50%)");
             gradient.addColorStop(0, "HSLA(0, 100%, 100%, 20%)");
             gradient.addColorStop(0, "HSLA(0, 100%, 100%, 20%)");

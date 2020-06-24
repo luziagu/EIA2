@@ -14,18 +14,23 @@ namespace coronaVirusAnimation {
 
         draw(_position: Vector): void {
             crc2.save();
-           
+            crc2.translate(_position.x, _position.y);
             crc2.beginPath();
             crc2.rotate(this.rotation);
-            crc2.moveTo(_position.x, _position.y);
-            crc2.lineTo(0, 24);
-            crc2.strokeStyle = "black"; 
+            crc2.moveTo(0, 0);
+            crc2.lineTo(0, 25);
+
+            crc2.strokeStyle = "black";
             crc2.lineWidth = 2;
+
+            crc2.moveTo(0, 25);
+            crc2.lineTo(15, 40);
+            crc2.moveTo(0, 25);
+            crc2.lineTo(-15, 40);
+
             crc2.stroke();
             crc2.closePath();
-            crc2.beginPath();
-            crc2.arc(0, 36, 12, 0, 1 * Math.PI, true);
-            crc2.stroke();
+            crc2.restore();
             crc2.restore();
         }
 

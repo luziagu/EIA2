@@ -11,17 +11,14 @@ var coronaVirusAnimation;
         draw(_position) {
             console.log("KillerCells");
             coronaVirusAnimation.crc2.save();
-            coronaVirusAnimation.crc2.translate(_position.x, _position.y);
             coronaVirusAnimation.crc2.beginPath();
             coronaVirusAnimation.crc2.moveTo(0, 0);
-            // particle.arc(0, 0, radiusParticle, -Math.PI / 3, Math.PI / 48, true); //anticlockwise
             coronaVirusAnimation.crc2.arc(0, 0, this.radius, 0, Math.PI * 1.6);
             coronaVirusAnimation.crc2.lineTo(0, 0);
             coronaVirusAnimation.crc2.closePath();
             coronaVirusAnimation.crc2.fillStyle = "#FFDAB9";
+            coronaVirusAnimation.crc2.lineWidth = 2;
             coronaVirusAnimation.crc2.strokeStyle = "#FFDAB9";
-            coronaVirusAnimation.crc2.save();
-            // crc2.translate(_position.x, _position.y);
             coronaVirusAnimation.crc2.stroke();
             coronaVirusAnimation.crc2.fill();
             coronaVirusAnimation.crc2.restore();

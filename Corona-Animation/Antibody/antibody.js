@@ -14,14 +14,16 @@ var coronaVirusAnimation;
             coronaVirusAnimation.crc2.beginPath();
             coronaVirusAnimation.crc2.rotate(this.rotation);
             coronaVirusAnimation.crc2.moveTo(0, 0);
-            coronaVirusAnimation.crc2.lineTo(0, 24);
+            coronaVirusAnimation.crc2.lineTo(0, 25);
             coronaVirusAnimation.crc2.strokeStyle = "black";
             coronaVirusAnimation.crc2.lineWidth = 2;
+            coronaVirusAnimation.crc2.moveTo(0, 25);
+            coronaVirusAnimation.crc2.lineTo(15, 40);
+            coronaVirusAnimation.crc2.moveTo(0, 25);
+            coronaVirusAnimation.crc2.lineTo(-15, 40);
             coronaVirusAnimation.crc2.stroke();
             coronaVirusAnimation.crc2.closePath();
-            coronaVirusAnimation.crc2.beginPath();
-            coronaVirusAnimation.crc2.arc(0, 36, 12, 0, 1 * Math.PI, true);
-            coronaVirusAnimation.crc2.stroke();
+            coronaVirusAnimation.crc2.restore();
             coronaVirusAnimation.crc2.restore();
         }
         move(_timeslice) {

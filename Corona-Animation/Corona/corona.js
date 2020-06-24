@@ -4,7 +4,7 @@ var coronaVirusAnimation;
     class Corona {
         constructor(_position) {
             this.position = _position;
-            this.radius = 10;
+            this.radius = 5;
             this.velocity = new coronaVirusAnimation.Vector(0, 0);
             this.velocity.random(5, 10);
         }
@@ -14,7 +14,7 @@ var coronaVirusAnimation;
             coronaVirusAnimation.crc2.save();
             coronaVirusAnimation.crc2.translate(_position.x, _position.y);
             //Zeichen der Stängel 
-            for (let i = 0; i < 10; i++) {
+            for (let i = 0; i < 11; i++) {
                 coronaVirusAnimation.crc2.beginPath();
                 coronaVirusAnimation.crc2.rotate(20);
                 coronaVirusAnimation.crc2.moveTo(0, 0);
@@ -24,13 +24,13 @@ var coronaVirusAnimation;
                 coronaVirusAnimation.crc2.stroke();
                 coronaVirusAnimation.crc2.closePath();
             }
-            coronaVirusAnimation.crc2.restore();
             //Zeichnen des Kreises 
             coronaVirusAnimation.crc2.beginPath();
             coronaVirusAnimation.crc2.arc(0, 0, 30, 0, 2 * Math.PI);
             coronaVirusAnimation.crc2.fillStyle = "#ae2d16";
             coronaVirusAnimation.crc2.fill();
             coronaVirusAnimation.crc2.closePath();
+            coronaVirusAnimation.crc2.restore();
         }
         move(_timeslice) {
             let offset = new coronaVirusAnimation.Vector(this.velocity.x, this.velocity.y);

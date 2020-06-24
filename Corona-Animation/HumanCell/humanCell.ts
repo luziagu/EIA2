@@ -41,6 +41,7 @@ namespace coronaVirusAnimation {
             crc2.stroke();
             crc2.fill();
             crc2.restore();
+            crc2.restore();
           
           
         }
