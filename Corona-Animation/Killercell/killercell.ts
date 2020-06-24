@@ -23,18 +23,18 @@ namespace coronaVirusAnimation {
             crc2.beginPath();
 
             crc2.moveTo(0, 0);
-            // particle.arc(0, 0, radiusParticle, -Math.PI / 3, Math.PI / 48, true); //anticlockwise
             crc2.arc(0, 0, this.radius, 0, Math.PI * 1.6);
             crc2.lineTo(0, 0);
             crc2.closePath();
             
             crc2.fillStyle = "#FFDAB9"; 
+            crc2.lineWidth = 2;
             crc2.strokeStyle = "#FFDAB9";
-
+    
             crc2.save();
-            // crc2.translate(_position.x, _position.y);
             crc2.stroke();
             crc2.fill();
+            crc2.restore();
             crc2.restore();
             
           

@@ -11,7 +11,6 @@ namespace coronaVirusAnimation {
     let particles: Particle[] = [];
     let killerCells: KillerCell[] = [];
     let coroni: Corona[] = [];
-    let changedhumanCells: HumanCell[] = [];
     let background: ImageData;
 
    
@@ -126,7 +125,6 @@ namespace coronaVirusAnimation {
 
     function animate(): void {
 
-        console.log("animate");
        
         crc2.putImageData(background, 0, 0);
 
@@ -155,10 +153,7 @@ namespace coronaVirusAnimation {
             humancell.draw(humancell.position);
         }
 
-        for (let changedhumancell of changedhumanCells) {
-            changedhumancell.move(1 / 20);
-            changedhumancell.draw(changedhumancell.position);
-        }
+       
 
     } 
 
