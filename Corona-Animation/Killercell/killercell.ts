@@ -16,9 +16,9 @@ namespace coronaVirusAnimation {
 
         draw(_position: Vector): void {
             console.log("KillerCells");
-
-            
             crc2.save();
+            crc2.translate(_position.x, _position.y); 
+            
            
             crc2.beginPath();
 
