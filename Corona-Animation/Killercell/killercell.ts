@@ -31,11 +31,11 @@ namespace coronaVirusAnimation {
             crc2.lineWidth = 2;
             crc2.strokeStyle = "#FFDAB9";
     
-            crc2.save();
+            
             crc2.stroke();
             crc2.fill();
             crc2.restore();
-            crc2.restore();
+           
             
           
        
