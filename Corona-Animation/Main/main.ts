@@ -133,24 +133,28 @@ namespace coronaVirusAnimation {
             particle.draw();
         }
 
-        for (let corona of coroni) {
-            corona.move(1 / 10);
-            corona.draw();
-        }
+
 
         for (let antibody of antibodies) {
             antibody.move(1 / 50);
             antibody.draw();
         }
 
-        for (let killercell of killerCells) {
-            killercell.move(1 / 80);
-            killercell.draw();
-        }
+
 
         for (let humancell of humanCells) {
             humancell.move(1 / 20);
             humancell.draw();
+        }
+
+        for (let corona of coroni) {
+            corona.move(1 / 10);
+            corona.draw();
+        }
+
+        for (let killercell of killerCells) {
+            killercell.move(1 / 80);
+            killercell.draw();
         }
 
        
