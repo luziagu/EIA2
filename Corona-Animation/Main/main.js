@@ -40,7 +40,7 @@ var coronaVirusAnimation;
             y = (Math.random() * coronaVirusAnimation.crc2.canvas.height);
             let position = new coronaVirusAnimation.Vector(x, y);
             let particle = new coronaVirusAnimation.Particle(position);
-            particle.draw(position);
+            particle.draw();
             particles.push(particle);
         }
         //Antibodies
@@ -49,7 +49,7 @@ var coronaVirusAnimation;
             y = (100 + Math.random() * coronaVirusAnimation.crc2.canvas.height / 1.5);
             let position = new coronaVirusAnimation.Vector(x, y);
             let antibody = new coronaVirusAnimation.Antibody(position);
-            antibody.draw(position);
+            antibody.draw();
             antibodies.push(antibody);
         }
         //HumanCells
@@ -58,7 +58,7 @@ var coronaVirusAnimation;
             y = (100 + Math.random() * coronaVirusAnimation.crc2.canvas.height / 1.5);
             let position = new coronaVirusAnimation.Vector(x, y);
             let humancell = new coronaVirusAnimation.HumanCell(position);
-            humancell.draw(position);
+            humancell.draw();
             humanCells.push(humancell);
         }
         //KillerCells
@@ -76,7 +76,7 @@ var coronaVirusAnimation;
             y = (100 + Math.random() * coronaVirusAnimation.crc2.canvas.height / 1.5);
             let position = new coronaVirusAnimation.Vector(x, y);
             let corona = new coronaVirusAnimation.Corona(position);
-            corona.draw(position);
+            corona.draw();
             coroni.push(corona);
         }
     }
@@ -84,15 +84,15 @@ var coronaVirusAnimation;
         coronaVirusAnimation.crc2.putImageData(background, 0, 0);
         for (let particle of particles) {
             particle.move(1 / 70);
-            particle.draw(particle.position);
+            particle.draw();
         }
         for (let corona of coroni) {
             corona.move(1 / 10);
-            corona.draw(corona.position);
+            corona.draw();
         }
         for (let antibody of antibodies) {
             antibody.move(1 / 50);
-            antibody.draw(antibody.position);
+            antibody.draw();
         }
         for (let killercell of killerCells) {
             killercell.move(1 / 80);
@@ -100,7 +100,7 @@ var coronaVirusAnimation;
         }
         for (let humancell of humanCells) {
             humancell.move(1 / 20);
-            humancell.draw(humancell.position);
+            humancell.draw();
         }
     }
 })(coronaVirusAnimation || (coronaVirusAnimation = {}));

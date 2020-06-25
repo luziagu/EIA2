@@ -69,7 +69,7 @@ namespace coronaVirusAnimation {
 
             let position: Vector = new Vector(x, y);
             let particle: Particle = new Particle(position);
-            particle.draw(position);
+            particle.draw();
             particles.push(particle);
         }
 
@@ -80,7 +80,7 @@ namespace coronaVirusAnimation {
 
             let position: Vector = new Vector(x, y);
             let antibody: Antibody = new Antibody(position);
-            antibody.draw(position);
+            antibody.draw();
             antibodies.push(antibody);
         }
 
@@ -90,7 +90,7 @@ namespace coronaVirusAnimation {
             y = (100 + Math.random() * crc2.canvas.height / 1.5);
             let position: Vector = new Vector(x, y);
             let humancell: HumanCell = new HumanCell(position);
-            humancell.draw(position);
+            humancell.draw();
             humanCells.push(humancell);
         }
 
@@ -115,7 +115,7 @@ namespace coronaVirusAnimation {
 
             let position: Vector = new Vector(x, y);
             let corona: Corona = new Corona(position);
-            corona.draw(position);
+            corona.draw();
             coroni.push(corona);
         }
 
@@ -130,17 +130,17 @@ namespace coronaVirusAnimation {
 
         for (let particle of particles) {
             particle.move(1 / 70);
-            particle.draw(particle.position);
+            particle.draw();
         }
 
         for (let corona of coroni) {
             corona.move(1 / 10);
-            corona.draw(corona.position);
+            corona.draw();
         }
 
         for (let antibody of antibodies) {
             antibody.move(1 / 50);
-            antibody.draw(antibody.position);
+            antibody.draw();
         }
 
         for (let killercell of killerCells) {
@@ -150,7 +150,7 @@ namespace coronaVirusAnimation {
 
         for (let humancell of humanCells) {
             humancell.move(1 / 20);
-            humancell.draw(humancell.position);
+            humancell.draw();
         }
 
        

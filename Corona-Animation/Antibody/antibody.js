@@ -8,9 +8,9 @@ var coronaVirusAnimation;
             this.velocity.random(2, 5);
             this.rotation = Math.random() * 360;
         }
-        draw(_position) {
+        draw() {
             coronaVirusAnimation.crc2.save();
-            coronaVirusAnimation.crc2.translate(_position.x, _position.y);
+            coronaVirusAnimation.crc2.translate(this.position.x, this.position.y);
             coronaVirusAnimation.crc2.beginPath();
             coronaVirusAnimation.crc2.rotate(this.rotation);
             coronaVirusAnimation.crc2.moveTo(0, 0);
