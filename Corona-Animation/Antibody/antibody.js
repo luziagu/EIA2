@@ -1,9 +1,13 @@
 "use strict";
 var coronaVirusAnimation;
 (function (coronaVirusAnimation) {
-    class Antibody {
+    class Antibody extends coronaVirusAnimation.Moveable {
         constructor(_position) {
-            this.position = _position;
+            super(_position);
+            if (_position)
+                this.position = _position.copy();
+            else
+                this.velocity = new coronaVirusAnimation.Vector(0, 0);
             this.velocity = new coronaVirusAnimation.Vector(0, 0);
             this.velocity.random(2, 5);
             this.rotation = Math.random() * 360;
@@ -25,23 +29,6 @@ var coronaVirusAnimation;
             coronaVirusAnimation.crc2.closePath();
             coronaVirusAnimation.crc2.restore();
             coronaVirusAnimation.crc2.restore();
-        }
-        move(_timeslice) {
-            // Offset = Geschwindigkeit
-            let offset = new coronaVirusAnimation.Vector(this.velocity.x, this.velocity.y);
-            // Mit der Zeit multiplizieren
-            offset.x *= 0;
-            offset.y *= _timeslice;
-            // Zu der Posiition addieren 
-            this.position.add(offset);
-            if (this.position.x < 0)
-                this.position.x += coronaVirusAnimation.crc2.canvas.width;
-            if (this.position.y < 0)
-                this.position.y += coronaVirusAnimation.crc2.canvas.height;
-            if (this.position.x > coronaVirusAnimation.crc2.canvas.width)
-                this.position.x -= coronaVirusAnimation.crc2.canvas.width;
-            if (this.position.y > coronaVirusAnimation.crc2.canvas.height)
-                this.position.y -= coronaVirusAnimation.crc2.canvas.height;
         }
     }
     coronaVirusAnimation.Antibody = Antibody;

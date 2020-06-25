@@ -4,13 +4,15 @@ namespace coronaVirusAnimation {
     console.log("load");
 
     export let crc2: CanvasRenderingContext2D; 
+    export let infected: boolean = true; 
     
+    let cells: Moveable [] = []; 
 
-    let humanCells: HumanCell[] = [];
+    /*let humanCells: HumanCell[] = [];
     let antibodies: Antibody[] = [];
     let particles: Particle[] = [];
     let killerCells: KillerCell[] = [];
-    let coroni: Corona[] = [];
+    let coroni: Corona[] = [];*/
     let background: ImageData;
 
    
@@ -70,7 +72,7 @@ namespace coronaVirusAnimation {
             let position: Vector = new Vector(x, y);
             let particle: Particle = new Particle(position);
             particle.draw();
-            particles.push(particle);
+            cells.push(particle);
         }
 
         //Antibodies
@@ -81,7 +83,7 @@ namespace coronaVirusAnimation {
             let position: Vector = new Vector(x, y);
             let antibody: Antibody = new Antibody(position);
             antibody.draw();
-            antibodies.push(antibody);
+            cells.push(antibody);
         }
 
         //HumanCells
@@ -91,7 +93,7 @@ namespace coronaVirusAnimation {
             let position: Vector = new Vector(x, y);
             let humancell: HumanCell = new HumanCell(position);
             humancell.draw();
-            humanCells.push(humancell);
+            cells.push(humancell);
         }
 
 
@@ -103,7 +105,7 @@ namespace coronaVirusAnimation {
             let position: Vector = new Vector(x, y);
             let killercell: KillerCell = new KillerCell(position);
             killercell.draw();
-            killerCells.push(killercell);
+            cells.push(killercell);
         }
 
 
@@ -116,7 +118,7 @@ namespace coronaVirusAnimation {
             let position: Vector = new Vector(x, y);
             let corona: Corona = new Corona(position);
             corona.draw();
-            coroni.push(corona);
+            cells.push(corona);
         }
 
 
@@ -128,7 +130,18 @@ namespace coronaVirusAnimation {
        
         crc2.putImageData(background, 0, 0);
 
-        for (let particle of particles) {
+        for (let Moveable of cells) {
+            if (Moveable instanceof Antibody || Moveable instanceof Corona)
+                Moveable.move(1 / 20); 
+            else if (Moveable instanceof HumanCell)
+                Moveable.move(1 / 20); 
+            else if (Moveable instanceof Particle)
+                Moveable.move (1 / 80 ); 
+            Moveable.draw(); 
+        }
+
+        //isInfected(); 
+        /*for (let particle of particles) {
             particle.move(1 / 80);
             particle.draw();
         }
@@ -155,10 +168,39 @@ namespace coronaVirusAnimation {
         for (let killercell of killerCells) {
             killercell.move(1 / 80);
             killercell.draw();
-        }
+        }*/
 
        
 
     } 
 
+   /* function isInfected(): void {
+        for (let Moveable of cells ) {
+            if (Moveable instanceof Corona && Moveable.isInfected()) {
+
+                reactionStarting(Moveable); 
+                infectedHumanCell(Moveable.position.x); 
+            }
+
+        }
+
+    }
+
+    function reactionStarting (_corona: Corona): void {
+        _corona.isInfected = true; 
+        window.setTimeout(function(): void {
+            reactionEnding(_corona); 
+        }, 3000); 
+    }
+
+
+    function reactionEnding(_corona: Corona) {
+        _corona.isInfected = false; 
+    }
+
+
+    function infectedHumanCell(_position: number) {
+
+        //Frage
+    }*/
 }

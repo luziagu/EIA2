@@ -33,6 +33,10 @@ namespace coronaVirusAnimation  {
             this.scale(length);
         
         }
+
+        copy(): Vector {
+            return new Vector(this.x, this.y); 
+        }
     }
 
 

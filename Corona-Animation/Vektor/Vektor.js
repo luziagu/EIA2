@@ -24,6 +24,9 @@ var coronaVirusAnimation;
             this.set(Math.cos(direction), Math.sin(direction));
             this.scale(length);
         }
+        copy() {
+            return new Vector(this.x, this.y);
+        }
     }
     coronaVirusAnimation.Vector = Vector;
 })(coronaVirusAnimation || (coronaVirusAnimation = {}));

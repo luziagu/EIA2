@@ -1,15 +1,19 @@
 namespace coronaVirusAnimation {
 
-    export class HumanCell {
-
-        position: Vector;
-        radius: number;
-
-        velocity: Vector;
+    export class HumanCell extends Moveable {
 
 
-        constructor(_position: Vector) {
-            this.position = _position;
+
+
+        constructor(_position?: Vector) {
+
+            super(_position); 
+
+            if (_position)
+            this.position = _position.copy();
+            else 
+            this.velocity = new Vector(0, 0);
+           
 
             this.radius = 15;
             this.velocity = new Vector(0, 0);
@@ -41,26 +45,6 @@ namespace coronaVirusAnimation {
             crc2.fill();
             crc2.restore();
           
-        }
-
-        
-
-        move(_timeslice: number): void {
-
-            let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
-            //offset.scale(_timeslice);
-            offset.x *= _timeslice * 0.5;
-            offset.y *= _timeslice;
-            this.position.add(offset);
-
-            if (this.position.x < 0)
-                this.position.x += (crc2.canvas.width);
-            if (this.position.y < 0)
-                this.position.y += crc2.canvas.height;
-            if (this.position.x > (crc2.canvas.width))
-                this.position.x -= (crc2.canvas.width);
-            if (this.position.y > crc2.canvas.height)
-                this.position.y -= crc2.canvas.height;
         }
 
         

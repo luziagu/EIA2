@@ -1,16 +1,20 @@
 namespace coronaVirusAnimation {
 
-    export class Particle {
-        position: Vector;
-        radius: number;
-        velocity: Vector;
+    export class Particle extends Moveable {
+        
+     
+      
        
 
 
         constructor(_position: Vector) {
-          
+            super(_position); 
 
-            this.position = _position;
+
+            if (_position)
+            this.position = _position.copy();
+            else 
+            this.velocity = new Vector(0, 0);
 
             this.velocity = new Vector(0, 0);
             this.velocity.random(100, 200);
@@ -49,9 +53,9 @@ namespace coronaVirusAnimation {
 
 
         move(_timeslice: number): void {
-            let offset: Vector = new Vector(this.velocity.x, this.velocity.y); 
+            let offset: Vector = this.velocity.copy(); 
             offset.x *= 0; 
-            offset.y *=  _timeslice * 1.5;
+            offset.y *=  _timeslice * 1.2;
             this.position.add(offset); 
 
             if (this.position.x < 0) {

@@ -1,12 +1,16 @@
 "use strict";
 var coronaVirusAnimation;
 (function (coronaVirusAnimation) {
-    class KillerCell {
+    class KillerCell extends coronaVirusAnimation.Moveable {
         constructor(_position) {
-            this.position = _position;
-            this.radius = 20;
+            super(_position);
+            if (_position)
+                this.position = _position.copy();
+            else
+                this.velocity = new coronaVirusAnimation.Vector(0, 0);
             this.velocity = new coronaVirusAnimation.Vector(0, 0);
             this.velocity.random(5, 10);
+            this.radius = 20;
         }
         draw() {
             console.log("KillerCells");
@@ -23,21 +27,6 @@ var coronaVirusAnimation;
             coronaVirusAnimation.crc2.stroke();
             coronaVirusAnimation.crc2.fill();
             coronaVirusAnimation.crc2.restore();
-        }
-        move(_timeslice) {
-            let offset = new coronaVirusAnimation.Vector(this.velocity.x, this.velocity.y);
-            //offset.scale(_timeslice);
-            offset.x *= _timeslice * 0.5;
-            offset.y *= _timeslice;
-            this.position.add(offset);
-            if (this.position.x < 0)
-                this.position.x += (coronaVirusAnimation.crc2.canvas.width);
-            if (this.position.y < 0)
-                this.position.y += coronaVirusAnimation.crc2.canvas.height;
-            if (this.position.x > (coronaVirusAnimation.crc2.canvas.width))
-                this.position.x -= (coronaVirusAnimation.crc2.canvas.width);
-            if (this.position.y > coronaVirusAnimation.crc2.canvas.height)
-                this.position.y -= coronaVirusAnimation.crc2.canvas.height;
         }
     }
     coronaVirusAnimation.KillerCell = KillerCell;

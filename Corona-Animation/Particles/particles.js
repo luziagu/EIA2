@@ -1,9 +1,13 @@
 "use strict";
 var coronaVirusAnimation;
 (function (coronaVirusAnimation) {
-    class Particle {
+    class Particle extends coronaVirusAnimation.Moveable {
         constructor(_position) {
-            this.position = _position;
+            super(_position);
+            if (_position)
+                this.position = _position.copy();
+            else
+                this.velocity = new coronaVirusAnimation.Vector(0, 0);
             this.velocity = new coronaVirusAnimation.Vector(0, 0);
             this.velocity.random(100, 200);
             this.radius = (Math.random() * 7) + 1;
@@ -24,9 +28,9 @@ var coronaVirusAnimation;
             coronaVirusAnimation.crc2.restore();
         }
         move(_timeslice) {
-            let offset = new coronaVirusAnimation.Vector(this.velocity.x, this.velocity.y);
+            let offset = this.velocity.copy();
             offset.x *= 0;
-            offset.y *= _timeslice * 1.5;
+            offset.y *= _timeslice * 1.2;
             this.position.add(offset);
             if (this.position.x < 0) {
                 this.position.x += coronaVirusAnimation.crc2.canvas.width;

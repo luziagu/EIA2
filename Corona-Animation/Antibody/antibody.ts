@@ -1,12 +1,19 @@
 namespace coronaVirusAnimation {
-    export class Antibody {
-        position: Vector;
-        velocity: Vector;
+    export class Antibody extends Moveable {
+        
 
         rotation: number;
 
-        constructor(_position: Vector) {
-            this.position = _position;
+        constructor(_position?: Vector) {
+
+            super(_position); 
+            
+
+            if (_position)
+            this.position = _position.copy();
+            else 
+            this.velocity = new Vector(0, 0);
+
             this.velocity = new Vector(0, 0);
             this.velocity.random(2, 5);
             this.rotation = Math.random() * 360; 
@@ -34,23 +41,6 @@ namespace coronaVirusAnimation {
             crc2.restore();
         }
 
-        move(_timeslice: number): void {
-            // Offset = Geschwindigkeit
-            let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
-            // Mit der Zeit multiplizieren
-            offset.x *= 0;
-            offset.y *= _timeslice;
-            // Zu der Posiition addieren 
-            this.position.add(offset);
-
-            if (this.position.x < 0)
-                this.position.x += crc2.canvas.width;
-            if (this.position.y < 0)
-                this.position.y += crc2.canvas.height;
-            if (this.position.x > crc2.canvas.width)
-                this.position.x -= crc2.canvas.width;
-            if (this.position.y > crc2.canvas.height)
-                this.position.y -= crc2.canvas.height;
-        }
+      
     }
 }

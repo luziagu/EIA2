@@ -1,13 +1,21 @@
 namespace coronaVirusAnimation {
-    export class Corona {
+    export class Corona extends Moveable { 
 
-        position: Vector;
-        radius: number;
-        //  gradient: CanvasGradient;
-        velocity: Vector;
+        infected: boolean = false; 
+       
+    
+        
 
-        constructor(_position: Vector) {
-            this.position = _position;
+        constructor(_position?: Vector) {
+
+            super(_position); 
+
+
+            if (_position)
+            this.position = _position.copy();
+            else 
+            this.velocity = new Vector(0, 0);
+
             this.radius = 5;
 
 
@@ -38,7 +46,7 @@ namespace coronaVirusAnimation {
             
 
 
-        //Zeichnen des Kreises 
+            //Zeichnen des Kreises 
             crc2.beginPath();
             crc2.arc( 0,  0, 30, 0, 2 * Math.PI);
             crc2.fillStyle = "#ae2d16";
@@ -48,24 +56,29 @@ namespace coronaVirusAnimation {
            
         }
 
+
         move(_timeslice: number): void {
-
-            let offset: Vector = new Vector(this.velocity.x, this.velocity.y);
-            //offset.scale(_timeslice);
-            offset.x *= _timeslice * 0.5;
-            offset.y *= _timeslice;
-            this.position.add(offset);
-
-            if (this.position.x < 0)
-                this.position.x += (crc2.canvas.width);
-            if (this.position.y < 0)
-                this.position.y += crc2.canvas.height;
-            if (this.position.x > (crc2.canvas.width))
-                this.position.x -= (crc2.canvas.width);
-            if (this.position.y > crc2.canvas.height)
-                this.position.y -= crc2.canvas.height;
-
+            if (this.infected == false) {
+                if (this.position.y < 250) {
+                    super.move(_timeslice * 2); 
+                }
+                else {
+                    super.move(_timeslice);
+                }
+            }
         }
+
+        isInfected(): boolean {
+            if (this.position.y < 125) {
+                return true;
+            }
+            else {
+                return false; 
+            }
+        }
+
+
+    
 
 
     }

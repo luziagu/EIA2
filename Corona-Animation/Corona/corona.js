@@ -1,9 +1,14 @@
 "use strict";
 var coronaVirusAnimation;
 (function (coronaVirusAnimation) {
-    class Corona {
+    class Corona extends coronaVirusAnimation.Moveable {
         constructor(_position) {
-            this.position = _position;
+            super(_position);
+            this.infected = false;
+            if (_position)
+                this.position = _position.copy();
+            else
+                this.velocity = new coronaVirusAnimation.Vector(0, 0);
             this.radius = 5;
             this.velocity = new coronaVirusAnimation.Vector(0, 0);
             this.velocity.random(5, 10);
@@ -33,19 +38,22 @@ var coronaVirusAnimation;
             coronaVirusAnimation.crc2.restore();
         }
         move(_timeslice) {
-            let offset = new coronaVirusAnimation.Vector(this.velocity.x, this.velocity.y);
-            //offset.scale(_timeslice);
-            offset.x *= _timeslice * 0.5;
-            offset.y *= _timeslice;
-            this.position.add(offset);
-            if (this.position.x < 0)
-                this.position.x += (coronaVirusAnimation.crc2.canvas.width);
-            if (this.position.y < 0)
-                this.position.y += coronaVirusAnimation.crc2.canvas.height;
-            if (this.position.x > (coronaVirusAnimation.crc2.canvas.width))
-                this.position.x -= (coronaVirusAnimation.crc2.canvas.width);
-            if (this.position.y > coronaVirusAnimation.crc2.canvas.height)
-                this.position.y -= coronaVirusAnimation.crc2.canvas.height;
+            if (this.infected == false) {
+                if (this.position.y < 250) {
+                    super.move(_timeslice * 2);
+                }
+                else {
+                    super.move(_timeslice);
+                }
+            }
+        }
+        isInfected() {
+            if (this.position.y < 125) {
+                return true;
+            }
+            else {
+                return false;
+            }
         }
     }
     coronaVirusAnimation.Corona = Corona;
