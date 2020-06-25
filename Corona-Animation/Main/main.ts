@@ -57,9 +57,9 @@ namespace coronaVirusAnimation {
 
         let x: number;
         let y: number;
-        let nParticles: number = 100;
-        let nCells: number = 15;
-        let nAntibodies: number = 20;
+        let nParticles: number = 50;
+        let nCells: number = 10;
+        let nAntibodies: number = 15;
 
         //Particles
         for (let i: number = 0; i < nParticles; i++) {
@@ -129,7 +129,7 @@ namespace coronaVirusAnimation {
         crc2.putImageData(background, 0, 0);
 
         for (let particle of particles) {
-            particle.move(1 / 70);
+            particle.move(1 / 80);
             particle.draw();
         }
 

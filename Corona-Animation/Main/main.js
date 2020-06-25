@@ -31,9 +31,9 @@ var coronaVirusAnimation;
     function createCells() {
         let x;
         let y;
-        let nParticles = 100;
-        let nCells = 15;
-        let nAntibodies = 20;
+        let nParticles = 50;
+        let nCells = 10;
+        let nAntibodies = 15;
         //Particles
         for (let i = 0; i < nParticles; i++) {
             x = (Math.random() * coronaVirusAnimation.crc2.canvas.width);
@@ -83,7 +83,7 @@ var coronaVirusAnimation;
     function animate() {
         coronaVirusAnimation.crc2.putImageData(background, 0, 0);
         for (let particle of particles) {
-            particle.move(1 / 70);
+            particle.move(1 / 80);
             particle.draw();
         }
         for (let antibody of antibodies) {
