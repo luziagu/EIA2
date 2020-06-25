@@ -8,11 +8,11 @@ var coronaVirusAnimation;
             this.velocity = new coronaVirusAnimation.Vector(0, 0);
             this.velocity.random(5, 10);
         }
-        draw(_position) {
+        draw() {
             // console.log("draw Corona");
             // crc2.restore();
             coronaVirusAnimation.crc2.save();
-            coronaVirusAnimation.crc2.translate(_position.x, _position.y);
+            coronaVirusAnimation.crc2.translate(this.position.x, this.position.y);
             //Zeichen der Stängel 
             for (let i = 0; i < 11; i++) {
                 coronaVirusAnimation.crc2.beginPath();

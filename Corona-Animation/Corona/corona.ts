@@ -15,13 +15,13 @@ namespace coronaVirusAnimation {
             this.velocity.random(5, 10);
         }
 
-        draw(_position: Vector): void {
+        draw(): void {
             // console.log("draw Corona");
 
             
             // crc2.restore();
             crc2.save();
-            crc2.translate(_position.x, _position.y); 
+            crc2.translate(this.position.x, this.position.y); 
              //Zeichen der Stängel 
             for (let i: number = 0; i < 11; i++) {
             

@@ -102,7 +102,7 @@ namespace coronaVirusAnimation {
 
             let position: Vector = new Vector(x, y);
             let killercell: KillerCell = new KillerCell(position);
-            killercell.draw(position);
+            killercell.draw();
             killerCells.push(killercell);
         }
 
@@ -145,7 +145,7 @@ namespace coronaVirusAnimation {
 
         for (let killercell of killerCells) {
             killercell.move(1 / 80);
-            killercell.draw(killercell.position);
+            killercell.draw();
         }
 
         for (let humancell of humanCells) {

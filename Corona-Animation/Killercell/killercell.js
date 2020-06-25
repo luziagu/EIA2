@@ -8,10 +8,10 @@ var coronaVirusAnimation;
             this.velocity = new coronaVirusAnimation.Vector(0, 0);
             this.velocity.random(5, 10);
         }
-        draw(_position) {
+        draw() {
             console.log("KillerCells");
             coronaVirusAnimation.crc2.save();
-            coronaVirusAnimation.crc2.translate(_position.x, _position.y);
+            coronaVirusAnimation.crc2.translate(this.position.x, this.position.y);
             coronaVirusAnimation.crc2.beginPath();
             coronaVirusAnimation.crc2.moveTo(0, 0);
             coronaVirusAnimation.crc2.arc(0, 0, this.radius, 0, Math.PI * 1.6);

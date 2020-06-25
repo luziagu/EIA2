@@ -67,7 +67,7 @@ var coronaVirusAnimation;
             y = (100 + Math.random() * coronaVirusAnimation.crc2.canvas.height / 1.5);
             let position = new coronaVirusAnimation.Vector(x, y);
             let killercell = new coronaVirusAnimation.KillerCell(position);
-            killercell.draw(position);
+            killercell.draw();
             killerCells.push(killercell);
         }
         //coronaCell
@@ -96,7 +96,7 @@ var coronaVirusAnimation;
         }
         for (let killercell of killerCells) {
             killercell.move(1 / 80);
-            killercell.draw(killercell.position);
+            killercell.draw();
         }
         for (let humancell of humanCells) {
             humancell.move(1 / 20);
