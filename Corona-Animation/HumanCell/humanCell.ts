@@ -15,34 +15,30 @@ namespace coronaVirusAnimation {
 
 
 
+
             this.velocity = new Vector(0, 0);
             this.velocity.random(5, 10);
         }
 
         draw(_position: Vector): void {
             // console.log("drawHumanCell");
+            let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 3, 0, 0, this.radius);
             crc2.save();
-            let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, this.radius);
-            
-           
+            crc2.translate(_position.x, _position.y);
             crc2.beginPath();
             crc2.arc(_position.x, _position.y, this.radius, 0, 2 * Math.PI);
             crc2.closePath(); 
             gradient.addColorStop(0, "midnightblue");
-            gradient.addColorStop(0.3, "#E6E6FA");
-            gradient.addColorStop(0.5, "#E6E6FA");
-            gradient.addColorStop(0.7, "#E6E6FA");
-            gradient.addColorStop(1, "#E6E6FA");
-        
+            gradient.addColorStop(0.1, "#E6E6FA");
+            gradient.addColorStop(1, "#E6E6FA"); 
+
             crc2.fillStyle = gradient;
-            crc2.fillStyle = gradient;
-            crc2.lineWidth = 2;
+            crc2.lineWidth = 1;
             crc2.strokeStyle = "#E6E6FA";
+    
             crc2.stroke();
             crc2.fill();
             crc2.restore();
-            crc2.restore();
-          
           
         }
 

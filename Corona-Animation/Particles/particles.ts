@@ -26,13 +26,11 @@ namespace coronaVirusAnimation {
             let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, this.radius);
             crc2.save();
             
-            
-           
+
             crc2.beginPath();
             crc2.arc(_position.x, _position.y, this.radius, 0, 2 * Math.PI);
 
             crc2.closePath();
-            
 
             gradient.addColorStop(0, "HSLA(0, 100%, 100%, 50%)");
             gradient.addColorStop(0, "HSLA(0, 100%, 100%, 20%)");
