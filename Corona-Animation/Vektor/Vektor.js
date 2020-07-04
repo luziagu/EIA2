@@ -6,6 +6,17 @@ var coronaVirusAnimation;
             this.x = _x;
             this.y = _y;
         }
+        static getRandom(_minLength, _maxLength) {
+            let vector = new Vector(0, 0);
+            let length = _minLength + Math.random() * (_maxLength - _minLength);
+            let direction = Math.random() * 2 * Math.PI;
+            vector.set(Math.cos(direction), Math.sin(direction));
+            vector.scale(length);
+            return vector;
+        }
+        get length() {
+            return Math.hypot(this.x, this.y);
+        }
         set(_x, _y) {
             this.x = _x;
             this.y = _y;
@@ -17,12 +28,6 @@ var coronaVirusAnimation;
         scale(_scale) {
             this.x *= _scale;
             this.y *= _scale;
-        }
-        random(_minLength, _maxLength) {
-            let length = _minLength + Math.random() * (_maxLength - _minLength);
-            let direction = Math.random() * 2 * Math.PI;
-            this.set(Math.cos(direction), Math.sin(direction));
-            this.scale(length);
         }
         copy() {
             return new Vector(this.x, this.y);

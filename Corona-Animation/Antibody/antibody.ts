@@ -2,7 +2,7 @@ namespace coronaVirusAnimation {
     export class Antibody extends Moveable {
         
 
-        rotation: number;
+        private rotation: number;
 
         constructor(_position?: Vector) {
 
@@ -15,11 +15,11 @@ namespace coronaVirusAnimation {
             this.velocity = new Vector(0, 0);
 
             this.velocity = new Vector(0, 0);
-            this.velocity.random(2, 5);
+            this.velocity = Vector.getRandom(2, 5);
             this.rotation = Math.random() * 360; 
         }
 
-        draw(): void {
+        public draw(): void {
             crc2.save();
             crc2.translate(this.position.x, this.position.y);
             crc2.beginPath();

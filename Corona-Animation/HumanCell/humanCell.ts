@@ -17,10 +17,10 @@ namespace coronaVirusAnimation {
 
             this.radius = 15;
             this.velocity = new Vector(0, 0);
-            this.velocity.random(5, 10);
+            this.velocity = Vector.getRandom(5, 10);
         }
 
-        draw(): void {
+        public draw(): void {
             // console.log("drawHumanCell");
             
         

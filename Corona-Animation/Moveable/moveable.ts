@@ -1,9 +1,9 @@
 namespace coronaVirusAnimation {
-    export class Moveable {
+    export abstract class Moveable {
 
-        position: Vector;
-        radius: number; 
-        velocity: Vector;
+        public position: Vector;
+        public radius: number; 
+        public velocity: Vector;
 
         constructor(_position?: Vector) {
 
@@ -18,12 +18,9 @@ namespace coronaVirusAnimation {
             
         }
 
-        draw(): void {
-            //console.log("Moveable move"); 
-           
-        }
+        public  abstract draw(): void;
 
-        move(_timeslice: number): void {
+        public move(_timeslice: number): void {
 
             let offset: Vector = this.velocity.copy();
             //offset.scale(_timeslice);

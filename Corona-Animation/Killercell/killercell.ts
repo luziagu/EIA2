@@ -15,11 +15,11 @@ namespace coronaVirusAnimation {
 
 
             this.velocity = new Vector(0, 0);
-            this.velocity.random(5, 10);
+            this.velocity = Vector.getRandom(5, 10);
             this.radius = 20;
         }
 
-        draw(): void {
+        public draw(): void {
             console.log("KillerCells");
             crc2.save();
             crc2.translate(this.position.x, this.position.y); 

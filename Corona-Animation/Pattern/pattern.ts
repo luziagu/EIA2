@@ -6,7 +6,7 @@ namespace coronaVirusAnimation {
             this.position = _position;
         }
 
-        draw(_position: Vector): void {
+        public draw(_position: Vector): void {
         //    console.log("drawpattern");
             crc2.save();
             let pattern: CanvasRenderingContext2D = <CanvasRenderingContext2D>document.createElement("canvas").getContext("2d");

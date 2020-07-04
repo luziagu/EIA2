@@ -20,10 +20,10 @@ namespace coronaVirusAnimation {
 
 
             this.velocity = new Vector(0, 0);
-            this.velocity.random(5, 10);
+            this.velocity = Vector.getRandom(5, 10);
         }
 
-        draw(): void {
+        public draw(): void {
             // console.log("draw Corona");
 
             
@@ -57,7 +57,7 @@ namespace coronaVirusAnimation {
         }
 
 
-        move(_timeslice: number): void {
+        public move(_timeslice: number): void {
             if (this.infected == false) {
                 if (this.position.y < 250) {
                     super.move(_timeslice * 2); 
@@ -68,7 +68,7 @@ namespace coronaVirusAnimation {
             }
         }
 
-        isInfected(): boolean {
+        public isInfected(): boolean {
             if (this.position.y < 125) {
                 return true;
             }

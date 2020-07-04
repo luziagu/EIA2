@@ -17,14 +17,14 @@ namespace coronaVirusAnimation {
             this.velocity = new Vector(0, 0);
 
             this.velocity = new Vector(0, 0);
-            this.velocity.random(100, 200);
+            this.velocity = Vector.getRandom(100, 200);
 
             this.radius = (Math.random() * 7) + 1;
 
         
         }
 
-        draw(): void {
+        public draw(): void {
             console.log("draw Particle");
 
             let gradient: CanvasGradient = crc2.createRadialGradient(0, 0, 0, 0, 0, this.radius);
@@ -52,7 +52,7 @@ namespace coronaVirusAnimation {
         }
 
 
-        move(_timeslice: number): void {
+        public move(_timeslice: number): void {
             let offset: Vector = this.velocity.copy(); 
             offset.x *= 0; 
             offset.y *=  _timeslice * 1.2;

@@ -9,7 +9,7 @@ var coronaVirusAnimation;
             else
                 this.velocity = new coronaVirusAnimation.Vector(0, 0);
             this.velocity = new coronaVirusAnimation.Vector(0, 0);
-            this.velocity.random(5, 10);
+            this.velocity = coronaVirusAnimation.Vector.getRandom(5, 10);
             this.radius = 20;
         }
         draw() {

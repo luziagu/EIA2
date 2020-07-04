@@ -11,9 +11,6 @@ var coronaVirusAnimation;
             this.radius = 5;
             this.velocity = new coronaVirusAnimation.Vector(0, 0);
         }
-        draw() {
-            //console.log("Moveable move"); 
-        }
         move(_timeslice) {
             let offset = this.velocity.copy();
             //offset.scale(_timeslice);

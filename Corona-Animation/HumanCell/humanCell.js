@@ -10,7 +10,7 @@ var coronaVirusAnimation;
                 this.velocity = new coronaVirusAnimation.Vector(0, 0);
             this.radius = 15;
             this.velocity = new coronaVirusAnimation.Vector(0, 0);
-            this.velocity.random(5, 10);
+            this.velocity = coronaVirusAnimation.Vector.getRandom(5, 10);
         }
         draw() {
             // console.log("drawHumanCell");
